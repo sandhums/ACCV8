@@ -6,12 +6,16 @@
 //
 
 import SwiftUI
+import RealmSwift
+
+let accAppId = "cvbn"
+let accApp = RealmSwift.App(id: accAppId)
 
 @main
-struct AppEntry: App {
+struct AppEntry: SwiftUI.App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+                ContentView(app: accApp)
         }
     }
 }

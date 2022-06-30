@@ -30,6 +30,19 @@
 		D7A21084286C3D2200918807 /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A21083286C3D2200918807 /* Coordinates.swift */; };
 		D7A21086286C3DCD00918807 /* Projects.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A21085286C3DCD00918807 /* Projects.swift */; };
 		D7A21088286C3DEE00918807 /* Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A21087286C3DEE00918807 /* Tasks.swift */; };
+		D7A2108B286C553900918807 /* OpenRealmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A2108A286C553900918807 /* OpenRealmView.swift */; };
+		D7A2108D286C56E500918807 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A2108C286C56E500918807 /* LoginView.swift */; };
+		D7A2108F286C570500918807 /* LoggedInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A2108E286C570500918807 /* LoggedInView.swift */; };
+		D7A21091286C578000918807 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A21090286C578000918807 /* ErrorView.swift */; };
+		D7A21093286C57AE00918807 /* LogoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A21092286C57AE00918807 /* LogoutButton.swift */; };
+		D7A21095286D393D00918807 /* VisualEffectBlur.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A21094286D393D00918807 /* VisualEffectBlur.swift */; };
+		D7A21098286D399800918807 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A21097286D399800918807 /* ImagePicker.swift */; };
+		D7A2109A286D3A5600918807 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A21099286D3A5600918807 /* SignUpView.swift */; };
+		D7A2109D286D7E6500918807 /* GradientText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A2109C286D7E6500918807 /* GradientText.swift */; };
+		D7A2109F286DA88600918807 /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A2109E286DA88600918807 /* GradientButton.swift */; };
+		D7A210A1286DACFE00918807 /* TextFieldIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A210A0286DACFE00918807 /* TextFieldIcon.swift */; };
+		D7A210A3286DAD4500918807 /* GradientIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A210A2286DAD4500918807 /* GradientIcon.swift */; };
+		D7A210A5286DF70100918807 /* SignInWithAppleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A210A4286DF70100918807 /* SignInWithAppleButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +87,19 @@
 		D7A21083286C3D2200918807 /* Coordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
 		D7A21085286C3DCD00918807 /* Projects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Projects.swift; sourceTree = "<group>"; };
 		D7A21087286C3DEE00918807 /* Tasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tasks.swift; sourceTree = "<group>"; };
+		D7A2108A286C553900918807 /* OpenRealmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenRealmView.swift; sourceTree = "<group>"; };
+		D7A2108C286C56E500918807 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		D7A2108E286C570500918807 /* LoggedInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedInView.swift; sourceTree = "<group>"; };
+		D7A21090286C578000918807 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		D7A21092286C57AE00918807 /* LogoutButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutButton.swift; sourceTree = "<group>"; };
+		D7A21094286D393D00918807 /* VisualEffectBlur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectBlur.swift; sourceTree = "<group>"; };
+		D7A21097286D399800918807 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		D7A21099286D3A5600918807 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		D7A2109C286D7E6500918807 /* GradientText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientText.swift; sourceTree = "<group>"; };
+		D7A2109E286DA88600918807 /* GradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
+		D7A210A0286DACFE00918807 /* TextFieldIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldIcon.swift; sourceTree = "<group>"; };
+		D7A210A2286DAD4500918807 /* GradientIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientIcon.swift; sourceTree = "<group>"; };
+		D7A210A4286DF70100918807 /* SignInWithAppleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,8 +152,16 @@
 		D743C55D286B76D000A42B18 /* ACCV8 */ = {
 			isa = PBXGroup;
 			children = (
+				D7A2109B286D7E4800918807 /* CustomElements */,
+				D7A21096286D395900918807 /* Helpers */,
 				D743C55E286B76D000A42B18 /* AppEntry.swift */,
 				D743C560286B76D000A42B18 /* ContentView.swift */,
+				D7A2108A286C553900918807 /* OpenRealmView.swift */,
+				D7A21090286C578000918807 /* ErrorView.swift */,
+				D7A21092286C57AE00918807 /* LogoutButton.swift */,
+				D7A2108C286C56E500918807 /* LoginView.swift */,
+				D7A21099286D3A5600918807 /* SignUpView.swift */,
+				D7A2108E286C570500918807 /* LoggedInView.swift */,
 				D7A21089286C470A00918807 /* Models */,
 				D743C562286B76D100A42B18 /* Assets.xcassets */,
 				D743C564286B76D100A42B18 /* Preview Content */,
@@ -179,6 +213,27 @@
 				D7A2107D286C311600918807 /* ProcedureReport.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		D7A21096286D395900918807 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				D7A21094286D393D00918807 /* VisualEffectBlur.swift */,
+				D7A21097286D399800918807 /* ImagePicker.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		D7A2109B286D7E4800918807 /* CustomElements */ = {
+			isa = PBXGroup;
+			children = (
+				D7A2109C286D7E6500918807 /* GradientText.swift */,
+				D7A2109E286DA88600918807 /* GradientButton.swift */,
+				D7A210A0286DACFE00918807 /* TextFieldIcon.swift */,
+				D7A210A2286DAD4500918807 /* GradientIcon.swift */,
+				D7A210A4286DF70100918807 /* SignInWithAppleButton.swift */,
+			);
+			path = CustomElements;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -319,7 +374,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D7A2107A286C306300918807 /* ChatMessage.swift in Sources */,
+				D7A21093286C57AE00918807 /* LogoutButton.swift in Sources */,
 				D7A21074286C0FB900918807 /* Conversation.swift in Sources */,
+				D7A2108F286C570500918807 /* LoggedInView.swift in Sources */,
+				D7A2109A286D3A5600918807 /* SignUpView.swift in Sources */,
 				D7A2106E286C0E1300918807 /* Reps.swift in Sources */,
 				D7A21082286C3CD700918807 /* Centre.swift in Sources */,
 				D7A2107C286C30B100918807 /* Procedures.swift in Sources */,
@@ -327,11 +385,21 @@
 				D7A21070286C0F5E00918807 /* UserPreferences.swift in Sources */,
 				D743C561286B76D000A42B18 /* ContentView.swift in Sources */,
 				D743C55F286B76D000A42B18 /* AppEntry.swift in Sources */,
+				D7A2108B286C553900918807 /* OpenRealmView.swift in Sources */,
 				D7A21084286C3D2200918807 /* Coordinates.swift in Sources */,
+				D7A21098286D399800918807 /* ImagePicker.swift in Sources */,
+				D7A21095286D393D00918807 /* VisualEffectBlur.swift in Sources */,
+				D7A2109D286D7E6500918807 /* GradientText.swift in Sources */,
 				D7A21076286C0FEB00918807 /* Member.swift in Sources */,
+				D7A2108D286C56E500918807 /* LoginView.swift in Sources */,
 				D7A2107E286C311600918807 /* ProcedureReport.swift in Sources */,
+				D7A21091286C578000918807 /* ErrorView.swift in Sources */,
 				D7A21088286C3DEE00918807 /* Tasks.swift in Sources */,
+				D7A210A5286DF70100918807 /* SignInWithAppleButton.swift in Sources */,
 				D7A21086286C3DCD00918807 /* Projects.swift in Sources */,
+				D7A210A1286DACFE00918807 /* TextFieldIcon.swift in Sources */,
+				D7A210A3286DAD4500918807 /* GradientIcon.swift in Sources */,
+				D7A2109F286DA88600918807 /* GradientButton.swift in Sources */,
 				D7A21072286C0F8200918807 /* Photo.swift in Sources */,
 				D7A21078286C100F00918807 /* Chatster.swift in Sources */,
 			);
