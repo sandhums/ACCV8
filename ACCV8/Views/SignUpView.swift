@@ -64,11 +64,11 @@ struct SignUpView: View {
                                 withAnimation(.spring(response: 0.3, dampingFraction: 0.4, blendDuration: 0.5)) {
                                     emailIconBounce.toggle()
                                 }
-//                                DispatchQueue.main.asyncAfter(deadline: .now()+0.25) {
-                                withAnimation(.spring(response: 0.3, dampingFraction: 0.4, blendDuration: 0.5).delay(0.15)) {
+                                DispatchQueue.main.asyncAfter(deadline: .now()+0.25) {
+                                withAnimation(.spring(response: 0.3, dampingFraction: 0.4, blendDuration: 0.5)) {
                                         emailIconBounce.toggle()
                                     }
-//                                }
+                                }
                             }
                         }
                             .colorScheme(.dark)
@@ -112,11 +112,11 @@ struct SignUpView: View {
                             withAnimation(.spring(response: 0.3, dampingFraction: 0.4, blendDuration: 0.5)) {
                                 passwordIconBounce.toggle()
                             }
-//                            DispatchQueue.main.asyncAfter(deadline: .now()+0.25) {
-                                withAnimation(.spring(response: 0.3, dampingFraction: 0.4, blendDuration: 0.5).delay(0.15)) {
+                            DispatchQueue.main.asyncAfter(deadline: .now()+0.25) {
+                                withAnimation(.spring(response: 0.3, dampingFraction: 0.4, blendDuration: 0.5)) {
                                     passwordIconBounce.toggle()
                                 }
-//                            }
+                            }
                         }
                     }
                     GradientButton(buttonTitle: signupToggle ? "Create account" : "Sign in", buttonAction: {
