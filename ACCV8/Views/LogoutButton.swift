@@ -9,6 +9,8 @@ import SwiftUI
 import RealmSwift
 
 struct LogoutButton: View {
+    @Environment(\.realm) var realm
+    @ObservedRealmObject var user: Reps
     @State var isLoggingOut = false
     @State var error: Error?
     @State var errorMessage: ErrorMessage? = nil
@@ -39,10 +41,18 @@ struct LogoutButton: View {
     func logout(user: User) async {
         do {
             try await user.logOut()
+            clearSubscriptions()
+            $user.presenceState.wrappedValue = .offLine
             print("Successfully logged user out")
         } catch {
             print("Failed to log user out: \(error.localizedDescription)")
             self.errorMessage = ErrorMessage(errorText: error.localizedDescription)
+        }
+    }
+    private func clearSubscriptions() {
+        let subscriptions = realm.subscriptions
+        subscriptions.update {
+            subscriptions.removeAll()
         }
     }
 }

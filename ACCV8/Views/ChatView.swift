@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ChatView: View {
+    @State private var showTab: Bool = true
     var body: some View {
         Text("Chat")
     }

@@ -11,9 +11,9 @@ import RealmSwift
 import AuthenticationServices
 
 struct SignUpView: View {
-    @State private var email = ""
+    @State private var email = "999@999.com"
     @State private var editingEmailTextfield = false
-    @State private var password = ""
+    @State private var password = "999999"
     @State private var editingPasswordTextfield = false
     @State private var emailIconBounce: Bool = false
     @State private var passwordIconBounce: Bool = false
@@ -25,6 +25,7 @@ struct SignUpView: View {
     @State private var alertTitle = ""
     @State private var alertMessage = ""
     @State private var rotationAngle = 0.0
+    @AppStorage("isLogged") var isLogged = false
    
     
     private let generator = UISelectionFeedbackGenerator()
@@ -206,6 +207,7 @@ struct SignUpView: View {
     func login(email: String, password: String) async {
         do {
             let user = try await accApp.login(credentials: Credentials.emailPassword(email: email, password: password))
+            isLogged = true
             print("Successfully logged in user: \(user)")
         } catch {
             print("Failed to log in user: \(error.localizedDescription)")
@@ -220,6 +222,7 @@ struct SignUpView: View {
             try await accApp.emailPasswordAuth.registerUser(email: email, password: password)
             print("Successfully registered user")
             await login(email: email, password: password)
+            isLogged = true
         } catch {
             print("Failed to register user: \(error.localizedDescription)")
             alertTitle = "Uh-Oh!"
@@ -230,7 +233,9 @@ struct SignUpView: View {
         } else {
             do {
                 let user = try await accApp.login(credentials: Credentials.emailPassword(email: email, password: password))
+                isLogged = true
                 print("Successfully logged in user: \(user)")
+                print(Realm.Configuration.defaultConfiguration.fileURL!)
             } catch {
                 print("Failed to log in user: \(error.localizedDescription)")
                 alertTitle = "Uh-Oh!"

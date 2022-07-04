@@ -9,10 +9,12 @@ import SwiftUI
 import RealmSwift
 
 struct LoggedInView: View {
-    @EnvironmentObject var model: Model
-    @State private var selectedTab: Tab = .centres
-    
-    var leadingBarButton: AnyView?
+    @Environment(\.realm) var realm
+    @ObservedResults(Reps.self) var users
+//    @State private var showingProfileView = false
+    @State private var showTab: Bool = true
+    @AppStorage("selectedTab") var selectedTab: Tab = .centres
+
     var body: some View {
         ZStack {
             Group {
@@ -22,7 +24,7 @@ struct LoggedInView: View {
                 case .reports:
                     ReportsView()
                 case .chat:
-                    ChatView()
+                   ChatView()
                 case .projects:
                     ProjectsView()
                 }
@@ -33,17 +35,16 @@ struct LoggedInView: View {
             
             TabBar()
             
-//            if model.showModal {
-//                ModalView()
-//                    .accessibilityIdentifier("Identifier")
-//            }
+
+        }
+        .dynamicTypeSize(.large ... .xxLarge)
         }
     }
-}
+
 
 struct LoggedInView_Previews: PreviewProvider {
     static var previews: some View {
         LoggedInView()
-            .environmentObject(Model())
+            
     }
 }

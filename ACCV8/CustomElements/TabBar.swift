@@ -12,8 +12,9 @@ struct TabBar: View {
     @State var selectedX: CGFloat = 0
     @State var x: [CGFloat] = [0, 0, 0, 0]
     
-    @EnvironmentObject var model: Model
-    @State var selectedTab: Tab = .centres
+//   @EnvironmentObject var model: Model
+    @AppStorage("selectedTab") var selectedTab: Tab = .centres
+    @State private var showTab: Bool = true
     
     var body: some View {
         GeometryReader { proxy in
@@ -44,8 +45,8 @@ struct TabBar: View {
             .backgroundStyle(cornerRadius: hasHomeIndicator ? 34 : 0)
             .frame(maxHeight: .infinity, alignment: .bottom)
             .ignoresSafeArea()
-            .offset(y: model.showTab ? 0 : 200)
-            .accessibility(hidden: !model.showTab)
+            .offset(y: showTab ? 0 : 200)
+//            .accessibility(hidden: !model.showTab)
         }
     }
     
