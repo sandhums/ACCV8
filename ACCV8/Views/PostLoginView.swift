@@ -12,11 +12,12 @@ import UserNotifications
 struct PostLoginView: View {
     @Environment(\.realm) var realm
     @ObservedResults(Reps.self) var users
+    @ObservedRealmObject var user: Reps
 //    @Binding var userID: String?
     @State private var showingProfileView = false
     @AppStorage("shouldRemindOnlineUser") var shouldRemindOnlineUser = false
     @AppStorage("onlineUserReminderHours") var onlineUserReminderHours = 8.0
-   
+    @StateObject var model = Model()
     var body: some View {
         NavigationView {
         VStack {
@@ -24,7 +25,8 @@ struct PostLoginView: View {
                 if showingProfileView {
                    AccountView(user: user, isPresented: $showingProfileView)
                 } else {
-                    LoggedInView()
+                    LoggedInView(user: user)
+                        .environmentObject(model)
                         .navigationBarItems(
                             leading: LogoutButton(user: user),
                             trailing:  UserAvatarView(
@@ -34,13 +36,13 @@ struct PostLoginView: View {
             }
         }
 //        .onAppear(perform: getProfile)
-        .task {
-            do {
-           try await setSubsUserId()
-            } catch {
-                print ("Error")
-        }
-        }
+//        .task {
+//            do {
+//           try await setSubsUserId()
+//            } catch {
+//                print ("Error")
+//        }
+//        }
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) { _ in
             if shouldRemindOnlineUser {
                     addNotification(timeInHours: Int(onlineUserReminderHours))
@@ -119,7 +121,7 @@ struct PostLoginView: View {
 
 struct PostLoginView_Previews: PreviewProvider {
     static var previews: some View {
-        PostLoginView()
+        PostLoginView(user: Reps())
     }
 }
 

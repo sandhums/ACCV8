@@ -29,7 +29,6 @@ struct ConversationListView: View {
         ZStack {
 //            GradientBackground()
             VStack {
-              
                 if let conversations = user.conversations.sorted(by: sortDescriptors) {
                     List {
                         ForEach(conversations) { conversation in

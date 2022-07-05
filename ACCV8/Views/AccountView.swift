@@ -130,13 +130,13 @@ struct AccountView: View {
             
             Spacer()
         }
-        .task {
-            do {
-            try await setSubscription()
-            } catch {
-                
-            }
-        }
+//        .task {
+//            do {
+//            try await setSubscription()
+//            } catch {
+//                
+//            }
+//        }
         .background(
             Color("settingsBackground")
                 .edgesIgnoringSafeArea(.all)
@@ -148,6 +148,7 @@ struct AccountView: View {
     private func saveProfile() {
         let userPreferences = UserPreferences()
         userPreferences.displayName = self.displayName
+    user
         if photoAdded {
             guard let newPhoto = photo else {
                 print("Missing photo")

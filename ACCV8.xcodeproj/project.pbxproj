@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D70E8F962874511700D57D25 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70E8F952874511700D57D25 /* NavigationBar.swift */; };
 		D743C55F286B76D000A42B18 /* AppEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D743C55E286B76D000A42B18 /* AppEntry.swift */; };
 		D743C561286B76D000A42B18 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D743C560286B76D000A42B18 /* ContentView.swift */; };
 		D743C563286B76D100A42B18 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D743C562286B76D100A42B18 /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 		D743C57C286B76D100A42B18 /* ACCV8UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D743C57B286B76D100A42B18 /* ACCV8UITestsLaunchTests.swift */; };
 		D79CD2D1287036EE00E7C83E /* GradientTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79CD2D0287036EE00E7C83E /* GradientTextField.swift */; };
 		D79CD2D3287161C900E7C83E /* PostLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79CD2D2287161C800E7C83E /* PostLoginView.swift */; };
+		D79CD2D528731F6400E7C83E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79CD2D428731F6400E7C83E /* HomeView.swift */; };
 		D7A2106A286C0D5000918807 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = D7A21069286C0D5000918807 /* Realm */; };
 		D7A2106C286C0D5000918807 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D7A2106B286C0D5000918807 /* RealmSwift */; };
 		D7A2106E286C0E1300918807 /* Reps.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A2106D286C0E1300918807 /* Reps.swift */; };
@@ -157,6 +159,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D70E8F952874511700D57D25 /* NavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 		D743C55B286B76D000A42B18 /* ACCV8.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ACCV8.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D743C55E286B76D000A42B18 /* AppEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEntry.swift; sourceTree = "<group>"; };
 		D743C560286B76D000A42B18 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -169,6 +172,7 @@
 		D743C57B286B76D100A42B18 /* ACCV8UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACCV8UITestsLaunchTests.swift; sourceTree = "<group>"; };
 		D79CD2D0287036EE00E7C83E /* GradientTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientTextField.swift; sourceTree = "<group>"; };
 		D79CD2D2287161C800E7C83E /* PostLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostLoginView.swift; sourceTree = "<group>"; };
+		D79CD2D428731F6400E7C83E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		D7A2106D286C0E1300918807 /* Reps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reps.swift; sourceTree = "<group>"; };
 		D7A2106F286C0F5E00918807 /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 		D7A21071286C0F8200918807 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
@@ -459,6 +463,7 @@
 		D7A210BF286EAC9B00918807 /* Design */ = {
 			isa = PBXGroup;
 			children = (
+				D70E8F952874511700D57D25 /* NavigationBar.swift */,
 				D7A210C0286EACB500918807 /* Course.swift */,
 				D7A210C2286EACEE00918807 /* CourseSection.swift */,
 				D7A210C4286EAD1100918807 /* Topic.swift */,
@@ -480,6 +485,7 @@
 				D7A210E4286EBA2A00918807 /* HexagonView.swift */,
 				D7A210EC286EBD4B00918807 /* SectionView.swift */,
 				D7A210EE286EBD6D00918807 /* CourseView.swift */,
+				D79CD2D428731F6400E7C83E /* HomeView.swift */,
 			);
 			path = Design;
 			sourceTree = "<group>";
@@ -765,6 +771,7 @@
 				D7A21128286F1C8D00918807 /* ButtonTemplate.swift in Sources */,
 				D7A21130286F1C8D00918807 /* CheckBox.swift in Sources */,
 				D7A21138286F1C8D00918807 /* LabeledButton.swift in Sources */,
+				D70E8F962874511700D57D25 /* NavigationBar.swift in Sources */,
 				D7A21080286C321100918807 /* RevenueReport.swift in Sources */,
 				D7A210D5286EAF1600918807 /* CertificateView.swift in Sources */,
 				D7A21131286F1C8D00918807 /* MarkDown.swift in Sources */,
@@ -844,6 +851,7 @@
 				D7A21134286F1C8D00918807 /* CameraButton.swift in Sources */,
 				D7A2112E286F1C8D00918807 /* OnlineAlertSettings.swift in Sources */,
 				D7A210EB286EBB3F00918807 /* SectionTitleModifier.swift in Sources */,
+				D79CD2D528731F6400E7C83E /* HomeView.swift in Sources */,
 				D7A210FC286F18D700918807 /* PreviewHelpers.swift in Sources */,
 				D7A2114C286F1D3A00918807 /* NewConversationView.swift in Sources */,
 				D7A21136286F1C8D00918807 /* InputField.swift in Sources */,

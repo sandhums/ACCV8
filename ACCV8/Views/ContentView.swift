@@ -13,7 +13,18 @@ struct ContentView: View {
     
     var body: some View {
         if let user = app.currentUser {
-                let config = user.flexibleSyncConfiguration()
+                let config = user.flexibleSyncConfiguration(initialSubscriptions: { subs in
+                    if let foundSubscriptions = subs.first(named: "userId") {
+                            return
+                        } else {
+                    subs.append(
+                            QuerySubscription<Reps>(name: "userId") {
+                                $0._id == user.id
+                                })
+                        }
+                    print("appended bootstrap query userId")
+                }, rerunOnOpen: true)
+            
                 OpenRealmView()
                     .environment(\.realmConfiguration, config)
         } else {

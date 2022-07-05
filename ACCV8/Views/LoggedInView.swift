@@ -11,6 +11,7 @@ import RealmSwift
 struct LoggedInView: View {
     @Environment(\.realm) var realm
     @ObservedResults(Reps.self) var users
+    @ObservedRealmObject var user: Reps
 //    @State private var showingProfileView = false
     @State private var showTab: Bool = true
     @AppStorage("selectedTab") var selectedTab: Tab = .centres
@@ -24,7 +25,7 @@ struct LoggedInView: View {
                 case .reports:
                     ReportsView()
                 case .chat:
-                   ChatView()
+                   ConversationListView(user: user)
                 case .projects:
                     ProjectsView()
                 }
@@ -44,7 +45,7 @@ struct LoggedInView: View {
 
 struct LoggedInView_Previews: PreviewProvider {
     static var previews: some View {
-        LoggedInView()
-            
+        LoggedInView(user: Reps())
+            .environmentObject(Model())
     }
 }
