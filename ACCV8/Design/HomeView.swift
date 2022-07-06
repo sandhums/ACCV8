@@ -69,11 +69,11 @@ struct HomeView: View {
         .onChange(of: model.showDetail) { value in
             withAnimation {
                 model.showTab.toggle()
-//                model.showNav.toggle()
+                model.showNav.toggle()
                 showStatusBar.toggle()
             }
         }
-//        .overlay(NavigationBar(title: "Featured", contentHasScrolled: $contentHasScrolled))
+        .overlay(NavigationBar(title: "Featured", contentHasScrolled: $contentHasScrolled))
         .statusBar(hidden: !showStatusBar)
     }
     

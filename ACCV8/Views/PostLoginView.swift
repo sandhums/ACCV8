@@ -17,21 +17,21 @@ struct PostLoginView: View {
     @State private var showingProfileView = false
     @AppStorage("shouldRemindOnlineUser") var shouldRemindOnlineUser = false
     @AppStorage("onlineUserReminderHours") var onlineUserReminderHours = 8.0
-    @StateObject var model = Model()
+    @EnvironmentObject var model: Model
     var body: some View {
         NavigationView {
         VStack {
             if let user = users.first {
                 if showingProfileView {
-                   AccountView(user: user, isPresented: $showingProfileView)
+                   AccountView(user: user)
                 } else {
-                    LoggedInView(user: user)
+                    LoggedInView()
                         .environmentObject(model)
                         .navigationBarItems(
                             leading: LogoutButton(user: user),
                             trailing:  UserAvatarView(
                                 photo: user.userPreferences?.avatarImage,
-                                online: true) { showingProfileView.toggle() })
+                                online: true) )
                 }
             }
         }

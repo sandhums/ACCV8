@@ -18,6 +18,7 @@ class Reps: Object, ObjectKeyIdentifiable {
     @Persisted var lastSeenAt: Date?
     @Persisted var conversations = List<Conversation>()
     @Persisted var presence = "On-Line"
+    @Persisted var avatarImage: Data?
 
     var isProfileSet: Bool { !(userPreferences?.isEmpty ?? true) }
     var presenceState: Presence {
@@ -25,7 +26,7 @@ class Reps: Object, ObjectKeyIdentifiable {
         set { presence = newValue.asString }
     }
     
-    convenience init(userName: String, firstName: String, lastName: String, userMobile: String, userCentre: String, id: String) {
+    convenience init(userName: String, firstName: String, lastName: String, userMobile: String, userCentre: String, id: String, avatarImage: Data) {
         self.init()
         self.userName = userName
         _id = id
@@ -33,6 +34,7 @@ class Reps: Object, ObjectKeyIdentifiable {
         self.lastName = lastName
         self.userMobile = userMobile
         self.userCentre = userCentre
+        self.avatarImage = avatarImage
         userPreferences = UserPreferences()
         userPreferences?.displayName = userName
         presence = "On-Line"

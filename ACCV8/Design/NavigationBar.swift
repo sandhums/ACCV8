@@ -12,11 +12,12 @@ struct NavigationBar: View {
     var title = ""
     @State var showSheet = false
     @Binding var contentHasScrolled: Bool
-  
+    @Environment(\.realm) var realm
     @EnvironmentObject var model: Model
     @AppStorage("showAccount") var showAccount = false
     @AppStorage("isLogged") var isLogged = false
-    
+    @ObservedResults(Reps.self) var users
+//    @ObservedRealmObject var user: Reps
     var body: some View {
      
         ZStack {
@@ -38,19 +39,7 @@ struct NavigationBar: View {
                 .opacity(contentHasScrolled ? 0.7 : 1)
             
             HStack(spacing: 16) {
-                Button {
-                    showSheet.toggle()
-                } label: {
-                    Image(systemName: "magnifyingglass")
-                        .font(.system(size: 17, weight: .bold))
-                        .frame(width: 36, height: 36)
-                        .foregroundColor(.secondary)
-                        .background(.ultraThinMaterial)
-                        .backgroundStyle(cornerRadius: 14, opacity: 0.4)
-                }
-                .sheet(isPresented: $showSheet) {
-                    SearchView()
-                }
+               LogoutButton(user: Reps())
                 Button {
                     withAnimation {
                         if isLogged {
@@ -78,26 +67,19 @@ struct NavigationBar: View {
     @ViewBuilder
     var avatar: some View {
         if isLogged {
-            AsyncImage(url: URL(string: "https://picsum.photos/200"), transaction: .init(animation: .easeOut)) { phase in
-                switch phase {
-                case .empty:
-                    Color.white
-                case .success(let image):
-                    image.resizable()
-                case .failure(_):
-                    Color.gray
-                @unknown default:
-                    Color.gray
-                }
-            }
-            .frame(width: 26, height: 26)
-            .cornerRadius(10)
-            .padding(8)
-            .background(.ultraThinMaterial)
-            .backgroundStyle(cornerRadius: 18, opacity: 0.4)
-            .transition(.scale.combined(with: .slide))
+            let user = users.first
+            if user?.avatarImage != nil{
+                Image(uiImage: UIImage(data: user!.avatarImage!)!)
+                    .frame(width: 30, height: 30)
+                    .cornerRadius(10)
+                    .padding(8)
+                    .background(.ultraThinMaterial)
+                    .backgroundStyle(cornerRadius: 18, opacity: 0.4)
+//                GradientProfilePicture(profilePicture: UIImage(data: user!.avatarImage!)!)
+//                    .frame(width: 36, height: 36, alignment: .center)
         } else {
             LogoView(image: "Avatar Default")
+        }
         }
     }
 

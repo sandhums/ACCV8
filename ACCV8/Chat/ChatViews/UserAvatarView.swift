@@ -8,7 +8,7 @@ import SwiftUI
 struct UserAvatarView: View {
     let photo: Photo?
     let online: Bool
-    var action: () -> Void = {}
+//    var action: () -> Void = {}
     
     private enum Dimensions {
         static let imageSize: CGFloat = 30
@@ -17,7 +17,7 @@ struct UserAvatarView: View {
     }
     
     var body: some View {
-        Button(action: action) {
+//        Button (action:){
             ZStack {
                 image
                     .cornerRadius(Dimensions.cornerRadius)
@@ -29,7 +29,7 @@ struct UserAvatarView: View {
                     }
                 }
             }
-        }
+//        }
         .frame(width: Dimensions.buttonSize, height: Dimensions.buttonSize)
     }
     
@@ -47,7 +47,7 @@ struct UserAvatarView: View {
 struct UserAvatarView_Previews: PreviewProvider {
     static var previews: some View {
         AppearancePreviews(
-            UserAvatarView(photo: .sample, online: true, action: {})
+            UserAvatarView(photo: .sample, online: true)
         )
         .padding()
         .previewLayout(.sizeThatFits)

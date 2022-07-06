@@ -10,6 +10,7 @@ import RealmSwift
 
 struct OpenRealmView: View {
     @AsyncOpen(appId: accAppId, timeout: 4000) var asyncOpen
+    @EnvironmentObject var model: Model
        
     var body: some View {
        switch asyncOpen {
@@ -18,7 +19,7 @@ struct OpenRealmView: View {
        case .waitingForUser:
            ProgressView("Waiting for user to log in...")
        case .open(let realm):
-           PostLoginView(user: Reps())
+           LoggedInView()
                 .environment(\.realm, realm)
        case .progress(let progress):
            ProgressView(progress)

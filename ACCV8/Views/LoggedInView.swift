@@ -9,23 +9,28 @@ import SwiftUI
 import RealmSwift
 
 struct LoggedInView: View {
+    @EnvironmentObject var model: Model
     @Environment(\.realm) var realm
     @ObservedResults(Reps.self) var users
-    @ObservedRealmObject var user: Reps
+//    @ObservedRealmObject var user: Reps
 //    @State private var showingProfileView = false
-    @State private var showTab: Bool = true
+   
     @AppStorage("selectedTab") var selectedTab: Tab = .centres
-
+    @AppStorage("showAccount") var showAccount = false
+    
+    init() {
+        showAccount = false
+    }
     var body: some View {
         ZStack {
             Group {
                 switch selectedTab {
                 case .centres:
-                    CentresView()
+                    HomeView()
                 case .reports:
                     ReportsView()
                 case .chat:
-                   ConversationListView(user: user)
+                   ExploreView()
                 case .projects:
                     ProjectsView()
                 }
@@ -39,13 +44,24 @@ struct LoggedInView: View {
 
         }
         .dynamicTypeSize(.large ... .xxLarge)
+        .sheet(isPresented: $showAccount) {
+            if let user = users.first {
+            AccountView(user: user)
+            }
+        }
         }
     }
 
 
 struct LoggedInView_Previews: PreviewProvider {
     static var previews: some View {
-        LoggedInView(user: Reps())
-            .environmentObject(Model())
+        Group {
+            LoggedInView()
+                .preferredColorScheme(.dark)
+                .environmentObject(Model())
+                .previewInterfaceOrientation(.portrait)
+            LoggedInView()
+                .environmentObject(Model())
+        }
     }
 }

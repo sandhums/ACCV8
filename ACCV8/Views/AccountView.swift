@@ -18,7 +18,7 @@ struct AccountView: View {
     @ObservedRealmObject var user: Reps
     @ObservedResults(Centre.self) var centres
     
-    @Binding var isPresented: Bool
+//    @Binding var isPresented: Bool
     @State private var photo: Photo?
     @State private var photoAdded = false
    
@@ -40,6 +40,7 @@ struct AccountView: View {
     @State private var userMobile = ""
     @State private var showingImagePicker = false
     @State private var inputImage: UIImage?
+    @State private var inputThumb: UIImage?
     @State private var showActionAlert = false
     @State private var alertTitle = "Settings Saved!"
     @State private var alertMessage = "Your changes have been saved"
@@ -55,15 +56,22 @@ struct AccountView: View {
                     Rectangle()
                         .frame(height: 1)
                         .foregroundColor(Color.white.opacity(0.1))
-                    if let photo = photo {
-                        AvatarButton(photo: photo) {
-                            self.showPhotoTaker()
+                    Button {
+                        self.showingImagePicker = true
+                    } label: {
+                        HStack(spacing: 12) {
+                            TextfieldIcon(iconName: "person.crop.circle", passedImage: $inputImage, currentlyEditing: .constant(false))
+                            GradientText(text: "Choose Photo")
+                            Spacer()
                         }
-                    }
-                    if photo == nil {
-                        Button(action: { self.showPhotoTaker() }) {
-                            GradientText(text: "Add Photo")
-                        }
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 16, style: .circular)
+                                .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                        )
+                        .background(
+                            Color.init(red: 26/255, green: 20/255, blue: 51/255)
+                                .cornerRadius(16)
+                        )
                     }
                 }
                 
@@ -118,7 +126,8 @@ struct AccountView: View {
                     saveProfile()
                 }
                         GradientButton(buttonTitle: "Cancel") {
-                        isPresented.toggle()
+                           
+                            presentationMode.wrappedValue.dismiss()
                     }
                 }
                 }
@@ -130,13 +139,16 @@ struct AccountView: View {
             
             Spacer()
         }
-//        .task {
-//            do {
-//            try await setSubscription()
-//            } catch {
-//                
-//            }
-//        }
+        .sheet(isPresented: $showingImagePicker) {
+           ImagePicker(image: self.$inputImage)
+        }
+        .task {
+            do {
+            try await setSubscription()
+            } catch {
+                
+            }
+        }
         .background(
             Color("settingsBackground")
                 .edgesIgnoringSafeArea(.all)
@@ -148,27 +160,19 @@ struct AccountView: View {
     private func saveProfile() {
         let userPreferences = UserPreferences()
         userPreferences.displayName = self.displayName
-    user
-        if photoAdded {
-            guard let newPhoto = photo else {
-                print("Missing photo")
-                return
-            }
-            userPreferences.avatarImage = newPhoto
-        } else {
-            userPreferences.avatarImage = Photo(photo)
-        }
         $user.userPreferences.wrappedValue = userPreferences
         $user.presenceState.wrappedValue = .onLine
+        $user.avatarImage.wrappedValue = self.inputImage?.jpegData(compressionQuality: 1.0)
         $user.firstName.wrappedValue = self.firstName
         $user.lastName.wrappedValue = self.lastName
         $user.userMobile.wrappedValue = self.userMobile
         $user.userCentre.wrappedValue = self.selectedCentre
-        isPresented.toggle()
+        print("settings saved")
+//        isPresented.toggle()
     }
     private func initData() {
         displayName = user.userPreferences?.displayName ?? "Unknown"
-        photo = user.userPreferences?.avatarImage
+        inputImage = UIImage(data: user.avatarImage ?? Data())
         firstName = user.firstName
         lastName = user.lastName
         userMobile = user.userMobile
@@ -199,7 +203,7 @@ struct AccountView: View {
 
 struct AccountView_Previews: PreviewProvider {
     static var previews: some View {
-        AccountView(user: Reps(), isPresented: .constant(true))
+        AccountView(user: Reps())
     }
 }
 
