@@ -21,10 +21,11 @@ struct OpenRealmView: View {
        case .open(let realm):
            LoggedInView()
                 .environment(\.realm, realm)
-       case .progress(let progress):
-           ProgressView(progress)
+//       case .progress(let progress):
+//           ProgressView(progress)
        case .error(let error):
            ErrorView(error: error)
+       default: EmptyView()
        }
     }
     
