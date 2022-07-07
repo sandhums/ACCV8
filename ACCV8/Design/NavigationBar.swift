@@ -70,6 +70,8 @@ struct NavigationBar: View {
             let user = users.first
             if user?.avatarImage != nil{
                 Image(uiImage: UIImage(data: user!.avatarImage!)!)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
                     .frame(width: 30, height: 30)
                     .cornerRadius(10)
                     .padding(8)

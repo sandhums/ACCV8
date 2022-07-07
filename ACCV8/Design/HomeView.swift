@@ -45,7 +45,7 @@ struct HomeView: View {
                 
                 if model.showDetail {
                     LazyVGrid(columns: columns, spacing: 20) {
-                        ForEach(centres) { centre in
+                        ForEach(courses) { course in
                             Rectangle()
                                 .fill(.white)
                                 .frame(height: 300)
