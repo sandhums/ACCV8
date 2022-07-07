@@ -26,8 +26,8 @@ struct ConversationListView: View {
     ]
     
     var body: some View {
+        NavigationView {
         ZStack {
-//            GradientBackground()
             VStack {
                 if let conversations = user.conversations.sorted(by: sortDescriptors) {
                     List {
@@ -40,8 +40,8 @@ struct ConversationListView: View {
                         .listRowBackground(Color.purple)
                     }
                     Button(action: { showingAddChat.toggle() }) {
-                        Text("Discussions")
-                            .foregroundColor(.white)
+                        Text("Start New Chat")
+                            .foregroundColor(.black)
                     }
                     .disabled(showingAddChat)
                 }
@@ -55,8 +55,8 @@ struct ConversationListView: View {
                         destination: ChatRoomView(user: user, conversation: conversation),
                         isActive: $showConversation) { EmptyView() }
                 }
-               // GradientBackground()
             }
+        }
         }
         .onAppear {
             $user.presenceState.wrappedValue = .onLine
@@ -68,6 +68,7 @@ struct ConversationListView: View {
         }
     }
 }
+
 
 struct ConversationListViewPreviews: PreviewProvider {
     

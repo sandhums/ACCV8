@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct ProjectsView: View {
     @EnvironmentObject var model: Model
     var body: some View {
         Text("Projects")
+            
     }
 }
 

@@ -30,7 +30,9 @@ struct LoggedInView: View {
                 case .reports:
                     ReportsView()
                 case .chat:
-                   ExploreView()
+                    if let user = users.first {
+                    ChatView(user: user)
+                    }
                 case .projects:
                     ProjectsView()
                 }
