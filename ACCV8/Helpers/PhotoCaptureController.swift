@@ -45,9 +45,17 @@ class PhotoCaptureController: UIImagePickerController {
     }
     
     func present() {
-        UIViewController.keyWindow?.rootViewController?.present(self, animated: true)
+        getTopMostViewController()?.present(self, animated: true)
     }
-    
+    func getTopMostViewController() -> UIViewController? {
+        var topMostViewController = UIApplication.shared.keyWindow?.rootViewController
+
+        while let presentedViewController = topMostViewController?.presentedViewController {
+            topMostViewController = presentedViewController
+        }
+
+        return topMostViewController
+    }
     func hide() {
         photoTaken = nil
         dismiss(animated: true)
@@ -92,20 +100,4 @@ extension PhotoCaptureController: UIImagePickerControllerDelegate, UINavigationC
     }
 }
 
-extension UIViewController {
-    
-    static var keyWindow: UIWindow? {
-        // Get connected scenes
-        return UIApplication.shared.connectedScenes
-            // Keep only active scenes, onscreen and visible to the user
-            .filter { $0.activationState == .foregroundActive }
-            // Keep only the first `UIWindowScene`
-            .first(where: { $0 is UIWindowScene })
-            // Get its associated windows
-            .flatMap({ $0 as? UIWindowScene })?.windows
-            // Finally, keep only the key window
-            .first(where: \.isKeyWindow)
-    }
-    
-}
 

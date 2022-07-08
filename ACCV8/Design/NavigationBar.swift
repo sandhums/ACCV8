@@ -67,25 +67,18 @@ struct NavigationBar: View {
     @ViewBuilder
     var avatar: some View {
         if isLogged {
-            let user = users.first
-            if user?.avatarImage != nil{
-                Image(uiImage: UIImage(data: user!.avatarImage!)!)
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 30, height: 30)
-                    .cornerRadius(10)
-                    .padding(8)
-                    .background(.ultraThinMaterial)
-                    .backgroundStyle(cornerRadius: 18, opacity: 0.4)
-//                GradientProfilePicture(profilePicture: UIImage(data: user!.avatarImage!)!)
-//                    .frame(width: 36, height: 36, alignment: .center)
+            if let user = users.first {
+            UserAvatarView(
+                photo: user.userPreferences?.avatarImage,
+                online: true)
+            }
         } else {
             LogoView(image: "Avatar Default")
         }
         }
     }
 
-}
+
 
 struct NavigationBar_Previews: PreviewProvider {
     static var previews: some View {

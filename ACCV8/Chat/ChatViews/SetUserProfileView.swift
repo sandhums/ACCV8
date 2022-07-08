@@ -16,7 +16,7 @@ struct SetUserProfileView: View {
     @ObservedRealmObject var user: Reps
     @ObservedResults(Centre.self) var centres
     @Binding var isPresented: Bool
-//    @Binding var userID: String?
+
     
     @State private var displayName = ""
     @State private var photo: Photo?

@@ -6,13 +6,18 @@
 //
 
 import SwiftUI
+import UIKit
 import RealmSwift
 
 struct ImagePicker: UIViewControllerRepresentable {
     @Environment(\.presentationMode) var presentationMode
     @Binding var image: UIImage?
 //    @Binding var thumbImage: UIImage?
-    private let maximumImageSize = 1024 * 1024
+    private var photoTaken: ((PhotoCaptureController, Photo) -> Void)?
+    private var photo = Photo()
+    private let imageSizeThumbnails: CGFloat = 102
+    private let maximumImageSize = 1024 * 1024 // 1 MB
+
 
     func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePicker>) -> UIImagePickerController {
         let picker = UIImagePickerController()
@@ -40,6 +45,7 @@ struct ImagePicker: UIViewControllerRepresentable {
                 }
                 parent.image = compressedImage.thumbnail(size: 200)
             }
+            
             parent.presentationMode.wrappedValue.dismiss()
         }
     }
