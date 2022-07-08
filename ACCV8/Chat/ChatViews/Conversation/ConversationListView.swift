@@ -37,7 +37,7 @@ struct ConversationListView: View {
                                 showConversation.toggle()
                             }) { ConversationCardView(conversation: conversation, isPreview: isPreview) }
                         }
-                        .listRowBackground(Color.purple)
+                        .listRowBackground(Color("Background"))
                     }
                     Button(action: { showingAddChat.toggle() }) {
                         Text("Start New Chat")
@@ -67,6 +67,7 @@ struct ConversationListView: View {
                 .environment(\.realmConfiguration, accApp.currentUser!.flexibleSyncConfiguration())
         }
     }
+    
 }
 
 

@@ -18,11 +18,15 @@ struct ThumbnailPhotoView: View {
                 .renderingMode(.original)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
-                .frame(width: imageSize, height: imageSize)
-                .overlay {
-                    Circle().stroke(.white, lineWidth: 2)
-                           }
-                           .shadow(radius: 7)
+                .frame(width: 30, height: 30)
+                .cornerRadius(10)
+                .padding(6)
+                .background(.ultraThinMaterial)
+                .backgroundStyle(cornerRadius: 18, opacity: 0.4)
+//                .overlay {
+//                    Circle().stroke(.white, lineWidth: 2)
+//                           }
+//                           .shadow(radius: 7)
         }
     }
 }

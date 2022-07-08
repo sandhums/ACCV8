@@ -18,7 +18,7 @@ struct OnOffCircleView: View {
     var body: some View {
         ZStack {
             Circle()
-                .fill(Color.gray)
+                .fill(.ultraThinMaterial)
                 .frame(width: Dimensions.frameSize, height: Dimensions.frameSize)
             Circle()
                 .fill(online ? Color.green : Color.red)

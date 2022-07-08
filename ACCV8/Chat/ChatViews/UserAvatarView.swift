@@ -20,7 +20,6 @@ struct UserAvatarView: View {
 //        Button (action:){
             ZStack {
                 image
-                    .cornerRadius(Dimensions.cornerRadius)
                 HStack {
                     Spacer()
                     VStack {

@@ -45,10 +45,6 @@ struct ConversationCardContentsView: View {
             Spacer()
         }
         .padding(Dimensions.padding)
-        .overlay(
-            RoundedRectangle(cornerRadius: Dimensions.cornerRadius)
-                .stroke(Color.indigo, lineWidth: Dimensions.lineWidth)
-        )
         .onAppear(perform: setSubscription)
     }
     
