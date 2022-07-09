@@ -87,7 +87,7 @@ struct HomeView: View {
     
     var course: some View {
         ForEach(featuredCourses) { course in
-            CourseItem(namespace: namespace, course: course)
+            CourseItem(namespace: namespace, course: course, centre: Centre())
                 .accessibilityElement(children: .combine)
                 .accessibilityAddTraits(.isButton)
         }

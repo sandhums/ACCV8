@@ -32,7 +32,7 @@ struct HandbookItem: View {
             Text(handbook.text)
                 .font(.caption.weight(.medium))
                 .foregroundStyle(.secondary)
-                .lineLimit(3)
+                .lineLimit(5)
             Spacer()
         }
         .padding(16)

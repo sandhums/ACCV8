@@ -6,11 +6,14 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct CourseItem: View {
     var namespace: Namespace.ID
     var course: Course
-    
+    @ObservedResults(Centre.self) var centres
+    var centre: Centre
+    @Environment(\.realm) var realm
     @EnvironmentObject var model: Model
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     
@@ -24,13 +27,13 @@ struct CourseItem: View {
             Spacer()
             
             VStack(alignment: .leading, spacing: 8) {
-                Text(course.title)
+                Text(centre.centreName)
                     .font(.title).bold()
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .matchedGeometryEffect(id: "title\(course.index)", in: namespace)
                     .foregroundColor(.white)
                 
-                Text("20 videos - 3 hours".uppercased())
+                Text(centre.centreDesc)
                     .font(.footnote).bold()
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .matchedGeometryEffect(id: "subtitle\(course.index)", in: namespace)
@@ -92,7 +95,7 @@ struct CardItem_Previews: PreviewProvider {
     @Namespace static var namespace
     
     static var previews: some View {
-        CourseItem(namespace: namespace, course: courses[0])
+        CourseItem(namespace: namespace, course: courses[0], centre: Centre())
             .environmentObject(Model())
     }
 }
