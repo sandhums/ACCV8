@@ -13,8 +13,9 @@ struct Thumbnail: View {
     
     var body: some View {
         Image(uiImage: (UIImage(data: imageData) ?? UIImage()))
-        .resizable()
-        .aspectRatio(contentMode: .fit)
+            .renderingMode(.original)
+            .resizable()
+            .aspectRatio(contentMode: .fill)
     }
 }
 

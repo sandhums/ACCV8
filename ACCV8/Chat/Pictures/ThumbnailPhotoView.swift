@@ -23,10 +23,6 @@ struct ThumbnailPhotoView: View {
                 .padding(6)
                 .background(.ultraThinMaterial)
                 .backgroundStyle(cornerRadius: 18, opacity: 0.4)
-//                .overlay {
-//                    Circle().stroke(.white, lineWidth: 2)
-//                           }
-//                           .shadow(radius: 7)
         }
     }
 }

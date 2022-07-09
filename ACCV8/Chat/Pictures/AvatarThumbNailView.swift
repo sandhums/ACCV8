@@ -10,14 +10,7 @@ import SwiftUI
 struct AvatarThumbNailView: View {
     let photo: Photo
     var imageSize: CGFloat = 76
-    var gradient1: [Color] = [
-        Color.init(red: 101/255, green: 134/255, blue: 1),
-        Color.init(red: 1, green: 64/255, blue: 80/255),
-        Color.init(red: 109/255, green: 1, blue: 185/255),
-        Color.init(red: 39/255, green: 232/255, blue: 1),
-    ]
 
-    @State private var angle: Double = 0
     
 
     private enum Dimensions {
@@ -27,19 +20,6 @@ struct AvatarThumbNailView: View {
     }
 
     var body: some View {
-        ZStack {
-            AngularGradient(gradient: Gradient(colors: gradient1), center: .center, angle: .degrees(angle))
-                .mask(
-                    Circle()
-                        .frame(width: 80, height: 80, alignment: .center)
-                        .blur(radius: 6.0)
-                )
-                .blur(radius: 6.0)
-                .onAppear {
-                    withAnimation(.linear(duration: 12)) {
-                        self.angle += 350
-                    }
-                }
         VStack {
             if let photo = photo {
                 ThumbNailView(photo: photo)
@@ -51,12 +31,11 @@ struct AvatarThumbNailView: View {
                 }
             }
         }
-        .frame(width: imageSize, height: imageSize, alignment: .center)
-//        .cornerRadius(Dimensions.radius)
-        .mask(
-            Circle()
-            )
-        }
+        .frame(width: imageSize, height: imageSize)
+        .cornerRadius(10)
+        .padding(6)
+        .background(.ultraThinMaterial)
+        .backgroundStyle(cornerRadius: 18, opacity: 0.4)
     }
 }
 

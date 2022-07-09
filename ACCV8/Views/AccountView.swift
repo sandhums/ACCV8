@@ -55,7 +55,6 @@ struct AccountView: View {
                     Rectangle()
                         .frame(height: 1)
                         .foregroundColor(Color.white.opacity(0.1))
-
                     if let photo = photo {
                         AvatarButton(photo: photo) {
                             self.showPhotoTaker()
@@ -66,7 +65,7 @@ struct AccountView: View {
                             GradientText(text: "Choose Photo")
                         }
                     }
-                    Spacer()
+
                 }
                 
                 // Display Name Text Field
