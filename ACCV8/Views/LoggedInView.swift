@@ -26,7 +26,7 @@ struct LoggedInView: View {
             Group {
                 switch selectedTab {
                 case .centres:
-                    HomeView()
+                    CentresView()
                 case .reports:
                     ReportsView()
                 case .chat:

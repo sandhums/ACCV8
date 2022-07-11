@@ -14,18 +14,25 @@ class Centre: Object, ObjectKeyIdentifiable {
     @Persisted var centreName = ""
     @Persisted var centreDesc = ""
     @Persisted var centreLocation: CLLocationCoordinate2D
+    @Persisted var centreIndex = 0
+    @Persisted var centreText = ""
+    @Persisted var centreImage: Data?
+    @Persisted var centreBackground: Data?
+    @Persisted var centreLogo: Data?
     
     override static func primaryKey() -> String? {
           return "_id"
       }
   
-//    convenience init(centreName: String, centreDesc: String, x: Double, y: Double) {
-//         self.init()
-//         self.centreName = centreName
-//         self.centreDesc = centreDesc
-//         self.centreLocation?.x = x
-//         self.centreLocation?.y = y
-//     }
+    convenience init(centreName: String, centreDesc: String, centreIndex: Int, centreText: String, centreImage: Data?, centreBackground: Data?) {
+        self.init()
+        self.centreName = centreName
+        self.centreDesc = centreDesc
+        self.centreIndex = centreIndex
+        self.centreText = centreText
+        self.centreImage = centreImage
+        self.centreBackground = centreBackground
+     }
 //    var coordinate: CLLocationCoordinate2D {
 //        CLLocationCoordinate2D(latitude: (centreLocation?.y)!, longitude: (centreLocation?.x)!)
 //        }

@@ -1,28 +1,32 @@
 //
-//  CourseItem.swift
+//  CentreItemView.swift
 //  ACCV8
 //
-//  Created by Manjinder Sandhu on 01/07/22.
+//  Created by Manjinder Sandhu on 10/07/22.
 //
 
 import SwiftUI
 import RealmSwift
 
-struct CourseItem: View {
+struct CentreItemView: View {
     var namespace: Namespace.ID
-    var course: Course
-    @ObservedResults(Centre.self) var centres
-    var centre: Centre
-    @Environment(\.realm) var realm
     @EnvironmentObject var model: Model
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    @Environment(\.realm) var realm
+    var centre: Centre
     
     var body: some View {
         VStack {
-            LogoView(image: course.logo)
+            Image(uiImage: UIImage(data: centre.centreLogo!) ?? UIImage())
+                .resizable()
+                .frame(width: 26, height: 26)
+                .cornerRadius(10)
+                .padding(8)
+                .background(.ultraThinMaterial)
+                .backgroundStyle(cornerRadius: 18, opacity: 0.4)
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
                 .padding(20)
-                .matchedGeometryEffect(id: "logo\(course.index)", in: namespace)
+                .matchedGeometryEffect(id: "logo\(centre.centreIndex)", in: namespace)
             
             Spacer()
             
@@ -30,20 +34,20 @@ struct CourseItem: View {
                 Text(centre.centreName)
                     .font(.title).bold()
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .matchedGeometryEffect(id: "title\(course.index)", in: namespace)
+                    .matchedGeometryEffect(id: "title\(centre.centreIndex)", in: namespace)
                     .foregroundColor(.white)
                 
                 Text(centre.centreDesc)
                     .font(.footnote).bold()
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .matchedGeometryEffect(id: "subtitle\(course.index)", in: namespace)
+                    .matchedGeometryEffect(id: "subtitle\(centre.centreIndex)", in: namespace)
                     .foregroundColor(.white.opacity(0.7))
                 
-                Text("A complete guide to designing for iOS 14 with videos, examples and design...")
+                Text(centre.centreText)
                     .font(.footnote)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .foregroundColor(.white.opacity(0.7))
-                    .matchedGeometryEffect(id: "description\(course.index)", in: namespace)
+                    .matchedGeometryEffect(id: "description\(centre.centreIndex)", in: namespace)
             }
             .padding(20)
             .background(
@@ -52,51 +56,50 @@ struct CourseItem: View {
                     .frame(maxHeight: .infinity, alignment: .bottom)
                     .cornerRadius(30)
                     .blur(radius: 30)
-                    .matchedGeometryEffect(id: "blur\(course.index)", in: namespace)
+                    .matchedGeometryEffect(id: "blur\(centre.centreIndex)", in: namespace)
             )
         }
         .background(
-            Image(course.image)
+            Image(uiImage: UIImage(data: centre.centreImage!) ?? UIImage())
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .padding(20)
-                .matchedGeometryEffect(id: "image\(course.index)", in: namespace)
+                .matchedGeometryEffect(id: "image\(centre.centreIndex)", in: namespace)
                 .offset(y: -30)
         )
         .background(
-            Image(course.background)
+            Image(uiImage: UIImage(data: centre.centreBackground!) ?? UIImage())
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .disabled(true)
-                .matchedGeometryEffect(id: "background\(course.index)", in: namespace)
+                .matchedGeometryEffect(id: "background\(centre.centreIndex)", in: namespace)
         )
         .mask(
             RoundedRectangle(cornerRadius: 30)
-                .matchedGeometryEffect(id: "mask\(course.index)", in: namespace)
+                .matchedGeometryEffect(id: "mask\(centre.centreIndex)", in: namespace)
         )
         .overlay(
             Image(horizontalSizeClass == .compact ? "Waves 1" : "Waves 2")
                 .frame(maxHeight: .infinity, alignment: .bottom)
                 .offset(y: 0)
                 .opacity(0)
-                .matchedGeometryEffect(id: "waves\(course.index)", in: namespace)
+                .matchedGeometryEffect(id: "waves\(centre.centreIndex)", in: namespace)
         )
         .frame(height: 300)
         .onTapGesture {
             withAnimation(.openCard) {
                 model.showDetail = true
-                model.selectedCourse = course.index
+                model.selectedCentre = centre.centreIndex
             }
         }
+    
     }
 }
 
-struct CardItem_Previews: PreviewProvider {
+struct CentreItemView_Previews: PreviewProvider {
     @Namespace static var namespace
-    
     static var previews: some View {
-        CourseItem(namespace: namespace, course: courses[0], centre: Centre())
+        CentreItemView(namespace: namespace, centre: Centre())
             .environmentObject(Model())
     }
 }
-

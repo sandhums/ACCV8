@@ -1,16 +1,19 @@
 //
-//  CourseView.swift
+//  CentreView.swift
 //  ACCV8
 //
-//  Created by Manjinder Sandhu on 01/07/22.
+//  Created by Manjinder Sandhu on 11/07/22.
 //
 
 import SwiftUI
+import RealmSwift
 
-struct CourseView: View {
+struct CentreView: View {
     var namespace: Namespace.ID
-    @Binding var course: Course
     var isAnimated = true
+    @Environment(\.realm) var realm
+  
+    @Binding var centre: Centre
     
     @State var viewState: CGSize = .zero
     @State var showSection = false
@@ -25,7 +28,7 @@ struct CourseView: View {
         ZStack {
             ScrollView {
                 cover
-                sectionsSection
+//                sectionsSection
                     .opacity(appear[2] ? 1 : 0)
             }
             .coordinateSpace(name: "scroll")
@@ -44,7 +47,7 @@ struct CourseView: View {
                 isAnimated ?
                 withAnimation(.closeCard) {
                     model.showDetail = false
-                    model.selectedCourse = 0
+                    model.selectedCentre = centre.centreIndex
                 }
                 : presentationMode.wrappedValue.dismiss()
             } label: {
@@ -54,17 +57,24 @@ struct CourseView: View {
             .padding(20)
             .ignoresSafeArea()
             
-            LogoView(image: course.logo)
+            Image(uiImage: UIImage(data: centre.centreLogo!) ?? UIImage())
+                    .resizable()
+                    .frame(width: 26, height: 26)
+                    .cornerRadius(10)
+                    .padding(8)
+                    .background(.ultraThinMaterial)
+                    .backgroundStyle(cornerRadius: 18, opacity: 0.4)
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
                 .padding(20)
-                .matchedGeometryEffect(id: "logo\(course.index)", in: namespace)
+                .matchedGeometryEffect(id: "logo\(centre.centreIndex)", in: namespace)
                 .ignoresSafeArea()
                 .accessibility(hidden: true)
-        }
+        
         .zIndex(1)
         .onAppear { fadeIn() }
         .onChange(of: model.showDetail) { show in
            fadeOut()
+        }
         }
     }
     
@@ -78,19 +88,19 @@ struct CourseView: View {
             .frame(maxWidth: .infinity)
             .frame(height: scrollY > 0 ? 500 + scrollY : 500)
             .background(
-                Image(course.image)
+                Image(uiImage: UIImage(data: centre.centreImage!) ?? UIImage())
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .padding(20)
-                    .matchedGeometryEffect(id: "image\(course.index)", in: namespace)
+                    .matchedGeometryEffect(id: "image\(centre.centreIndex)", in: namespace)
                     .offset(y: scrollY > 0 ? -scrollY : 0)
                     .accessibility(hidden: true)
             )
             .background(
-                Image(course.background)
+                Image(uiImage: UIImage(data: centre.centreBackground!) ?? UIImage())
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-                    .matchedGeometryEffect(id: "background\(course.index)", in: namespace)
+                    .matchedGeometryEffect(id: "background\(centre.centreIndex)", in: namespace)
                     .offset(y: scrollY > 0 ? -scrollY : 0)
                     .scaleEffect(scrollY > 0 ? scrollY / 1000 + 1 : 1)
                     .blur(radius: scrollY > 0 ? scrollY / 10 : 0)
@@ -98,7 +108,7 @@ struct CourseView: View {
             )
             .mask(
                 RoundedRectangle(cornerRadius: appear[0] ? 0 : 30)
-                    .matchedGeometryEffect(id: "mask\(course.index)", in: namespace)
+                    .matchedGeometryEffect(id: "mask\(centre.centreIndex)", in: namespace)
                     .offset(y: scrollY > 0 ? -scrollY : 0)
             )
             .overlay(
@@ -107,28 +117,28 @@ struct CourseView: View {
                     .offset(y: scrollY > 0 ? -scrollY : 0)
                     .scaleEffect(scrollY > 0 ? scrollY / 500 + 1 : 1)
                     .opacity(1)
-                    .matchedGeometryEffect(id: "waves\(course.index)", in: namespace)
+                    .matchedGeometryEffect(id: "waves\(centre.centreIndex)", in: namespace)
                     .accessibility(hidden: true)
             )
             .overlay(
                 VStack(alignment: .leading, spacing: 16) {
-                    Text(course.title)
+                    Text(centre.centreName)
                         .font(.title).bold()
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .foregroundColor(.primary)
-                        .matchedGeometryEffect(id: "title\(course.index)", in: namespace)
+                        .matchedGeometryEffect(id: "title\(centre.centreIndex)", in: namespace)
                     
-                    Text("8 videos - 12 hours".uppercased())
+                    Text(centre.centreDesc)
                         .font(.footnote).bold()
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .foregroundColor(.primary.opacity(0.7))
-                        .matchedGeometryEffect(id: "subtitle\(course.index)", in: namespace)
+                        .matchedGeometryEffect(id: "subtitle\(centre.centreIndex)", in: namespace)
                     
-                    Text("A complete guide to designing for iOS 14 with videos, examples and design...")
+                    Text(centre.centreText)
                         .font(.footnote)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .foregroundColor(.primary.opacity(0.7))
-                        .matchedGeometryEffect(id: "description\(course.index)", in: namespace)
+                        .matchedGeometryEffect(id: "description\(centre.centreIndex)", in: namespace)
                     
                     Divider()
                         .foregroundColor(.secondary)
@@ -151,7 +161,7 @@ struct CourseView: View {
                         .frame(maxHeight: .infinity, alignment: .bottom)
                         .cornerRadius(30)
                         .blur(radius: 30)
-                        .matchedGeometryEffect(id: "blur\(course.index)", in: namespace)
+                        .matchedGeometryEffect(id: "blur\(centre.centreIndex)", in: namespace)
                         .opacity(appear[0] ? 0 : 1)
                 )
                 .background(
@@ -167,6 +177,7 @@ struct CourseView: View {
             )
         }
         .frame(height: 500)
+    
     }
     
     var sectionsSection: some View {
@@ -197,7 +208,7 @@ struct CourseView: View {
         }
         withAnimation(.closeCard.delay(0.2)) {
             model.showDetail = false
-            model.selectedCourse = 0
+            model.selectedCentre = 0
         }
     }
     
@@ -248,12 +259,10 @@ struct CourseView: View {
     }
 }
 
-struct CourseView_Previews: PreviewProvider {
+struct CentreView_Previews: PreviewProvider {
     @Namespace static var namespace
-    
     static var previews: some View {
-        CourseView(namespace: namespace, course: .constant(courses[0]))
+        CentreView(namespace: namespace, centre: .constant(Centre()))
             .environmentObject(Model())
     }
 }
-
