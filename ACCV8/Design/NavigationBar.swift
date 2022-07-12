@@ -10,7 +10,6 @@ import RealmSwift
 
 struct NavigationBar: View {
     var title = ""
-    @State var showSheet = false
     @Binding var contentHasScrolled: Bool
     @Environment(\.realm) var realm
     @EnvironmentObject var model: Model

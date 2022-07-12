@@ -1,20 +1,18 @@
 //
-//  CentreItemView.swift
+//  CentreDetailView.swift
 //  ACCV8
 //
-//  Created by Manjinder Sandhu on 10/07/22.
+//  Created by Manjinder Sandhu on 12/07/22.
 //
 
 import SwiftUI
 import RealmSwift
 
-struct CentreItemView: View {
-    var namespace: Namespace.ID
-    @EnvironmentObject var model: Model
-    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+struct CentreDetailView: View {
     @Environment(\.realm) var realm
-    var centre: Centre
-    
+    @Environment(\.presentationMode) var presentationMode
+    @Binding var centre: Centre
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
     var body: some View {
         VStack {
             Image(uiImage: UIImage(data: centre.centreLogo!) ?? UIImage())
@@ -26,7 +24,7 @@ struct CentreItemView: View {
                 .backgroundStyle(cornerRadius: 18, opacity: 0.4)
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
                 .padding(20)
-                .matchedGeometryEffect(id: "logo\(centre.centreIndex)", in: namespace)
+//                .matchedGeometryEffect(id: "logo\(centre.centreIndex)", in: namespace)
             
             Spacer()
             
@@ -34,20 +32,20 @@ struct CentreItemView: View {
                 Text(centre.centreName)
                     .font(.title).bold()
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .matchedGeometryEffect(id: "title\(centre.centreIndex)", in: namespace)
+//                    .matchedGeometryEffect(id: "title\(centre.centreIndex)", in: namespace)
                     .foregroundColor(.white)
                 
                 Text(centre.centreDesc)
                     .font(.footnote).bold()
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .matchedGeometryEffect(id: "subtitle\(centre.centreIndex)", in: namespace)
+//                    .matchedGeometryEffect(id: "subtitle\(centre.centreIndex)", in: namespace)
                     .foregroundColor(.white.opacity(0.7))
                 
                 Text(centre.centreText)
                     .font(.footnote)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .foregroundColor(.white.opacity(0.7))
-                    .matchedGeometryEffect(id: "description\(centre.centreIndex)", in: namespace)
+//                    .matchedGeometryEffect(id: "description\(centre.centreIndex)", in: namespace)
             }
             .padding(20)
             .background(
@@ -56,7 +54,7 @@ struct CentreItemView: View {
                     .frame(maxHeight: .infinity, alignment: .bottom)
                     .cornerRadius(30)
                     .blur(radius: 30)
-                    .matchedGeometryEffect(id: "blur\(centre.centreIndex)", in: namespace)
+//                    .matchedGeometryEffect(id: "blur\(centre.centreIndex)", in: namespace)
             )
         }
         .background(
@@ -65,7 +63,7 @@ struct CentreItemView: View {
                 .aspectRatio(contentMode: .fit)
                 .padding(20)
                 .opacity(0.4)
-                .matchedGeometryEffect(id: "image\(centre.centreIndex)", in: namespace)
+//                .matchedGeometryEffect(id: "image\(centre.centreIndex)", in: namespace)
                 .offset(y: -30)
         )
         .background(
@@ -73,34 +71,33 @@ struct CentreItemView: View {
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .disabled(true)
-                .matchedGeometryEffect(id: "background\(centre.centreIndex)", in: namespace)
+//                .matchedGeometryEffect(id: "background\(centre.centreIndex)", in: namespace)
         )
         .mask(
             RoundedRectangle(cornerRadius: 30)
-                .matchedGeometryEffect(id: "mask\(centre.centreIndex)", in: namespace)
+//                .matchedGeometryEffect(id: "mask\(centre.centreIndex)", in: namespace)
         )
         .overlay(
             Image(horizontalSizeClass == .compact ? "Waves 1" : "Waves 2")
                 .frame(maxHeight: .infinity, alignment: .bottom)
                 .offset(y: 0)
                 .opacity(0)
-                .matchedGeometryEffect(id: "waves\(centre.centreIndex)", in: namespace)
+//                .matchedGeometryEffect(id: "waves\(centre.centreIndex)", in: namespace)
         )
         .frame(height: 300)
-        .onTapGesture {
-            withAnimation(.openCard) {
-                model.showDetail = true
-                model.selectedCentre = centre.centreIndex
-            }
-        }
+//        .onTapGesture {
+//            withAnimation(.openCard) {
+//                model.showDetail = true
+//                model.selectedCentre = centre.centreIndex
+//            }
+//        }
     
     }
 }
 
-struct CentreItemView_Previews: PreviewProvider {
-    @Namespace static var namespace
+
+struct CentreDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        CentreItemView(namespace: namespace, centre: Centre())
-            .environmentObject(Model())
+        CentreDetailView(centre: .constant(Centre()))
     }
 }

@@ -10,10 +10,12 @@ import RealmSwift
 
 struct CentreView: View {
     var namespace: Namespace.ID
-    var isAnimated = true
     @Environment(\.realm) var realm
-  
+    @ObservedResults(Centre.self) var centres
     @Binding var centre: Centre
+   
+    var isAnimated = true
+  
     
     @State var viewState: CGSize = .zero
     @State var showSection = false
@@ -92,6 +94,7 @@ struct CentreView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .padding(20)
+                    .frame(maxWidth: 300)
                     .matchedGeometryEffect(id: "image\(centre.centreIndex)", in: namespace)
                     .offset(y: scrollY > 0 ? -scrollY : 0)
                     .accessibility(hidden: true)

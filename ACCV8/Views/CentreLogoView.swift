@@ -10,7 +10,7 @@ import RealmSwift
 
 struct CentreLogoView: View {
     @Environment(\.realm) var realm
-    @ObservedResults(Centre.self) var centres
+   
     var body: some View {
         Image("Logo 2")
             .resizable()

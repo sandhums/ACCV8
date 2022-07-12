@@ -142,6 +142,8 @@
 		D7BDC4C2287B19CF003ADEA5 /* CentreItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BDC4C1287B19CF003ADEA5 /* CentreItemView.swift */; };
 		D7BDC4C4287BDCB8003ADEA5 /* CentreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BDC4C3287BDCB8003ADEA5 /* CentreView.swift */; };
 		D7BDC4C6287BDFDA003ADEA5 /* CentresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BDC4C5287BDFDA003ADEA5 /* CentresView.swift */; };
+		D7BDC4C8287CFFBD003ADEA5 /* CentreListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BDC4C7287CFFBD003ADEA5 /* CentreListView.swift */; };
+		D7BDC4CA287D010F003ADEA5 /* CentreDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BDC4C9287D010F003ADEA5 /* CentreDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -298,6 +300,8 @@
 		D7BDC4C1287B19CF003ADEA5 /* CentreItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentreItemView.swift; sourceTree = "<group>"; };
 		D7BDC4C3287BDCB8003ADEA5 /* CentreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentreView.swift; sourceTree = "<group>"; };
 		D7BDC4C5287BDFDA003ADEA5 /* CentresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentresView.swift; sourceTree = "<group>"; };
+		D7BDC4C7287CFFBD003ADEA5 /* CentreListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentreListView.swift; sourceTree = "<group>"; };
+		D7BDC4C9287D010F003ADEA5 /* CentreDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentreDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -467,6 +471,8 @@
 				D7BDC4C1287B19CF003ADEA5 /* CentreItemView.swift */,
 				D7BDC4C3287BDCB8003ADEA5 /* CentreView.swift */,
 				D7BDC4C5287BDFDA003ADEA5 /* CentresView.swift */,
+				D7BDC4C7287CFFBD003ADEA5 /* CentreListView.swift */,
+				D7BDC4C9287D010F003ADEA5 /* CentreDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -792,6 +798,7 @@
 				D7A21129286F1C8D00918807 /* DeleteButton.swift in Sources */,
 				D7A210C5286EAD1100918807 /* Topic.swift in Sources */,
 				D7BDC4BE287AEFA9003ADEA5 /* CentreLogoView.swift in Sources */,
+				D7BDC4CA287D010F003ADEA5 /* CentreDetailView.swift in Sources */,
 				D7A21070286C0F5E00918807 /* UserPreferences.swift in Sources */,
 				D7A21108286F1AFF00918807 /* ThumbnailWithDelete.swift in Sources */,
 				D743C561286B76D000A42B18 /* ContentView.swift in Sources */,
@@ -829,6 +836,7 @@
 				D7A21100286F1A0700918807 /* AvatarButton.swift in Sources */,
 				D7A2112D286F1C8D00918807 /* CallToActionButton.swift in Sources */,
 				D7A21095286D393D00918807 /* VisualEffectBlur.swift in Sources */,
+				D7BDC4C8287CFFBD003ADEA5 /* CentreListView.swift in Sources */,
 				D7A210C7286EAD3400918807 /* Handbook.swift in Sources */,
 				D7A21133286F1C8D00918807 /* TextDate.swift in Sources */,
 				D7A21106286F1AD400918807 /* ThumbNailView.swift in Sources */,

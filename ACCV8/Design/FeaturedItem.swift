@@ -9,13 +9,15 @@ import SwiftUI
 import RealmSwift
 
 struct FeaturedItem: View {
-    var course: Course
+    @Environment(\.realm) var realm
+    @ObservedResults(Centre.self) var centres
+    var centre: Centre
     @Environment(\.sizeCategory) var sizeCategory
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             Spacer()
-            Image(course.logo)
+            Image(uiImage: UIImage(data: centre.centreLogo!) ?? UIImage())
                 .resizable()
                 .frame(width: 26, height: 26)
                 .cornerRadius(10)
@@ -23,13 +25,13 @@ struct FeaturedItem: View {
                 .background(.ultraThinMaterial)
                 .cornerRadius(18)
                 .modifier(OutlineOverlay(cornerRadius: 18))
-            Text(course.title)
+            Text(centre.centreName)
                 .font(.title).bold()
                 .frame(maxWidth: .infinity, alignment: .leading)
-            Text(course.subtitle.uppercased())
+            Text(centre.centreDesc)
                 .font(.footnote.weight(.semibold))
                 .foregroundStyle(.secondary)
-            Text(course.text)
+            Text(centre.centreText)
                 .font(.footnote)
                 .foregroundStyle(.secondary)
                 .lineLimit(sizeCategory > .large ? 1 : 2)
@@ -47,8 +49,8 @@ struct FeaturedItem: View {
 struct FeaturedItem_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            FeaturedItem(course: courses[0])
-            FeaturedItem(course: courses[0])
+            FeaturedItem(centre: Centre())
+            FeaturedItem(centre: Centre())
                 .environment(\.sizeCategory, .accessibilityLarge)
         }
     }
