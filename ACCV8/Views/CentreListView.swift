@@ -15,6 +15,7 @@ struct CentreListView: View {
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     @State var contentHasScrolled = false
     @State var showCentre = false
+    @State var showStatusBar = true
     @State var selectedCentre: Centre
 
     var columns = [GridItem(.adaptive(minimum: 300), spacing: 20)]
@@ -114,7 +115,7 @@ struct CentreListView: View {
             }
             .background(Image("Blob 1").offset(x: -100, y: -400))
         }
-        .sheet(isPresented: $showCentre) {
+        .fullScreenCover(isPresented: $showCentre) {
             CentreDetailView(centre: $selectedCentre)
         }
                 .task {
@@ -125,6 +126,7 @@ struct CentreListView: View {
                     }
                 }
         .overlay(NavigationBar(title: "Featured", contentHasScrolled: $contentHasScrolled))
+        
     }
     var scrollDetection: some View {
         GeometryReader { proxy in
