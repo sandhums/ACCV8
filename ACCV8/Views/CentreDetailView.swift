@@ -14,10 +14,17 @@ struct CentreDetailView: View {
     @Environment(\.dismiss) var dismiss
     @Binding var centre: Centre
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    @State var viewState: CGSize = .zero
+    @State var appear = [false, false, false]
+    var isAnimated = true
+    
+    @EnvironmentObject var model: Model
     
     var body: some View {
         ZStack {
             ScrollView {
+                GeometryReader { proxy in
+                    let scrollY = proxy.frame(in: .named("scroll")).minY
                 VStack {
                     Spacer()
                     }
@@ -112,96 +119,99 @@ struct CentreDetailView: View {
             .offset(y: 100)
             .padding(20)
         )
-//            Image(uiImage: UIImage(data: centre.centreLogo!) ?? UIImage())
-//                .resizable()
-//                .frame(width: 26, height: 26)
-//                .cornerRadius(10)
-//                .padding(8)
-//                .background(.ultraThinMaterial)
-//                .backgroundStyle(cornerRadius: 18, opacity: 0.4)
-//                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-//                .padding(20)
-////                .matchedGeometryEffect(id: "logo\(centre.centreIndex)", in: namespace)
-//
-//            Spacer()
-//
-//            VStack(alignment: .leading, spacing: 8) {
-//                Text(centre.centreName)
-//                    .font(.title).bold()
-//                    .frame(maxWidth: .infinity, alignment: .leading)
-////                    .matchedGeometryEffect(id: "title\(centre.centreIndex)", in: namespace)
-//                    .foregroundColor(.white)
-//
-//                Text(centre.centreDesc)
-//                    .font(.footnote).bold()
-//                    .frame(maxWidth: .infinity, alignment: .leading)
-////                    .matchedGeometryEffect(id: "subtitle\(centre.centreIndex)", in: namespace)
-//                    .foregroundColor(.white.opacity(0.7))
-//
-//                Text(centre.centreText)
-//                    .font(.footnote)
-//                    .frame(maxWidth: .infinity, alignment: .leading)
-//                    .foregroundColor(.white.opacity(0.7))
-////                    .matchedGeometryEffect(id: "description\(centre.centreIndex)", in: namespace)
-//            }
-//            .padding(20)
-//            .background(
-//                Rectangle()
-//                    .fill(.ultraThinMaterial)
-//                    .frame(maxHeight: .infinity, alignment: .bottom)
-//                    .cornerRadius(30)
-//                    .blur(radius: 30)
-////                    .matchedGeometryEffect(id: "blur\(centre.centreIndex)", in: namespace)
-//            )
-//
-//        .background(
-//            Image(uiImage: UIImage(data: centre.centreImage!) ?? UIImage())
-//                .resizable()
-//                .aspectRatio(contentMode: .fit)
-//                .padding(20)
-//                .opacity(0.4)
-////                .matchedGeometryEffect(id: "image\(centre.centreIndex)", in: namespace)
-//                .offset(y: -30)
-//        )
-//        .background(
-//            Image(uiImage: UIImage(data: centre.centreBackground!) ?? UIImage())
-//                .resizable()
-//                .aspectRatio(contentMode: .fill)
-//                .disabled(true)
-////                .matchedGeometryEffect(id: "background\(centre.centreIndex)", in: namespace)
-//        )
-//        .mask(
-//            RoundedRectangle(cornerRadius: 30)
-////                .matchedGeometryEffect(id: "mask\(centre.centreIndex)", in: namespace)
-//        )
-//        .overlay(
-//            Image(horizontalSizeClass == .compact ? "Waves 1" : "Waves 2")
-//                .frame(maxHeight: .infinity, alignment: .bottom)
-//                .offset(y: 0)
-//                .opacity(0)
-////                .matchedGeometryEffect(id: "waves\(centre.centreIndex)", in: namespace)
-//        )
-//        .frame(height: 300)
-////        .onTapGesture {
-////            withAnimation(.openCard) {
-////                model.showDetail = true
-////                model.selectedCentre = centre.centreIndex
-////            }
-////        }
-//
+                }
         .frame(height: 500)
     }
+            .coordinateSpace(name: "scroll")
+            .background(Color("Background"))
+            .mask(RoundedRectangle(cornerRadius: appear[0] ? 0 : 30))
+            .mask(RoundedRectangle(cornerRadius: viewState.width / 3))
+            .modifier(OutlineModifier(cornerRadius: viewState.width / 3))
+            .shadow(color: Color("Shadow").opacity(0.5), radius: 30, x: 0, y: 10)
+            .scaleEffect(-viewState.width/500 + 1)
+            .background(Color("Shadow").opacity(viewState.width / 500))
+            .background(.ultraThinMaterial)
+            .gesture(isAnimated ? drag : nil)
+            .ignoresSafeArea()
             Button (action: {
                 dismiss()
             }, label: {
                 CloseButton()
             })
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
-            .padding(40)
+            .padding(20)
             .ignoresSafeArea()
+            Image(uiImage: UIImage(data: centre.centreLogo!) ?? UIImage())
+                .resizable()
+                .frame(width: 26, height: 26)
+                .cornerRadius(10)
+                .padding(8)
+                .background(.ultraThinMaterial)
+                .backgroundStyle(cornerRadius: 18, opacity: 0.4)
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+                .padding(20)
+//                .matchedGeometryEffect(id: "logo\(course.index)", in: namespace)
+                .ignoresSafeArea()
+                .accessibility(hidden: true)
     }
+        
         .statusBar(hidden: true)
 }
+    func close() {
+        withAnimation {
+            viewState = .zero
+        }
+//        withAnimation(.closeCard.delay(0.2)) {
+//            model.showDetail = false
+//            model.selectedCourse = 0
+//        }
+    }
+    
+    var drag: some Gesture {
+        DragGesture(minimumDistance: 30, coordinateSpace: .local)
+            .onChanged { value in
+                guard value.translation.width > 0 else { return }
+                
+                if value.startLocation.x < 100 {
+                    withAnimation {
+                        viewState = value.translation
+                    }
+                }
+                
+                if viewState.width > 120 {
+                    close()
+                }
+            }
+            .onEnded { value in
+                if viewState.width > 80 {
+                    close()
+                } else {
+                    withAnimation(.openCard) {
+                        viewState = .zero
+                    }
+                }
+            }
+    }
+    
+    func fadeIn() {
+        withAnimation(.easeOut.delay(0.3)) {
+            appear[0] = true
+        }
+        withAnimation(.easeOut.delay(0.4)) {
+            appear[1] = true
+        }
+        withAnimation(.easeOut.delay(0.5)) {
+            appear[2] = true
+        }
+    }
+    
+    func fadeOut() {
+        withAnimation(.easeIn(duration: 0.1)) {
+            appear[0] = false
+            appear[1] = false
+            appear[2] = false
+        }
+    }
 }
 
 
