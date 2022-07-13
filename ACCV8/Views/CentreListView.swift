@@ -17,6 +17,7 @@ struct CentreListView: View {
     @State var showCentre = false
     @State var showStatusBar = true
     @State var selectedCentre: Centre
+    @Namespace var namespace
 
     var columns = [GridItem(.adaptive(minimum: 300), spacing: 20)]
     var body: some View {
@@ -39,7 +40,7 @@ struct CentreListView: View {
                             .backgroundStyle(cornerRadius: 18, opacity: 0.4)
                             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
                             .padding(20)
-//                            .matchedGeometryEffect(id: "logo\(centre.centreIndex)", in: namespace)
+                            .matchedGeometryEffect(id: "logo\(centre.centreIndex)", in: namespace)
                         
                         Spacer()
                         
@@ -47,20 +48,20 @@ struct CentreListView: View {
                             Text(centre.centreName)
                                 .font(.title).bold()
                                 .frame(maxWidth: .infinity, alignment: .leading)
-//                                .matchedGeometryEffect(id: "title\(centre.centreIndex)", in: namespace)
+                                .matchedGeometryEffect(id: "title\(centre.centreIndex)", in: namespace)
                                 .foregroundColor(.white)
                             
                             Text(centre.centreDesc)
                                 .font(.footnote).bold()
                                 .frame(maxWidth: .infinity, alignment: .leading)
-//                                .matchedGeometryEffect(id: "subtitle\(centre.centreIndex)", in: namespace)
+                                .matchedGeometryEffect(id: "subtitle\(centre.centreIndex)", in: namespace)
                                 .foregroundColor(.white.opacity(0.7))
                             
                             Text(centre.centreText)
                                 .font(.footnote)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .foregroundColor(.white.opacity(0.7))
-//                                .matchedGeometryEffect(id: "description\(centre.centreIndex)", in: namespace)
+                                .matchedGeometryEffect(id: "description\(centre.centreIndex)", in: namespace)
                         }
                         .padding(20)
                         .background(
@@ -69,7 +70,7 @@ struct CentreListView: View {
                                 .frame(maxHeight: .infinity, alignment: .bottom)
                                 .cornerRadius(30)
                                 .blur(radius: 30)
-//                                .matchedGeometryEffect(id: "blur\(centre.centreIndex)", in: namespace)
+                                .matchedGeometryEffect(id: "blur\(centre.centreIndex)", in: namespace)
                         )
                     }
                     .background(
@@ -80,7 +81,7 @@ struct CentreListView: View {
                             .padding(20)
                             .opacity(0.4)
                            
-            //                .matchedGeometryEffect(id: "image\(centre.centreIndex)", in: namespace)
+                            .matchedGeometryEffect(id: "image\(centre.centreIndex)", in: namespace)
                             .offset(y: -30)
                     )
                     .background(
@@ -88,18 +89,18 @@ struct CentreListView: View {
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .disabled(true)
-//                            .matchedGeometryEffect(id: "background\(centre.centreIndex)", in: namespace)
+                            .matchedGeometryEffect(id: "background\(centre.centreIndex)", in: namespace)
                     )
                     .mask(
                         RoundedRectangle(cornerRadius: 30)
-//                            .matchedGeometryEffect(id: "mask\(centre.centreIndex)", in: namespace)
+                            .matchedGeometryEffect(id: "mask\(centre.centreIndex)", in: namespace)
                     )
                     .overlay(
                         Image(horizontalSizeClass == .compact ? "Waves 1" : "Waves 2")
                             .frame(maxHeight: .infinity, alignment: .bottom)
                             .offset(y: 0)
                             .opacity(0)
-//                            .matchedGeometryEffect(id: "waves\(centre.centreIndex)", in: namespace)
+                            .matchedGeometryEffect(id: "waves\(centre.centreIndex)", in: namespace)
                     )
                     .frame(height: 300)
                     
@@ -116,7 +117,7 @@ struct CentreListView: View {
             .background(Image("Blob 1").offset(x: -100, y: -400))
         }
         .fullScreenCover(isPresented: $showCentre) {
-            CentreDetailView(centre: $selectedCentre)
+            CentreDetailView(centre: $selectedCentre, namespace: namespace)
         }
                 .task {
                     do {

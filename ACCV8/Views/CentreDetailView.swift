@@ -17,6 +17,7 @@ struct CentreDetailView: View {
     @State var viewState: CGSize = .zero
     @State var appear = [false, false, false]
     var isAnimated = true
+    var namespace: Namespace.ID
     
     @EnvironmentObject var model: Model
     
@@ -35,34 +36,34 @@ struct CentreDetailView: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .padding(20)
-//                .matchedGeometryEffect(id: "image\(course.index)", in: namespace)
-//                .offset(y: scrollY > 0 ? -scrollY : 0)
-//                .accessibility(hidden: true)
+                .matchedGeometryEffect(id: "image\(centre.centreIndex)", in: namespace)
+                .offset(y: scrollY > 0 ? -scrollY : 0)
+                .accessibility(hidden: true)
         )
         .background(
             Image(uiImage: UIImage(data: centre.centreBackground!) ?? UIImage())
                 .resizable()
                 .aspectRatio(contentMode: .fill)
-//                .matchedGeometryEffect(id: "background\(course.index)", in: namespace)
-//                .offset(y: scrollY > 0 ? -scrollY : 0)
-//                .scaleEffect(scrollY > 0 ? scrollY / 1000 + 1 : 1)
-//                .blur(radius: scrollY > 0 ? scrollY / 10 : 0)
-//                .accessibility(hidden: true)
+                .matchedGeometryEffect(id: "background\(centre.centreIndex)", in: namespace)
+                .offset(y: scrollY > 0 ? -scrollY : 0)
+                .scaleEffect(scrollY > 0 ? scrollY / 1000 + 1 : 1)
+                .blur(radius: scrollY > 0 ? scrollY / 10 : 0)
+                .accessibility(hidden: true)
         )
         .mask(
             RoundedRectangle(cornerRadius: 30)
 //                                appear[0] ? 0 : 30)
-//                .matchedGeometryEffect(id: "mask\(course.index)", in: namespace)
-//                .offset(y: scrollY > 0 ? -scrollY : 0)
+                .matchedGeometryEffect(id: "mask\(centre.centreIndex)", in: namespace)
+                .offset(y: scrollY > 0 ? -scrollY : 0)
         )
         .overlay(
             Image(horizontalSizeClass == .compact ? "Waves 1" : "Waves 2")
                 .frame(maxHeight: .infinity, alignment: .bottom)
-//                .offset(y: scrollY > 0 ? -scrollY : 0)
-//                .scaleEffect(scrollY > 0 ? scrollY / 500 + 1 : 1)
-//                .opacity(1)
-//                .matchedGeometryEffect(id: "waves\(course.index)", in: namespace)
-//                .accessibility(hidden: true)
+                .offset(y: scrollY > 0 ? -scrollY : 0)
+                .scaleEffect(scrollY > 0 ? scrollY / 500 + 1 : 1)
+                .opacity(1)
+                .matchedGeometryEffect(id: "waves\(centre.centreIndex)", in: namespace)
+                .accessibility(hidden: true)
         )
         .overlay(
             VStack(alignment: .leading, spacing: 16) {
@@ -70,19 +71,19 @@ struct CentreDetailView: View {
                     .font(.title).bold()
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .foregroundColor(.primary)
-//                    .matchedGeometryEffect(id: "title\(course.index)", in: namespace)
+                    .matchedGeometryEffect(id: "title\(centre.centreIndex)", in: namespace)
                 
                 Text(centre.centreDesc.uppercased())
                     .font(.footnote).bold()
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .foregroundColor(.primary.opacity(0.7))
-//                    .matchedGeometryEffect(id: "subtitle\(course.index)", in: namespace)
+                    .matchedGeometryEffect(id: "subtitle\(centre.centreIndex)", in: namespace)
                 
                 Text("A complete guide to designing for iOS 14 with videos, examples and design...")
                     .font(.footnote)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .foregroundColor(.primary.opacity(0.7))
-//                    .matchedGeometryEffect(id: "description\(course.index)", in: namespace)
+                    .matchedGeometryEffect(id: "description\(centre.centreIndex)", in: namespace)
                 
                 Divider()
                     .foregroundColor(.secondary)
@@ -105,7 +106,7 @@ struct CentreDetailView: View {
                     .frame(maxHeight: .infinity, alignment: .bottom)
                     .cornerRadius(30)
                     .blur(radius: 30)
-//                    .matchedGeometryEffect(id: "blur\(course.index)", in: namespace)
+                    .matchedGeometryEffect(id: "blur\(centre.centreIndex)", in: namespace)
 //                    .opacity(appear[0] ? 0 : 1)
             )
             .background(
@@ -114,7 +115,7 @@ struct CentreDetailView: View {
                     .backgroundStyle(cornerRadius: 30)
 //                    .opacity(appear[0] ? 1 : 0)
             )
-//            .offset(y: scrollY > 0 ? -scrollY * 1.8 : 0)
+            .offset(y: scrollY > 0 ? -scrollY * 1.8 : 0)
             .frame(maxHeight: .infinity, alignment: .bottom)
             .offset(y: 100)
             .padding(20)
@@ -216,7 +217,8 @@ struct CentreDetailView: View {
 
 
 struct CentreDetailView_Previews: PreviewProvider {
+    @Namespace static var namespace
     static var previews: some View {
-        CentreDetailView(centre: .constant(Centre()))
+        CentreDetailView(centre: .constant(Centre()), namespace: namespace)
     }
 }
