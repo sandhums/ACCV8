@@ -15,6 +15,7 @@ struct CentreListView: View {
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     @State var contentHasScrolled = false
     @State var showCentre = false
+    @State var showCentre2 = false
     @State var showStatusBar = true
     @State var selectedCentre: Centre
     @Namespace var namespace
@@ -26,8 +27,9 @@ struct CentreListView: View {
             ScrollView {
                 scrollDetection
                 Rectangle()
-                    .frame(width: 100, height: 130)
+                    .frame(width: 100, height: 72)
                     .opacity(0)
+              featured
             LazyVGrid (columns: columns, spacing: 20) {
                 ForEach(centres) { centre in
                     VStack {
@@ -106,17 +108,20 @@ struct CentreListView: View {
                     
                 
                 .onTapGesture {
-                    showCentre = true
+                    showCentre2 = true
                     selectedCentre = centre
                 }
                 }
             }
+                
             .padding(.horizontal, 20)
             .offset(y: -80)
+            
             }
-            .background(Image("Blob 1").offset(x: -100, y: -400))
+            .coordinateSpace(name: "scroll")
+//            .background(Image("Blob 1").offset(x: 150, y: -200))
         }
-        .fullScreenCover(isPresented: $showCentre) {
+        .fullScreenCover(isPresented: $showCentre2) {
             CentreDetailView(centre: $selectedCentre, namespace: namespace)
         }
                 .task {
@@ -128,6 +133,51 @@ struct CentreListView: View {
                 }
         .overlay(NavigationBar(title: "Featured", contentHasScrolled: $contentHasScrolled))
         
+    }
+    var featured: some View {
+        TabView {
+            ForEach(centres) { centre in
+                GeometryReader { proxy in
+                    FeaturedItem(centre: centre)
+                        .cornerRadius(30)
+                        .modifier(OutlineModifier(cornerRadius: 30))
+                        .rotation3DEffect(
+                            .degrees(proxy.frame(in: .global).minX / -10),
+                            axis: (x: 0, y: 1, z: 0), perspective: 1
+                        )
+                        .shadow(color: Color("Shadow").opacity(0.3),
+                                radius: 30, x: 0, y: 30)
+                        .blur(radius: abs(proxy.frame(in: .global).minX) / 40)
+                        .overlay(
+                            Image(uiImage: UIImage(data: centre.centreImage!) ?? UIImage())
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .clipShape(RoundedRectangle(cornerRadius: 20))
+                                .offset(x: 12, y: -80)
+                                .opacity(0.7)
+                                .frame(width: 280, height: 230)
+                                .offset(x: proxy.frame(in: .global).minX / 2)
+                        )
+                        .padding(20)
+                        .onTapGesture {
+                            showCentre = true
+                            selectedCentre = centre
+                        }
+                        .accessibilityElement(children: .combine)
+                        .accessibilityAddTraits(.isButton)
+                }
+            }
+        }
+        .tabViewStyle(.page(indexDisplayMode: .never))
+        .frame(height: 460)
+        .background(
+            Image("Blob 1")
+                .offset(x: 250, y: -100)
+                .accessibility(hidden: true)
+        )
+        .fullScreenCover(isPresented: $showCentre) {
+            CentreDetailView(centre: $selectedCentre, namespace: namespace)
+        }
     }
     var scrollDetection: some View {
         GeometryReader { proxy in

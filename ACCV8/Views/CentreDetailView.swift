@@ -51,8 +51,7 @@ struct CentreDetailView: View {
                 .accessibility(hidden: true)
         )
         .mask(
-            RoundedRectangle(cornerRadius: 30)
-//                                appear[0] ? 0 : 30)
+            RoundedRectangle(cornerRadius: appear[0] ? 0 : 30)
                 .matchedGeometryEffect(id: "mask\(centre.centreIndex)", in: namespace)
                 .offset(y: scrollY > 0 ? -scrollY : 0)
         )
@@ -79,7 +78,7 @@ struct CentreDetailView: View {
                     .foregroundColor(.primary.opacity(0.7))
                     .matchedGeometryEffect(id: "subtitle\(centre.centreIndex)", in: namespace)
                 
-                Text("A complete guide to designing for iOS 14 with videos, examples and design...")
+                Text("Centre related stufff like facilities/equipment...")
                     .font(.footnote)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .foregroundColor(.primary.opacity(0.7))
@@ -87,17 +86,19 @@ struct CentreDetailView: View {
                 
                 Divider()
                     .foregroundColor(.secondary)
-//                    .opacity(appear[1] ? 1 : 0)
-                
+                    .opacity(appear[1] ? 1 : 0)
+               
                 HStack {
                     LogoView(image: "Avatar 1")
-                    Text("Taught by Meng To and Stephanie Diep")
+                    Text("Staff List ....")
                         .font(.footnote.weight(.medium))
                         .foregroundStyle(.secondary)
                 }
-//                .opacity(appear[1] ? 1 : 0)
+              
+                .opacity(appear[1] ? 1 : 0)
                 .accessibilityElement(children: .combine)
             }
+            
             .padding(20)
             .padding(.vertical, 10)
             .background(
@@ -107,13 +108,13 @@ struct CentreDetailView: View {
                     .cornerRadius(30)
                     .blur(radius: 30)
                     .matchedGeometryEffect(id: "blur\(centre.centreIndex)", in: namespace)
-//                    .opacity(appear[0] ? 0 : 1)
+                    .opacity(appear[0] ? 0 : 1)
             )
             .background(
                 Rectangle()
                     .fill(.ultraThinMaterial)
                     .backgroundStyle(cornerRadius: 30)
-//                    .opacity(appear[0] ? 1 : 0)
+                    .opacity(appear[0] ? 1 : 0)
             )
             .offset(y: scrollY > 0 ? -scrollY * 1.8 : 0)
             .frame(maxHeight: .infinity, alignment: .bottom)
@@ -151,21 +152,18 @@ struct CentreDetailView: View {
                 .backgroundStyle(cornerRadius: 18, opacity: 0.4)
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
                 .padding(20)
-//                .matchedGeometryEffect(id: "logo\(course.index)", in: namespace)
+                .matchedGeometryEffect(id: "logo\(centre.centreIndex)", in: namespace)
                 .ignoresSafeArea()
                 .accessibility(hidden: true)
     }
-        
+        .zIndex(1)
+        .onAppear { fadeIn() }
         .statusBar(hidden: true)
 }
     func close() {
         withAnimation {
             viewState = .zero
         }
-//        withAnimation(.closeCard.delay(0.2)) {
-//            model.showDetail = false
-//            model.selectedCourse = 0
-//        }
     }
     
     var drag: some Gesture {
