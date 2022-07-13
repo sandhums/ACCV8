@@ -18,7 +18,7 @@ struct CentreListView: View {
     @State var showCentre2 = false
     @State var showStatusBar = true
     @State var selectedCentre: Centre
-    @Namespace var namespace
+   
 
     var columns = [GridItem(.adaptive(minimum: 300), spacing: 20)]
     var body: some View {
@@ -30,6 +30,10 @@ struct CentreListView: View {
                     .frame(width: 100, height: 72)
                     .opacity(0)
               featured
+                Text("List".uppercased())
+                    .sectionTitleModifier()
+                    .offset(y: -80)
+                    .accessibilityAddTraits(.isHeader)
             LazyVGrid (columns: columns, spacing: 20) {
                 ForEach(centres) { centre in
                     VStack {
@@ -42,7 +46,6 @@ struct CentreListView: View {
                             .backgroundStyle(cornerRadius: 18, opacity: 0.4)
                             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
                             .padding(20)
-                            .matchedGeometryEffect(id: "logo\(centre.centreIndex)", in: namespace)
                         
                         Spacer()
                         
@@ -50,20 +53,17 @@ struct CentreListView: View {
                             Text(centre.centreName)
                                 .font(.title).bold()
                                 .frame(maxWidth: .infinity, alignment: .leading)
-                                .matchedGeometryEffect(id: "title\(centre.centreIndex)", in: namespace)
                                 .foregroundColor(.white)
                             
                             Text(centre.centreDesc)
                                 .font(.footnote).bold()
                                 .frame(maxWidth: .infinity, alignment: .leading)
-                                .matchedGeometryEffect(id: "subtitle\(centre.centreIndex)", in: namespace)
                                 .foregroundColor(.white.opacity(0.7))
                             
                             Text(centre.centreText)
                                 .font(.footnote)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .foregroundColor(.white.opacity(0.7))
-                                .matchedGeometryEffect(id: "description\(centre.centreIndex)", in: namespace)
                         }
                         .padding(20)
                         .background(
@@ -72,7 +72,6 @@ struct CentreListView: View {
                                 .frame(maxHeight: .infinity, alignment: .bottom)
                                 .cornerRadius(30)
                                 .blur(radius: 30)
-                                .matchedGeometryEffect(id: "blur\(centre.centreIndex)", in: namespace)
                         )
                     }
                     .background(
@@ -82,8 +81,6 @@ struct CentreListView: View {
                             .clipShape(RoundedRectangle(cornerRadius: 20))
                             .padding(20)
                             .opacity(0.4)
-                           
-                            .matchedGeometryEffect(id: "image\(centre.centreIndex)", in: namespace)
                             .offset(y: -30)
                     )
                     .background(
@@ -91,18 +88,15 @@ struct CentreListView: View {
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .disabled(true)
-                            .matchedGeometryEffect(id: "background\(centre.centreIndex)", in: namespace)
                     )
                     .mask(
                         RoundedRectangle(cornerRadius: 30)
-                            .matchedGeometryEffect(id: "mask\(centre.centreIndex)", in: namespace)
                     )
                     .overlay(
                         Image(horizontalSizeClass == .compact ? "Waves 1" : "Waves 2")
                             .frame(maxHeight: .infinity, alignment: .bottom)
                             .offset(y: 0)
                             .opacity(0)
-                            .matchedGeometryEffect(id: "waves\(centre.centreIndex)", in: namespace)
                     )
                     .frame(height: 300)
                     
@@ -122,7 +116,7 @@ struct CentreListView: View {
 //            .background(Image("Blob 1").offset(x: 150, y: -200))
         }
         .fullScreenCover(isPresented: $showCentre2) {
-            CentreDetailView(centre: $selectedCentre, namespace: namespace)
+            CentreDetailView(centre: $selectedCentre)
         }
                 .task {
                     do {
@@ -131,7 +125,7 @@ struct CentreListView: View {
         
                     }
                 }
-        .overlay(NavigationBar(title: "Featured", contentHasScrolled: $contentHasScrolled))
+        .overlay(NavigationBar(title: "Centres", contentHasScrolled: $contentHasScrolled))
         
     }
     var featured: some View {
@@ -157,6 +151,7 @@ struct CentreListView: View {
                                 .opacity(0.7)
                                 .frame(width: 280, height: 230)
                                 .offset(x: proxy.frame(in: .global).minX / 2)
+                                .blur(radius: abs(proxy.frame(in: .global).minX) / 50)
                         )
                         .padding(20)
                         .onTapGesture {
@@ -176,7 +171,7 @@ struct CentreListView: View {
                 .accessibility(hidden: true)
         )
         .fullScreenCover(isPresented: $showCentre) {
-            CentreDetailView(centre: $selectedCentre, namespace: namespace)
+            CentreDetailView(centre: $selectedCentre)
         }
     }
     var scrollDetection: some View {

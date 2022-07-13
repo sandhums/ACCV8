@@ -17,7 +17,8 @@ struct CentreDetailView: View {
     @State var viewState: CGSize = .zero
     @State var appear = [false, false, false]
     var isAnimated = true
-    var namespace: Namespace.ID
+    @State var showToggle = true
+    
     
     @EnvironmentObject var model: Model
     
@@ -35,16 +36,19 @@ struct CentreDetailView: View {
             Image(uiImage: UIImage(data: centre.centreImage!) ?? UIImage())
                 .resizable()
                 .aspectRatio(contentMode: .fit)
+                .clipShape(RoundedRectangle(cornerRadius: 20))
                 .padding(20)
-                .matchedGeometryEffect(id: "image\(centre.centreIndex)", in: namespace)
+                .opacity(0.9)
+                .offset(y: -50)
                 .offset(y: scrollY > 0 ? -scrollY : 0)
                 .accessibility(hidden: true)
+//                .opacity(appear[0] ? 1 : 0)
+//                .offset(y: appear[0] ? 0 : 200)
         )
         .background(
             Image(uiImage: UIImage(data: centre.centreBackground!) ?? UIImage())
                 .resizable()
                 .aspectRatio(contentMode: .fill)
-                .matchedGeometryEffect(id: "background\(centre.centreIndex)", in: namespace)
                 .offset(y: scrollY > 0 ? -scrollY : 0)
                 .scaleEffect(scrollY > 0 ? scrollY / 1000 + 1 : 1)
                 .blur(radius: scrollY > 0 ? scrollY / 10 : 0)
@@ -52,7 +56,6 @@ struct CentreDetailView: View {
         )
         .mask(
             RoundedRectangle(cornerRadius: appear[0] ? 0 : 30)
-                .matchedGeometryEffect(id: "mask\(centre.centreIndex)", in: namespace)
                 .offset(y: scrollY > 0 ? -scrollY : 0)
         )
         .overlay(
@@ -61,7 +64,6 @@ struct CentreDetailView: View {
                 .offset(y: scrollY > 0 ? -scrollY : 0)
                 .scaleEffect(scrollY > 0 ? scrollY / 500 + 1 : 1)
                 .opacity(1)
-                .matchedGeometryEffect(id: "waves\(centre.centreIndex)", in: namespace)
                 .accessibility(hidden: true)
         )
         .overlay(
@@ -70,19 +72,16 @@ struct CentreDetailView: View {
                     .font(.title).bold()
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .foregroundColor(.primary)
-                    .matchedGeometryEffect(id: "title\(centre.centreIndex)", in: namespace)
                 
                 Text(centre.centreDesc.uppercased())
                     .font(.footnote).bold()
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .foregroundColor(.primary.opacity(0.7))
-                    .matchedGeometryEffect(id: "subtitle\(centre.centreIndex)", in: namespace)
                 
                 Text("Centre related stufff like facilities/equipment...")
                     .font(.footnote)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .foregroundColor(.primary.opacity(0.7))
-                    .matchedGeometryEffect(id: "description\(centre.centreIndex)", in: namespace)
                 
                 Divider()
                     .foregroundColor(.secondary)
@@ -107,7 +106,6 @@ struct CentreDetailView: View {
                     .frame(maxHeight: .infinity, alignment: .bottom)
                     .cornerRadius(30)
                     .blur(radius: 30)
-                    .matchedGeometryEffect(id: "blur\(centre.centreIndex)", in: namespace)
                     .opacity(appear[0] ? 0 : 1)
             )
             .background(
@@ -123,6 +121,7 @@ struct CentreDetailView: View {
         )
                 }
         .frame(height: 500)
+        .opacity(appear[2] ? 1 : 0)
     }
             .coordinateSpace(name: "scroll")
             .background(Color("Background"))
@@ -135,11 +134,22 @@ struct CentreDetailView: View {
             .background(.ultraThinMaterial)
             .gesture(isAnimated ? drag : nil)
             .ignoresSafeArea()
-            Button (action: {
-                dismiss()
-            }, label: {
+            Button {
+                isAnimated ?
+                withAnimation(.closeCard) {
+                    showToggle = false
+                }
+                : dismiss()
+            } label: {
                 CloseButton()
-            })
+            }
+//            Button (action: {
+//                dismiss()
+//            }, label: {
+//                CloseButton()
+//            })
+            .opacity(appear[0] ? 1 : 0)
+            .offset(y: appear[0] ? 0 : 200)
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
             .padding(20)
             .ignoresSafeArea()
@@ -152,12 +162,16 @@ struct CentreDetailView: View {
                 .backgroundStyle(cornerRadius: 18, opacity: 0.4)
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
                 .padding(20)
-                .matchedGeometryEffect(id: "logo\(centre.centreIndex)", in: namespace)
                 .ignoresSafeArea()
                 .accessibility(hidden: true)
+                .opacity(appear[0] ? 1 : 0)
+                .offset(y: appear[0] ? 0 : 200)
     }
         .zIndex(1)
         .onAppear { fadeIn() }
+        .onChange(of: showToggle) { show in
+           fadeOut()
+        }
         .statusBar(hidden: true)
 }
     func close() {
@@ -205,18 +219,21 @@ struct CentreDetailView: View {
     }
     
     func fadeOut() {
-        withAnimation(.easeIn(duration: 0.1)) {
+        withAnimation(.easeIn(duration: 0.4)) {
             appear[0] = false
             appear[1] = false
             appear[2] = false
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4)  {
+                dismiss()
+            }
+           
         }
     }
 }
 
 
 struct CentreDetailView_Previews: PreviewProvider {
-    @Namespace static var namespace
     static var previews: some View {
-        CentreDetailView(centre: .constant(Centre()), namespace: namespace)
+        CentreDetailView(centre: .constant(Centre()))
     }
 }
