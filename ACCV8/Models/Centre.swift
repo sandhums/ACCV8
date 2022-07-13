@@ -24,7 +24,7 @@ class Centre: Object, ObjectKeyIdentifiable {
           return "_id"
       }
   
-    convenience init(centreName: String, centreDesc: String, centreIndex: Int, centreText: String, centreImage: Data?, centreBackground: Data?) {
+    convenience init(centreName: String, centreDesc: String, centreIndex: Int, centreText: String, centreImage: Data?, centreBackground: Data?, centreLogo: Data?) {
         self.init()
         self.centreName = centreName
         self.centreDesc = centreDesc

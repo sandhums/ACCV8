@@ -31,13 +31,16 @@ struct ConversationListView: View {
             VStack {
                 if let conversations = user.conversations.sorted(by: sortDescriptors) {
                     List {
+                        Section(header: Text("Active Chats")) {
                         ForEach(conversations) { conversation in
                             Button(action: {
                                 self.conversation = conversation
                                 showConversation.toggle()
                             }) { ConversationCardView(conversation: conversation, isPreview: isPreview) }
                         }
-                        .listRowBackground(Color("Background"))
+                        .listRowBackground(Color.teal)
+                        .foregroundColor(Color.black)
+                    }
                     }
                     Button(action: { showingAddChat.toggle() }) {
                         Text("Start New Chat")

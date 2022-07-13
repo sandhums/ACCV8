@@ -144,6 +144,8 @@
 		D7BDC4C6287BDFDA003ADEA5 /* CentresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BDC4C5287BDFDA003ADEA5 /* CentresView.swift */; };
 		D7BDC4C8287CFFBD003ADEA5 /* CentreListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BDC4C7287CFFBD003ADEA5 /* CentreListView.swift */; };
 		D7BDC4CA287D010F003ADEA5 /* CentreDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BDC4C9287D010F003ADEA5 /* CentreDetailView.swift */; };
+		D7BDC4CC287F0C87003ADEA5 /* ProcedureRepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BDC4CB287F0C87003ADEA5 /* ProcedureRepView.swift */; };
+		D7BDC4CE287F0CA1003ADEA5 /* RevenueRepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BDC4CD287F0CA1003ADEA5 /* RevenueRepView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -302,6 +304,8 @@
 		D7BDC4C5287BDFDA003ADEA5 /* CentresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentresView.swift; sourceTree = "<group>"; };
 		D7BDC4C7287CFFBD003ADEA5 /* CentreListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentreListView.swift; sourceTree = "<group>"; };
 		D7BDC4C9287D010F003ADEA5 /* CentreDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentreDetailView.swift; sourceTree = "<group>"; };
+		D7BDC4CB287F0C87003ADEA5 /* ProcedureRepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcedureRepView.swift; sourceTree = "<group>"; };
+		D7BDC4CD287F0CA1003ADEA5 /* RevenueRepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevenueRepView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -473,6 +477,8 @@
 				D7BDC4C5287BDFDA003ADEA5 /* CentresView.swift */,
 				D7BDC4C7287CFFBD003ADEA5 /* CentreListView.swift */,
 				D7BDC4C9287D010F003ADEA5 /* CentreDetailView.swift */,
+				D7BDC4CB287F0C87003ADEA5 /* ProcedureRepView.swift */,
+				D7BDC4CD287F0CA1003ADEA5 /* RevenueRepView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -858,10 +864,12 @@
 				D7A21086286C3DCD00918807 /* Projects.swift in Sources */,
 				D7A210F7286F146200918807 /* PhotoCaptureController.swift in Sources */,
 				D7A21160286F1E2100918807 /* LocationHelper.swift in Sources */,
+				D7BDC4CC287F0C87003ADEA5 /* ProcedureRepView.swift in Sources */,
 				D7A210AF286E1AED00918807 /* Modifiers.swift in Sources */,
 				D7A21127286F1C8D00918807 /* CaptionLabel.swift in Sources */,
 				D7A2114F286F1D3A00918807 /* ConversationListView.swift in Sources */,
 				D7A210A1286DACFE00918807 /* TextFieldIcon.swift in Sources */,
+				D7BDC4CE287F0CA1003ADEA5 /* RevenueRepView.swift in Sources */,
 				D7A21104286F1AA000918807 /* AvatarThumbNailView.swift in Sources */,
 				D7A210BE286EABB800918807 /* AnimatableFontModifier.swift in Sources */,
 				D7A2110E286F1B8100918807 /* UIImageThumb.swift in Sources */,
