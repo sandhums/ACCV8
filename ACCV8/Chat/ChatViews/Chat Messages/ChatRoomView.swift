@@ -29,8 +29,15 @@ struct ChatRoomView: View {
             }
             Spacer()
         }
+        .background(
+            Image("background-1")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .opacity(0.8)
+                .ignoresSafeArea(.all)
+                .accessibility(hidden: true))
         .navigationBarTitle(conversation?.displayName ?? "Chat", displayMode: .inline)
-        .padding(.horizontal, padding)
+//        .padding(.horizontal, padding)
         .onAppear(perform: clearUnreadCount)
         .onDisappear(perform: clearUnreadCount)
     }

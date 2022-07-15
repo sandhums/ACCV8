@@ -13,7 +13,7 @@ struct SectionTitleModifier: ViewModifier {
             .font(.footnote.weight(.semibold))
             .foregroundColor(.secondary)
             .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(20)
+            .padding(10)
     }
 }
 

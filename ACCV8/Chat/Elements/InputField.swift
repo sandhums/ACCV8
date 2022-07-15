@@ -28,13 +28,12 @@ struct InputField: View {
                         .padding(.bottom, Dimensions.bottomPadding)
                         .foregroundColor(.white)
                         .font(.body)
-                       // .textFieldStyle(TextFieldStyleLogin())
+                       
                 } else {
                     TextField("", text: $text)
                         .padding(.bottom, Dimensions.bottomPadding)
                         .foregroundColor(.purple)
                         .font(.body)
-                      //  .textFieldStyle(TextFieldStyleLogin())
                 }
             }
         }

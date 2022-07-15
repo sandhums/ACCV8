@@ -38,6 +38,7 @@ struct NewConversationView: View {
     }
     
     var body: some View {
+        
         let searchBinding = Binding<String>(
             get: { candidateMember },
             set: {
@@ -45,12 +46,14 @@ struct NewConversationView: View {
                 searchUsers()
             }
         )
-        
-        return NavigationView {
+      
+      return NavigationView {
             ZStack {
                 VStack {
-                    InputField(title: "Chat Name", text: $name)
-                    CaptionLabel(title: "Add Members")
+                    TextField("Chat Name", text: $name)
+                        .customField(icon: "message")
+                    Text("Add Members".uppercased())
+                        .sectionTitleModifier()
                     SearchBox(searchText: searchBinding)
                     List {
                         ForEach(memberList, id: \.self) { candidateMember in
@@ -63,11 +66,12 @@ struct NewConversationView: View {
                                 }
                             }
                         }
-                        .listRowBackground(Color.purple)
+                       
                     }
                    
                     Divider()
-                    CaptionLabel(title: "Members")
+                    Text("Members".uppercased())
+                        .sectionTitleModifier()
                     List {
                         ForEach(members, id: \.self) { member in
                             Text(member)
@@ -76,6 +80,7 @@ struct NewConversationView: View {
                     }
                     Spacer()
                 }
+                
                 Spacer()
 //                if let error = state.error {
 //                    Text("Error: \(error)")
@@ -85,22 +90,34 @@ struct NewConversationView: View {
             .padding()
             .navigationBarTitle("New Chat", displayMode: .inline)
             .navigationBarItems(
-                leading: Button("Dismiss") { presentationMode.wrappedValue.dismiss() },
-                trailing: VStack {
-                if isPreview {
-                    SaveConversationButton(user: user, name: name, members: members, done: { presentationMode.wrappedValue.dismiss() })
-                } else {
-                    SaveConversationButton(user: user, name: name, members: members, done: { presentationMode.wrappedValue.dismiss() })
+                leading: Button (action: {
+                    presentationMode.wrappedValue.dismiss()
+                }, label: {
+                    CloseButton()
+                }),
+                trailing:VStack {
+                    if isPreview {
+                        SaveConversationButton(user: user, name: name, members: members, done: { presentationMode.wrappedValue.dismiss() })
+                    } else {
+                        SaveConversationButton(user: user, name: name, members: members, done: { presentationMode.wrappedValue.dismiss() })
+                    }
                 }
-            }
             .disabled(isEmpty)
             .padding()
             )
+            .background(
+                Image("Background 2")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+    //                .opacity(0.8)
+                    .ignoresSafeArea()
+                    .accessibility(hidden: true))
         }
         .onAppear {
             setSubscription()
             searchUsers()
         }
+        
     }
     
     private func searchUsers() {

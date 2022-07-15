@@ -28,6 +28,8 @@ struct ChatRoomBubblesView: View {
     }
     
     var body: some View {
+        ZStack {
+  
         VStack {
             ScrollView(.vertical) {
                 ScrollViewReader { (proxy: ScrollViewProxy) in
@@ -58,8 +60,14 @@ struct ChatRoomBubblesView: View {
                 ChatInputBox(user: user, send: sendMessage, focusAction: scrollToBottom)
             }
         }
+   
+//        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+////        .padding(20)
+//        .ignoresSafeArea()
+        }
+   
         .navigationBarTitle(conversation?.displayName ?? "Chat", displayMode: .inline)
-        .padding(.horizontal, Dimensions.padding)
+//        .padding(.horizontal, Dimensions.padding)
         .onAppear { loadChatRoom() }
         .onDisappear { closeChatRoom() }
     }

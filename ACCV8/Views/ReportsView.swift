@@ -114,10 +114,10 @@ struct ReportsView: View {
             .padding(.horizontal, 20)
         }
         .sheet(isPresented: $showProc) {
-            ProcedureRepView()
+            ProcedureRepView(report: ProcedureReport())
         }
         .sheet(isPresented: $showRev) {
-            RevenueRepView()
+            RevenueRepView(user: Reps())
         }
         .coordinateSpace(name: "scroll")
         .overlay(NavigationBar(title: "Reports", contentHasScrolled: $contentHasScrolled))

@@ -57,7 +57,7 @@ struct ChatBubbleView: View {
                 }
             }
             .padding(Dimensions.padding)
-            .background(Color(isMyMessage ? "MyBubble" : "OtherBubble"))
+            .background(.regularMaterial)
             .clipShape(RoundedRectangle(cornerRadius: Dimensions.cornerRadius))
             if !isMyMessage { Spacer().frame(width: Dimensions.horizontalOffset) }
         }

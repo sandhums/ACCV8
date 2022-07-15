@@ -18,7 +18,6 @@ struct CaptionLabel: View {
                 .font(.caption)
                 .lineLimit(lineLimit)
                 .multilineTextAlignment(.leading)
-                .foregroundColor(.purple)
             Spacer()
         }
     }
