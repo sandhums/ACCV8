@@ -113,6 +113,7 @@ struct NewConversationView: View {
                     .ignoresSafeArea()
                     .accessibility(hidden: true))
         }
+      .accentColor(.primary)
         .onAppear {
             setSubscription()
             searchUsers()

@@ -12,8 +12,8 @@ struct RevenueRepView: View {
   
     @Environment(\.realm) var realm
     @Environment(\.dismiss) var dismiss
-    @ObservedRealmObject var user: Reps
-//  @ObservedResults(Reps.self) var users
+//    @ObservedRealmObject var user: Reps
+  @ObservedResults(Reps.self) var users
 
     
     @State private var revenueReportedBy = accApp.currentUser?.profile.email
@@ -120,7 +120,8 @@ struct RevenueRepView: View {
         }
 }
     func insertReport() {
-        revenueOfCentre = user.userCentre
+        let rep = users.first
+        revenueOfCentre = rep!.userCentre
         let revIPDouble = Double(revenueIPD) ?? 0.0
         let revOPDouble = Double(revenueOPD) ?? 0.0
         let revenueTot = revIPDouble + revOPDouble
@@ -167,6 +168,6 @@ struct RevenueRepView: View {
 
 struct RevenueRepView_Previews: PreviewProvider {
     static var previews: some View {
-        RevenueRepView(user: Reps())
+        RevenueRepView()
     }
 }

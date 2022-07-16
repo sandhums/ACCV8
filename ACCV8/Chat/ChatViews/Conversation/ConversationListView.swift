@@ -57,7 +57,7 @@ struct ConversationListView: View {
                Spacer()
                     Button(action: { showingAddChat.toggle() }) {
                         Text("Start New Chat")
-                            .foregroundColor(Color.black)
+                            .foregroundColor(Color.primary)
                             .font(.body).bold()
                     }
                     .disabled(showingAddChat)
@@ -90,8 +90,9 @@ struct ConversationListView: View {
                 )
                 .padding(20)
             )
+
             Button (action: {
-                presentationMode.wrappedValue.dismiss() 
+                presentationMode.wrappedValue.dismiss()
             }, label: {
                 CloseButton()
             })
@@ -100,6 +101,7 @@ struct ConversationListView: View {
             .ignoresSafeArea()
         }
         }
+        .accentColor(.primary)
         .onAppear {
             $user.presenceState.wrappedValue = .onLine
         }

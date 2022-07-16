@@ -176,6 +176,8 @@ struct ProcedureRepView: View {
 //
 //    }
     func insertReport() {
+        let rep = users.first
+        reportOfCentre = rep!.userCentre
         let user = accApp.currentUser!
         let client = user.mongoClient("mongodb-atlas")
          let database = client.database(named: "ACC8DB")

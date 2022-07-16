@@ -37,6 +37,7 @@ struct ChatRoomView: View {
                 .ignoresSafeArea(.all)
                 .accessibility(hidden: true))
         .navigationBarTitle(conversation?.displayName ?? "Chat", displayMode: .inline)
+        
 //        .padding(.horizontal, padding)
         .onAppear(perform: clearUnreadCount)
         .onDisappear(perform: clearUnreadCount)
