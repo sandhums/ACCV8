@@ -19,7 +19,7 @@ struct OpenRealmView: View {
        case .waitingForUser:
            ProgressView("Waiting for user to log in...")
        case .open(let realm):
-           LoggedInView()
+          LoggedInView()
                 .environment(\.realm, realm)
 //       case .progress(let progress):
 //           ProgressView(progress)

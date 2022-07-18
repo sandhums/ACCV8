@@ -146,6 +146,13 @@
 		D7BDC4CA287D010F003ADEA5 /* CentreDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BDC4C9287D010F003ADEA5 /* CentreDetailView.swift */; };
 		D7BDC4CC287F0C87003ADEA5 /* ProcedureRepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BDC4CB287F0C87003ADEA5 /* ProcedureRepView.swift */; };
 		D7BDC4CE287F0CA1003ADEA5 /* RevenueRepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BDC4CD287F0CA1003ADEA5 /* RevenueRepView.swift */; };
+		D7BDC4D0288283C6003ADEA5 /* AdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BDC4CF288283C6003ADEA5 /* AdminView.swift */; };
+		D7BDC4D2288284C2003ADEA5 /* AddProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BDC4D1288284C2003ADEA5 /* AddProjectView.swift */; };
+		D7FFF7182884F554003FD4D6 /* AddCentre.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FFF7172884F554003FD4D6 /* AddCentre.swift */; };
+		D7FFF71A2885906E003FD4D6 /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FFF7192885906E003FD4D6 /* AddTaskView.swift */; };
+		D7FFF71C28859408003FD4D6 /* AddProjectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FFF71B28859407003FD4D6 /* AddProjectsView.swift */; };
+		D7FFF71E2885980D003FD4D6 /* TasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FFF71D2885980D003FD4D6 /* TasksView.swift */; };
+		D7FFF7202885BEBD003FD4D6 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FFF71F2885BEBD003FD4D6 /* TaskCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -306,6 +313,13 @@
 		D7BDC4C9287D010F003ADEA5 /* CentreDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentreDetailView.swift; sourceTree = "<group>"; };
 		D7BDC4CB287F0C87003ADEA5 /* ProcedureRepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcedureRepView.swift; sourceTree = "<group>"; };
 		D7BDC4CD287F0CA1003ADEA5 /* RevenueRepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevenueRepView.swift; sourceTree = "<group>"; };
+		D7BDC4CF288283C6003ADEA5 /* AdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminView.swift; sourceTree = "<group>"; };
+		D7BDC4D1288284C2003ADEA5 /* AddProjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProjectView.swift; sourceTree = "<group>"; };
+		D7FFF7172884F554003FD4D6 /* AddCentre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCentre.swift; sourceTree = "<group>"; };
+		D7FFF7192885906E003FD4D6 /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
+		D7FFF71B28859407003FD4D6 /* AddProjectsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProjectsView.swift; sourceTree = "<group>"; };
+		D7FFF71D2885980D003FD4D6 /* TasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksView.swift; sourceTree = "<group>"; };
+		D7FFF71F2885BEBD003FD4D6 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -423,6 +437,7 @@
 			children = (
 				D7A210AE286E1AED00918807 /* Modifiers.swift */,
 				D7A21094286D393D00918807 /* VisualEffectBlur.swift */,
+				D7A2108E286C570500918807 /* LoggedInView.swift */,
 				D7A21097286D399800918807 /* ImagePicker.swift */,
 				D7A210AC286E19F700918807 /* PreferenceKey.swift */,
 				D7A210B0286E1B4800918807 /* Animations.swift */,
@@ -462,7 +477,6 @@
 				D7A21092286C57AE00918807 /* LogoutButton.swift */,
 				D7A2108C286C56E500918807 /* LoginView.swift */,
 				D7A21099286D3A5600918807 /* SignUpView.swift */,
-				D7A2108E286C570500918807 /* LoggedInView.swift */,
 				D7A210B3286E81A200918807 /* CentresViewBak.swift */,
 				D7A210B5286E81D700918807 /* ReportsView.swift */,
 				D7A210B7286E820A00918807 /* ChatView.swift */,
@@ -479,6 +493,13 @@
 				D7BDC4C9287D010F003ADEA5 /* CentreDetailView.swift */,
 				D7BDC4CB287F0C87003ADEA5 /* ProcedureRepView.swift */,
 				D7BDC4CD287F0CA1003ADEA5 /* RevenueRepView.swift */,
+				D7BDC4CF288283C6003ADEA5 /* AdminView.swift */,
+				D7BDC4D1288284C2003ADEA5 /* AddProjectView.swift */,
+				D7FFF7172884F554003FD4D6 /* AddCentre.swift */,
+				D7FFF7192885906E003FD4D6 /* AddTaskView.swift */,
+				D7FFF71B28859407003FD4D6 /* AddProjectsView.swift */,
+				D7FFF71D2885980D003FD4D6 /* TasksView.swift */,
+				D7FFF71F2885BEBD003FD4D6 /* TaskCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -764,6 +785,7 @@
 			files = (
 				D7A210E3286EBA0D00918807 /* AnimatedBlobView.swift in Sources */,
 				D7A210B8286E820A00918807 /* ChatView.swift in Sources */,
+				D7BDC4D2288284C2003ADEA5 /* AddProjectView.swift in Sources */,
 				D70E8F9A28748BD100D57D25 /* PickerView.swift in Sources */,
 				D7A2107A286C306300918807 /* ChatMessage.swift in Sources */,
 				D7A21126286F1C8D00918807 /* OnOffCircleView.swift in Sources */,
@@ -786,6 +808,7 @@
 				D7A2114E286F1D3A00918807 /* SaveConversationButton.swift in Sources */,
 				D7A210B1286E1B4800918807 /* Animations.swift in Sources */,
 				D7A21082286C3CD700918807 /* Centre.swift in Sources */,
+				D7FFF71E2885980D003FD4D6 /* TasksView.swift in Sources */,
 				D7A210B6286E81D700918807 /* ReportsView.swift in Sources */,
 				D7A21132286F1C8D00918807 /* SearchBox.swift in Sources */,
 				D7A210A9286E12EA00918807 /* Tab.swift in Sources */,
@@ -817,8 +840,10 @@
 				D7A210C3286EACEE00918807 /* CourseSection.swift in Sources */,
 				D7A210B4286E81A200918807 /* CentresViewBak.swift in Sources */,
 				D7BDC4C2287B19CF003ADEA5 /* CentreItemView.swift in Sources */,
+				D7FFF7182884F554003FD4D6 /* AddCentre.swift in Sources */,
 				D7A210BA286E822500918807 /* ProjectsView.swift in Sources */,
 				D7A21162286F1E4F00918807 /* CustomProgressView.swift in Sources */,
+				D7BDC4D0288283C6003ADEA5 /* AdminView.swift in Sources */,
 				D7A2108B286C553900918807 /* OpenRealmView.swift in Sources */,
 				D7A21156286F1D4400918807 /* ChatRoomView.swift in Sources */,
 				D7A210ED286EBD4B00918807 /* SectionView.swift in Sources */,
@@ -853,6 +878,7 @@
 				D7A2116A286F1FE300918807 /* PreviewDevices.swift in Sources */,
 				D7A21076286C0FEB00918807 /* Member.swift in Sources */,
 				D7A2108D286C56E500918807 /* LoginView.swift in Sources */,
+				D7FFF7202885BEBD003FD4D6 /* TaskCell.swift in Sources */,
 				D7A21159286F1D4400918807 /* ChatRoomBubblesView.swift in Sources */,
 				D7A210FA286F16D600918807 /* SampleData.swift in Sources */,
 				D7A210E5286EBA2A00918807 /* HexagonView.swift in Sources */,
@@ -874,6 +900,7 @@
 				D7A210BE286EABB800918807 /* AnimatableFontModifier.swift in Sources */,
 				D7A2110E286F1B8100918807 /* UIImageThumb.swift in Sources */,
 				D7A210DF286EB9C300918807 /* CircularView.swift in Sources */,
+				D7FFF71A2885906E003FD4D6 /* AddTaskView.swift in Sources */,
 				D7A210C1286EACB500918807 /* Course.swift in Sources */,
 				D7A2110C286F1B5D00918807 /* ThumbnailPhotoView.swift in Sources */,
 				D7BDC4C6287BDFDA003ADEA5 /* CentresView.swift in Sources */,
@@ -884,6 +911,7 @@
 				D7A2114C286F1D3A00918807 /* NewConversationView.swift in Sources */,
 				D7A21136286F1C8D00918807 /* InputField.swift in Sources */,
 				D7A210E9286EBAF900918807 /* ColorExtension.swift in Sources */,
+				D7FFF71C28859408003FD4D6 /* AddProjectsView.swift in Sources */,
 				D7A210A3286DAD4500918807 /* GradientIcon.swift in Sources */,
 				D7A2109F286DA88600918807 /* GradientButton.swift in Sources */,
 				D7A21072286C0F8200918807 /* Photo.swift in Sources */,
@@ -980,7 +1008,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1034,7 +1062,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1060,6 +1088,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1089,6 +1118,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

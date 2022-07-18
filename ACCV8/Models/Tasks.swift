@@ -18,12 +18,13 @@ class Tasks: Object, ObjectKeyIdentifiable {
     @Persisted var taskOwnerId = ""
     @Persisted var startDate = Date()
     @Persisted var dueDate = Date()
-    @Persisted var taskImage: Data?
-    @Persisted var taskBackground: Data?
     @Persisted var taskLogo: Data?
-    @Persisted var priority: String = ""
-    @Persisted var status: String = ""
+    @Persisted var taskLogoF = ""
+    @Persisted var priority = ""
+    @Persisted var status = ""
     @Persisted var progress: Double?
+    @Persisted var progressF = 0.0
+
 
     @Persisted(originProperty: "tasks") var assignee: LinkingObjects<Projects>
     
@@ -46,7 +47,7 @@ class Tasks: Object, ObjectKeyIdentifiable {
                 priority = newValue.rawValue
             }
         }
-    convenience init(taskTitle: String, taskDescription: String, taskText: String, taskOwner: String, taskOwnerId: String, startDate: Date, dueDate: Date, taskImage: Data?, taskBackground: Data?, taskLogo: Data?, progress: Double?) {
+    convenience init(taskTitle: String, taskDescription: String, taskText: String, taskOwner: String, taskOwnerId: String, startDate: Date, dueDate: Date, taskLogo: Data?, taskLogoF: String, progress: Double?, progressF: Double) {
         self.init()
         self.taskTitle = taskTitle
         self.taskDescription = taskDescription
@@ -55,12 +56,12 @@ class Tasks: Object, ObjectKeyIdentifiable {
         self.taskOwnerId = taskOwnerId
         self.startDate = startDate
         self.dueDate = dueDate
-        self.taskImage = taskImage
-        self.taskBackground = taskBackground
         self.taskLogo = taskLogo
+        self.taskLogoF = taskLogoF
         self.priorityEnum = .medium
         self.statusEnum = .notStarted
         self.progress = progress
+        self.progressF = progressF
         }
 }
 

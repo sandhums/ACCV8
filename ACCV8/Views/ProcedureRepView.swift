@@ -11,9 +11,9 @@ import RealmSwift
 struct ProcedureRepView: View {
     @Environment(\.realm) var realm
     @Environment(\.dismiss) var dismiss
-//    @ObservedRealmObject var user: Reps
     @ObservedResults(Reps.self) var users
-    @ObservedRealmObject var report: ProcedureReport
+    @ObservedResults(ProcedureReport.self) var procReports
+
 
     
     @State private var reportedBy = accApp.currentUser?.profile.email
@@ -115,7 +115,7 @@ struct ProcedureRepView: View {
                 Divider()
                     .foregroundColor(.secondary)
                 Button {
-                    insertReport()
+                   saveProcRep()
 
                 } label: {
                     AngularButton(title: "Submit")
@@ -159,22 +159,71 @@ struct ProcedureRepView: View {
             }
         }
 }
-//    func saveRep() {
-//        let user = users.first
-//        let reportOfCentre = user!.userCentre
-//        let report = ProcedureReport(value: [ObjectId.generate(), reportedBy!, reportedById!, reportOfCentre, reportDate, [[procName1, procQty],[procName2, procQty2],[procName3, procQty3],[procName4, procQty4], [procName5, procQty5], [procName6, procQty6], [procName7, procQty7], [procName8, procQty8]]])
-//        do {
-//        let realm = try Realm()
-//        realm.writeAsync {
-//            realm.add(report)
-//            print("report saved")
-//            dismiss()
-//        }
-//        } catch {
-//            print("error saving report")
-//        }
-//
-//    }
+    func saveProcRep() {
+        let reps = users.first
+        reportOfCentre = reps!.userCentre
+        let p1 = Procedures(value: ["procName": procName1, "procQty": procQty])
+        let p2 = Procedures(value: ["procName": procName2, "procQty": procQty2])
+        let p3 = Procedures(value: ["procName": procName3, "procQty": procQty3])
+        let p4 = Procedures(value: ["procName": procName4, "procQty": procQty4])
+        let p5 = Procedures(value: ["procName": procName5, "procQty": procQty5])
+        let p6 = Procedures(value: ["procName": procName6, "procQty": procQty6])
+        let p7 = Procedures(value: ["procName": procName7, "procQty": procQty7])
+        let p8 = Procedures(value: ["procName": procName8, "procQty": procQty8])
+        let rep = ProcedureReport()
+        rep.reportedBy = reportedBy!
+        rep.reportedById = reportedById!
+        rep.reportOfCentre = reportOfCentre
+        rep.reportDate = reportDate
+        rep.procedures.append(objectsIn: [p1, p2, p3, p4, p5, p6, p7, p8])
+        $procReports.append(rep)
+        
+//        let p1 = Procedures(value: [procName1, procQty])
+//        let p2 = Procedures(value: [procName2, procQty2])
+//        let p3 = Procedures(value: [procName3, procQty3])
+//        let p4 = Procedures(value: [procName4, procQty4])
+//        let p5 = Procedures(value: [procName5, procQty5])
+//        let p6 = Procedures(value: [procName6, procQty6])
+//        let p7 = Procedures(value: [procName7, procQty7])
+//        let p8 = Procedures(value: [procName8, procQty8])
+       
+//       let procs = [(procName1, procQty),(procName2, procQty2), (procName3, procQty3), (procName4, procQty4), (procName5, procQty5),(procName6, procQty6), (procName7, procQty7), (procName8, procQty8)]
+//        let procs = Procedures()
+//        procs.procName = procName1
+//        procs.procQty = procQty
+//        let procsA = [(procs.procName = procName1, procs.procQty = procQty), (procs.procName = procName2, procs.procQty = procQty2), (procs.procName = procName3, procs.procQty = procQty3), (procs.procName = procName4, procs.procQty = procQty4), (procs.procName = procName5, procs.procQty = procQty5), (procs.procName = procName6, procs.procQty = procQty6), (procs.procName = procName7, procs.procQty = procQty7), (procs.procName = procName8, procs.procQty = procQty8)]
+//        $pro.reportedBy.wrappedValue = self.reportedBy!
+//        $pro.reportedById.wrappedValue = self.reportedById!
+//        $pro.reportOfCentre.wrappedValue = self.reportOfCentre
+//        $pro.reportDate.wrappedValue = self.reportDate
+//        $pro.procedures.append(procs)
+//        $pro.procedures.append(p1)
+//        $pro.procedures.append(p2)
+//        $pro.procedures.append(p3)
+//        $pro.procedures.append(p4)
+//        $pro.procedures.append(p5)
+//        $pro.procedures.append(p6)
+//        $pro.procedures.append(p7)
+//        $pro.procedures.append(p8)
+//        pro.procedures.append(objectsIn: [p1, p2, p3, p4, p5, p6, p7, p8])
+        dismiss()
+    }
+    func saveRep() {
+        let user = users.first
+        let reportOfCentre = user!.userCentre
+        let report = ProcedureReport(value: [ObjectId.generate(), reportedBy!, reportedById!, reportOfCentre, reportDate, [[procName1, procQty],[procName2, procQty2],[procName3, procQty3],[procName4, procQty4], [procName5, procQty5], [procName6, procQty6], [procName7, procQty7], [procName8, procQty8]]])
+        do {
+        let realm = try Realm()
+        realm.writeAsync {
+            realm.add(report)
+            print("report saved")
+            dismiss()
+        }
+        } catch {
+            print("error saving report")
+        }
+
+    }
     func insertReport() {
         let rep = users.first
         reportOfCentre = rep!.userCentre
@@ -219,6 +268,6 @@ struct ProcedureRepView: View {
 
 struct ProcedureRepView_Previews: PreviewProvider {
     static var previews: some View {
-        ProcedureRepView(report: ProcedureReport())
+        ProcedureRepView()
     }
 }
