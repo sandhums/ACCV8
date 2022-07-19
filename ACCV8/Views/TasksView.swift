@@ -29,7 +29,7 @@ struct TasksView: View {
                     NavigationLink {
                         AddTaskView(project: project, taskToEdit: task)
                     } label: {
-                        TaskCell(task: task, selected: selectedTaskIds.contains(task._id)) { selected in
+                        TaskRow(task: task, selected: selectedTaskIds.contains(task._id)) { selected in
                             if selected {
                                 selectedTaskIds.append(task._id)
                                 if let indexToDelete = project.tasks.firstIndex(where: { $0.id == task.id }) {
@@ -38,6 +38,7 @@ struct TasksView: View {
                                 }
                             }
                         }
+                      
                     }
                     
                     
@@ -57,6 +58,27 @@ struct TasksView: View {
             }
         }.sheet(isPresented: $isPresented) {
             AddTaskView(project: project)
+        }
+        .task {
+            do {
+            try await setSubscription()
+            } catch {
+                
+            }
+        }
+    }
+    private func setSubscription() async throws {
+        let subscriptions = realm.subscriptions
+        let foundSubscription = subscriptions.first(named: "allTasks")
+        try await subscriptions.update {
+            if foundSubscription != nil {
+                foundSubscription!.updateQuery(toType: Tasks.self)
+                print("updating query allTasks")
+            } else {
+                subscriptions.append(
+                    QuerySubscription<Tasks>(name: "allTasks"))
+                print("appending query allTasks")
+            }
         }
     }
 }

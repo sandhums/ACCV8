@@ -153,6 +153,7 @@
 		D7FFF71C28859408003FD4D6 /* AddProjectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FFF71B28859407003FD4D6 /* AddProjectsView.swift */; };
 		D7FFF71E2885980D003FD4D6 /* TasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FFF71D2885980D003FD4D6 /* TasksView.swift */; };
 		D7FFF7202885BEBD003FD4D6 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FFF71F2885BEBD003FD4D6 /* TaskCell.swift */; };
+		D7FFF72228869E43003FD4D6 /* TaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FFF72128869E43003FD4D6 /* TaskRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -320,6 +321,7 @@
 		D7FFF71B28859407003FD4D6 /* AddProjectsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProjectsView.swift; sourceTree = "<group>"; };
 		D7FFF71D2885980D003FD4D6 /* TasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksView.swift; sourceTree = "<group>"; };
 		D7FFF71F2885BEBD003FD4D6 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
+		D7FFF72128869E43003FD4D6 /* TaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -480,7 +482,6 @@
 				D7A210B3286E81A200918807 /* CentresViewBak.swift */,
 				D7A210B5286E81D700918807 /* ReportsView.swift */,
 				D7A210B7286E820A00918807 /* ChatView.swift */,
-				D7A210B9286E822500918807 /* ProjectsView.swift */,
 				D7A210F2286F020000918807 /* AccountView.swift */,
 				D7A2116B286FF35000918807 /* ModalView.swift */,
 				D79CD2D2287161C800E7C83E /* PostLoginView.swift */,
@@ -494,12 +495,14 @@
 				D7BDC4CB287F0C87003ADEA5 /* ProcedureRepView.swift */,
 				D7BDC4CD287F0CA1003ADEA5 /* RevenueRepView.swift */,
 				D7BDC4CF288283C6003ADEA5 /* AdminView.swift */,
+				D7A210B9286E822500918807 /* ProjectsView.swift */,
 				D7BDC4D1288284C2003ADEA5 /* AddProjectView.swift */,
 				D7FFF7172884F554003FD4D6 /* AddCentre.swift */,
 				D7FFF7192885906E003FD4D6 /* AddTaskView.swift */,
 				D7FFF71B28859407003FD4D6 /* AddProjectsView.swift */,
 				D7FFF71D2885980D003FD4D6 /* TasksView.swift */,
 				D7FFF71F2885BEBD003FD4D6 /* TaskCell.swift */,
+				D7FFF72128869E43003FD4D6 /* TaskRow.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -858,6 +861,7 @@
 				D7A2114A286F1D3A00918807 /* ConversationCardContentsView.swift in Sources */,
 				D7A210D3286EAEE700918807 /* SectionRow.swift in Sources */,
 				D79CD2D3287161C900E7C83E /* PostLoginView.swift in Sources */,
+				D7FFF72228869E43003FD4D6 /* TaskRow.swift in Sources */,
 				D79CD2D1287036EE00E7C83E /* GradientTextField.swift in Sources */,
 				D7A2115C286F1D5E00918807 /* SetUserProfileView.swift in Sources */,
 				D7A210D7286EB91C00918807 /* AngularButton.swift in Sources */,
