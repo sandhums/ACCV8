@@ -58,28 +58,9 @@ struct AddProjectsView: View {
             Text("Save")
                 .frame(maxWidth: .infinity)
         }.buttonStyle(.bordered)
-            .task {
-                do {
-                    try await setSubscription()
-                } catch {
-                    
-                }
-            }
+ 
     }
-    private func setSubscription() async throws {
-        let subscriptions = realm.subscriptions
-        let foundSubscription = subscriptions.first(named: "allProjects")
-        try await subscriptions.update {
-            if foundSubscription != nil {
-                foundSubscription!.updateQuery(toType: Projects.self)
-                print("updating query allProjects")
-            } else {
-                subscriptions.append(
-                    QuerySubscription<Projects>(name: "allProjects"))
-                print("appending query allProjects")
-            }
-        }
-    }
+
 }
 
 struct AddProjectsView_Previews: PreviewProvider {

@@ -9,7 +9,7 @@ import SwiftUI
 import RealmSwift
 
 struct ConversationListView: View {
-    
+ 
     @Environment(\.presentationMode) var presentationMode
     @ObservedRealmObject var user: Reps
     
@@ -45,14 +45,18 @@ struct ConversationListView: View {
                 Text("Active Chats")
                     .font(.body).bold()
                 if let conversations = user.conversations.sorted(by: sortDescriptors) {
-                        ForEach(conversations) { conversation in
+                    List {
+                        ForEach(conversations, id: \.id) { conversation in
                             Button(action: {
                                 self.conversation = conversation
                                 showConversation.toggle()
                             }) { ConversationCardView(conversation: conversation, isPreview: isPreview) }
-                            Divider()
+                               
                         }
-                        .foregroundColor(Color.black)
+                        .onDelete(perform: delete)
+                    }
+                    .listStyle(PlainListStyle())
+                    .foregroundColor(Color.black)
                     
                Spacer()
                     Button(action: { showingAddChat.toggle() }) {
@@ -110,7 +114,9 @@ struct ConversationListView: View {
                 .environment(\.realmConfiguration, accApp.currentUser!.flexibleSyncConfiguration())
         }
     }
-    
+    func delete(at offsets: IndexSet) {
+        $user.conversations.remove(atOffsets: offsets)
+    }
 }
 
 

@@ -131,7 +131,7 @@ struct AddTaskView: View {
             
             do {
                 let realm = try Realm()
-                guard let objectToUpdate = realm.object(ofType: Tasks.self, forPrimaryKey: taskToEdit.id) else { return }
+                guard let objectToUpdate = realm.object(ofType: Tasks.self, forPrimaryKey: taskToEdit._id) else { return }
                 try realm.write {
                     objectToUpdate.taskTitle = title
                     objectToUpdate.taskDescription = desc

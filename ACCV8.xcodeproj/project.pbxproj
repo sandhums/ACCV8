@@ -147,7 +147,6 @@
 		D7BDC4CC287F0C87003ADEA5 /* ProcedureRepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BDC4CB287F0C87003ADEA5 /* ProcedureRepView.swift */; };
 		D7BDC4CE287F0CA1003ADEA5 /* RevenueRepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BDC4CD287F0CA1003ADEA5 /* RevenueRepView.swift */; };
 		D7BDC4D0288283C6003ADEA5 /* AdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BDC4CF288283C6003ADEA5 /* AdminView.swift */; };
-		D7BDC4D2288284C2003ADEA5 /* AddProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BDC4D1288284C2003ADEA5 /* AddProjectView.swift */; };
 		D7FFF7182884F554003FD4D6 /* AddCentre.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FFF7172884F554003FD4D6 /* AddCentre.swift */; };
 		D7FFF71A2885906E003FD4D6 /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FFF7192885906E003FD4D6 /* AddTaskView.swift */; };
 		D7FFF71C28859408003FD4D6 /* AddProjectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FFF71B28859407003FD4D6 /* AddProjectsView.swift */; };
@@ -315,7 +314,6 @@
 		D7BDC4CB287F0C87003ADEA5 /* ProcedureRepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcedureRepView.swift; sourceTree = "<group>"; };
 		D7BDC4CD287F0CA1003ADEA5 /* RevenueRepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevenueRepView.swift; sourceTree = "<group>"; };
 		D7BDC4CF288283C6003ADEA5 /* AdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminView.swift; sourceTree = "<group>"; };
-		D7BDC4D1288284C2003ADEA5 /* AddProjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProjectView.swift; sourceTree = "<group>"; };
 		D7FFF7172884F554003FD4D6 /* AddCentre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCentre.swift; sourceTree = "<group>"; };
 		D7FFF7192885906E003FD4D6 /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
 		D7FFF71B28859407003FD4D6 /* AddProjectsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProjectsView.swift; sourceTree = "<group>"; };
@@ -439,7 +437,6 @@
 			children = (
 				D7A210AE286E1AED00918807 /* Modifiers.swift */,
 				D7A21094286D393D00918807 /* VisualEffectBlur.swift */,
-				D7A2108E286C570500918807 /* LoggedInView.swift */,
 				D7A21097286D399800918807 /* ImagePicker.swift */,
 				D7A210AC286E19F700918807 /* PreferenceKey.swift */,
 				D7A210B0286E1B4800918807 /* Animations.swift */,
@@ -474,6 +471,7 @@
 			isa = PBXGroup;
 			children = (
 				D743C560286B76D000A42B18 /* ContentView.swift */,
+				D7A2108E286C570500918807 /* LoggedInView.swift */,
 				D7A2108A286C553900918807 /* OpenRealmView.swift */,
 				D7A21090286C578000918807 /* ErrorView.swift */,
 				D7A21092286C57AE00918807 /* LogoutButton.swift */,
@@ -496,7 +494,6 @@
 				D7BDC4CD287F0CA1003ADEA5 /* RevenueRepView.swift */,
 				D7BDC4CF288283C6003ADEA5 /* AdminView.swift */,
 				D7A210B9286E822500918807 /* ProjectsView.swift */,
-				D7BDC4D1288284C2003ADEA5 /* AddProjectView.swift */,
 				D7FFF7172884F554003FD4D6 /* AddCentre.swift */,
 				D7FFF7192885906E003FD4D6 /* AddTaskView.swift */,
 				D7FFF71B28859407003FD4D6 /* AddProjectsView.swift */,
@@ -788,7 +785,6 @@
 			files = (
 				D7A210E3286EBA0D00918807 /* AnimatedBlobView.swift in Sources */,
 				D7A210B8286E820A00918807 /* ChatView.swift in Sources */,
-				D7BDC4D2288284C2003ADEA5 /* AddProjectView.swift in Sources */,
 				D70E8F9A28748BD100D57D25 /* PickerView.swift in Sources */,
 				D7A2107A286C306300918807 /* ChatMessage.swift in Sources */,
 				D7A21126286F1C8D00918807 /* OnOffCircleView.swift in Sources */,
