@@ -23,14 +23,14 @@ struct AddTaskView: View {
     @State private var startDate = Date()
     @State private var dueDate = Date()
     @State private var taskLogoF = ""
-    @State private var priority = ""
-    @State private var status = ""
-    @State private var progressF = 0.0
-    @State private var numberFormatter: NumberFormatter = {
-        var nf = NumberFormatter()
-        nf.numberStyle = .decimal
-        return nf
-    }()
+    @State private var priority = "medium"
+    @State private var status = "notStarted"
+    @State private var progressF: String = ""
+//    @State private var numberFormatter: NumberFormatter = {
+//        var nf = NumberFormatter()
+//        nf.numberStyle = .decimal
+//        return nf
+//    }()
     
     init(project: Projects, taskToEdit: Tasks? = nil) {
         self.project = project
@@ -45,7 +45,7 @@ struct AddTaskView: View {
                 _taskLogoF = State(initialValue: taskToEdit.taskLogoF)
                 _priority = State(initialValue: taskToEdit.priority)
                 _status = State(initialValue: taskToEdit.status)
-                _progressF = State(initialValue: taskToEdit.progressF)
+                _progressF = State(initialValue: String(taskToEdit.progressF))
             }
         }
         
@@ -57,7 +57,7 @@ struct AddTaskView: View {
         VStack(alignment: .leading) {
                 
                 if !isEditing {
-                    Text("Add Item")
+                    Text("Add Task")
                         .font(.largeTitle)
                 }
                 
@@ -79,9 +79,8 @@ struct AddTaskView: View {
                     .textFieldStyle(.roundedBorder)
                 TextField("Status", text: $status)
                 .textFieldStyle(.roundedBorder)
-                TextField("Progress",  value: $progressF,
-                          formatter: numberFormatter)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
+                TextField("Progress",  text: $progressF)
+                .textFieldStyle(.roundedBorder)
             }
                 Button {
                     // save or update the item
@@ -103,7 +102,7 @@ struct AddTaskView: View {
                     .padding(.top, 20)
                 Spacer()
 
-                    .navigationTitle(isEditing ? "Update Item": "Add Item")
+                    .navigationTitle(isEditing ? "Update Task": "Add Task")
             }.padding()
         
     }
@@ -121,27 +120,37 @@ struct AddTaskView: View {
         task.taskLogoF = taskLogoF
         task.priority = priority
         task.status = status
-        task.progressF = progressF
+        task.progressF = Double(progressF) ?? 0.0
         $project.tasks.append(task)
     }
     
     private func update() {
       
         if let taskToEdit = taskToEdit {
-            
             do {
                 let realm = try Realm()
-                guard let objectToUpdate = realm.object(ofType: Tasks.self, forPrimaryKey: taskToEdit._id) else { return }
+                print("so far so good")
+                let idOfContactToUpdate = taskToEdit._id
+                print("Contact \(idOfContactToUpdate) found")
+                guard let objectToUpdate = realm.object(ofType: Tasks.self, forPrimaryKey: idOfContactToUpdate) else {
+                    print("Contact \(idOfContactToUpdate) not found")
+                    return }
                 try realm.write {
+//                    realm.create(Tasks.self,
+//                                 value: ["_id": taskToEdit._id, "taskTitle": title, "taskDescription": desc, "taskText": text, "startDate": startDate, "dueDate": dueDate, "taskLogoF": taskLogoF, "priority": priority, "status": status, "progressF": Double(progressF) ?? 0.0],
+//                                    update: .modified)
                     objectToUpdate.taskTitle = title
                     objectToUpdate.taskDescription = desc
                     objectToUpdate.taskText = text
+                    objectToUpdate.taskOwner = taskOwner!
+                    objectToUpdate.taskOwnerId = taskOwnerId!
                     objectToUpdate.startDate = startDate
                     objectToUpdate.dueDate = dueDate
                     objectToUpdate.taskLogoF = taskLogoF
                     objectToUpdate.priority = priority
                     objectToUpdate.status = status
-                    objectToUpdate.progressF = progressF
+                    objectToUpdate.progressF = Double(progressF) ?? 0.0
+                    print("updated tasks")
                 }
             }
             catch {

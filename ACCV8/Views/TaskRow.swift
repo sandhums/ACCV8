@@ -12,8 +12,8 @@ struct TaskRow: View {
     @EnvironmentObject var model: Model
     @Environment(\.realm) var realm
     let task: Tasks
-    var selected: Bool
-    let isSelected: (Bool) -> Void
+//    var selected: Bool
+//    let isSelected: (Bool) -> Void
     var body: some View {
         HStack(alignment: .top, spacing: 16) {
       
@@ -38,9 +38,9 @@ struct TaskRow: View {
                     .accentColor(.white)
                     .frame(maxWidth: 132)
             }
-            .onTapGesture {
-                isSelected(!selected)
-            }
+//            .onTapGesture {
+//                isSelected(!selected)
+//            }
             Spacer()
         }
     }
@@ -48,6 +48,6 @@ struct TaskRow: View {
 
 struct TaskRow_Previews: PreviewProvider {
     static var previews: some View {
-        TaskRow(task: Tasks(), selected: true, isSelected: { _ in })
+        TaskRow(task: Tasks())
     }
 }

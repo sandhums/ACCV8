@@ -14,30 +14,26 @@ struct TasksView: View {
     @ObservedRealmObject var project: Projects
     @State private var isPresented: Bool = false
     @State private var selectedTaskIds: [ObjectId] = []
-    var tasks: [Tasks] {
-        return Array(project.tasks)
-    }
+//    var tasks: [Tasks] {
+//        return Array(project.tasks)
+//    }
     var body: some View {
         VStack {
-            if tasks.isEmpty {
-                Text("No tasks found.")
-            }
+//            if tasks.isEmpty {
+//                Text("No tasks found.")
+//            }
             
             List {
-                ForEach(tasks) { task in
+                ForEach(project.tasks) { task in
                     
                     NavigationLink {
                         AddTaskView(project: project, taskToEdit: task)
                     } label: {
-                        TaskRow(task: task, selected: selectedTaskIds.contains(task._id)) { selected in
-                            if selected {
-                                selectedTaskIds.append(task._id)
-                                if let indexToDelete = project.tasks.firstIndex(where: { $0.id == task.id }) {
-                                    // delete the item
-                                    $project.tasks.remove(at: indexToDelete)
-                                }
-                            }
-                        }
+                        TaskRow(task: task)
+//                                if let indexToDelete = project.tasks.firstIndex(where: { $0._id == task._id }) {
+//                                    // delete the item
+//                                    $project.tasks.remove(at: indexToDelete)
+//                                }
                       
                     }
                     

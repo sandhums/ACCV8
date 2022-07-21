@@ -47,7 +47,7 @@ class Tasks: Object, ObjectKeyIdentifiable {
                 priority = newValue.rawValue
             }
         }
-    convenience init(taskTitle: String, taskDescription: String, taskText: String, taskOwner: String, taskOwnerId: String, startDate: Date, dueDate: Date, taskLogo: Data?, taskLogoF: String, progress: Double?, progressF: Double) {
+    convenience init(taskTitle: String, taskDescription: String, taskText: String, taskOwner: String, taskOwnerId: String, startDate: Date, dueDate: Date, taskLogo: Data?, taskLogoF: String, priority: String, status: String, progress: Double?, progressF: Double) {
         self.init()
         self.taskTitle = taskTitle
         self.taskDescription = taskDescription
@@ -58,8 +58,8 @@ class Tasks: Object, ObjectKeyIdentifiable {
         self.dueDate = dueDate
         self.taskLogo = taskLogo
         self.taskLogoF = taskLogoF
-        self.priorityEnum = .medium
-        self.statusEnum = .notStarted
+        self.priority = priority
+        self.status = status
         self.progress = progress
         self.progressF = progressF
         }
