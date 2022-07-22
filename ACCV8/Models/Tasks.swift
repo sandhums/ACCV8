@@ -16,14 +16,16 @@ class Tasks: Object, ObjectKeyIdentifiable {
     @Persisted var taskText = ""
     @Persisted var taskOwner = ""
     @Persisted var taskOwnerId = ""
-    @Persisted var startDate = Date()
-    @Persisted var dueDate = Date()
-    @Persisted var taskLogo: Data?
+    @Persisted var startDate = Date()//
+    @Persisted var dueDate = Date()//
+    @Persisted var taskLogo: Data?//
     @Persisted var taskLogoF = ""
     @Persisted var priority = ""
     @Persisted var status = ""
     @Persisted var progress: Double?
     @Persisted var progressF = 0.0
+    @Persisted var isCompleted: Bool = false
+    @Persisted var taskPriority = TaskPriority.medium
 
 
     @Persisted(originProperty: "tasks") var assignee: LinkingObjects<Projects>
@@ -39,15 +41,15 @@ class Tasks: Object, ObjectKeyIdentifiable {
                 status = newValue.rawValue
             }
         }
-    var priorityEnum: TaskPriority {
-            get {
-                return TaskPriority(rawValue: priority) ?? .medium
-            }
-            set {
-                priority = newValue.rawValue
-            }
-        }
-    convenience init(taskTitle: String, taskDescription: String, taskText: String, taskOwner: String, taskOwnerId: String, startDate: Date, dueDate: Date, taskLogo: Data?, taskLogoF: String, priority: String, status: String, progress: Double?, progressF: Double) {
+//    var priorityEnum: TaskPriority {
+//            get {
+//                return TaskPriority(rawValue: priority) ?? .medium
+//            }
+//            set {
+//                priority = newValue.rawValue
+//            }
+//        }
+    convenience init(taskTitle: String, taskDescription: String, taskText: String, taskOwner: String, taskOwnerId: String, startDate: Date, dueDate: Date, taskLogo: Data?, taskLogoF: String, priority: String, status: String, progress: Double?, progressF: Double, isCompleted: Bool) {
         self.init()
         self.taskTitle = taskTitle
         self.taskDescription = taskDescription
@@ -62,6 +64,7 @@ class Tasks: Object, ObjectKeyIdentifiable {
         self.status = status
         self.progress = progress
         self.progressF = progressF
+        self.isCompleted = isCompleted
         }
 }
 
@@ -71,8 +74,13 @@ enum TaskStatusEnum: String, PersistableEnum {
     case complete
     case overdue
 }
-enum TaskPriority: String, PersistableEnum {
-  case high
-  case medium
-  case low
+//enum TaskPriority: String, PersistableEnum {
+//  case high
+//  case medium
+//  case low
+//}
+enum TaskPriority: String, CaseIterable, PersistableEnum {
+    case low = "Low"
+    case medium = "Medium"
+    case high = "High"
 }

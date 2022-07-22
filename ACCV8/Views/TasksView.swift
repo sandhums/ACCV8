@@ -8,23 +8,41 @@
 import SwiftUI
 import RealmSwift
 
+enum Sections: String, CaseIterable {
+    case inprogress = "In Progress"
+    case completed = "Completed"
+}
 struct TasksView: View {
     @EnvironmentObject var model: Model
     @Environment(\.realm) var realm
     @ObservedRealmObject var project: Projects
     @State private var isPresented: Bool = false
     @State private var selectedTaskIds: [ObjectId] = []
-//    var tasks: [Tasks] {
-//        return Array(project.tasks)
-//    }
+    var tasks: [Tasks] {
+        return Array(project.tasks)
+    }
+    var pendingTasks: [Tasks] {
+        project.tasks.filter { $0.isCompleted == false }
+      }
+      
+      var completedTasks: [Tasks] {
+          project.tasks.filter { $0.isCompleted == true }
+      }
     var body: some View {
         VStack {
-//            if tasks.isEmpty {
-//                Text("No tasks found.")
-//            }
+            if tasks.isEmpty {
+                Text("No tasks found.")
+            }
             
             List {
-                ForEach(project.tasks) { task in
+                ForEach(Sections.allCases, id: \.self) { section in
+                    Section {
+                        let filteredTasks = section == .inprogress ? pendingTasks: completedTasks
+                        
+                        if filteredTasks.isEmpty {
+                            Text("No tasks.")
+                        }
+                ForEach(filteredTasks, id: \._id) { task in
                     
                     NavigationLink {
                         AddTaskView(project: project, taskToEdit: task)
@@ -37,8 +55,24 @@ struct TasksView: View {
                       
                     }
                     
-                    
-                    
+                }
+                .onDelete { indexSet in
+
+                    indexSet.forEach { index in
+                        let task = filteredTasks[index]
+                        if let indexToDelete = project.tasks.firstIndex(where: { $0._id == task._id }) {
+                                                           // delete the item
+                                                           $project.tasks.remove(at: indexToDelete)
+                                                       }
+//                        guard let taskToDelete = realm.object(ofType: Tasks.self, forPrimaryKey: task._id) else {
+//                            return
+//                        }
+//                        tasks.remove(taskToDelete)
+                    }
+                }
+                } header: {
+                    Text(section.rawValue)
+                }
                 }.onDelete(perform: $project.tasks.remove)
             }
             
@@ -59,7 +93,7 @@ struct TasksView: View {
             do {
             try await setSubscription()
             } catch {
-                
+
             }
         }
     }

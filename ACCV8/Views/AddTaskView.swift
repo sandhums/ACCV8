@@ -15,17 +15,17 @@ struct AddTaskView: View {
     var taskToEdit: Tasks?
        
     @Environment(\.dismiss) private var dismiss
-    @State private var title: String = ""
-    @State private var desc: String = ""
+    @State private var title = ""
+    @State private var desc = ""
     @State private var text = ""
     @State private var taskOwner = accApp.currentUser?.profile.email
     @State private var taskOwnerId = accApp.currentUser?.id
     @State private var startDate = Date()
     @State private var dueDate = Date()
     @State private var taskLogoF = ""
-    @State private var priority = "medium"
+    @State private var taskPriority: TaskPriority = .medium
     @State private var status = "notStarted"
-    @State private var progressF: String = ""
+    @State private var progressF = ""
 //    @State private var numberFormatter: NumberFormatter = {
 //        var nf = NumberFormatter()
 //        nf.numberStyle = .decimal
@@ -43,7 +43,7 @@ struct AddTaskView: View {
                 _startDate = State(initialValue: taskToEdit.startDate)
                 _dueDate = State(initialValue: taskToEdit.dueDate)
                 _taskLogoF = State(initialValue: taskToEdit.taskLogoF)
-                _priority = State(initialValue: taskToEdit.priority)
+                _taskPriority = State(initialValue: taskToEdit.taskPriority)
                 _status = State(initialValue: taskToEdit.status)
                 _progressF = State(initialValue: String(taskToEdit.progressF))
             }
@@ -75,8 +75,11 @@ struct AddTaskView: View {
             VStack {
                 TextField("Logo", text: $taskLogoF)
                     .textFieldStyle(.roundedBorder)
-                TextField("Priority", text: $priority)
-                    .textFieldStyle(.roundedBorder)
+                Picker("Priority", selection: $taskPriority) {
+                    ForEach(TaskPriority.allCases, id: \.self) { priority in
+                        Text(priority.rawValue)
+                    }
+                }.pickerStyle(.segmented)
                 TextField("Status", text: $status)
                 .textFieldStyle(.roundedBorder)
                 TextField("Progress",  text: $progressF)
@@ -103,8 +106,15 @@ struct AddTaskView: View {
                 Spacer()
 
                     .navigationTitle(isEditing ? "Update Task": "Add Task")
-            }.padding()
-        
+            }
+        .padding()
+//        .task {
+//            do {
+//            try await setSubscription()
+//            } catch {
+//
+//            }
+//        }
     }
     
     private func save() {
@@ -118,7 +128,7 @@ struct AddTaskView: View {
         task.startDate = startDate
         task.dueDate = dueDate
         task.taskLogoF = taskLogoF
-        task.priority = priority
+        task.taskPriority = taskPriority
         task.status = status
         task.progressF = Double(progressF) ?? 0.0
         $project.tasks.append(task)
@@ -130,10 +140,11 @@ struct AddTaskView: View {
             do {
                 let realm = try Realm()
                 print("so far so good")
-                let idOfContactToUpdate = taskToEdit._id
-                print("Contact \(idOfContactToUpdate) found")
-                guard let objectToUpdate = realm.object(ofType: Tasks.self, forPrimaryKey: idOfContactToUpdate) else {
-                    print("Contact \(idOfContactToUpdate) not found")
+//                let idOfContactToUpdate = taskToEdit._id
+//                print("Contact \(idOfContactToUpdate) found")
+//                let objectToUpdate = realm.object(ofType: Tasks.self, forPrimaryKey: idOfContactToUpdate)
+                guard let objectToUpdate = realm.object(ofType: Tasks.self, forPrimaryKey: taskToEdit._id) else {
+                    print("Contact \(taskToEdit._id) not found")
                     return }
                 try realm.write {
 //                    realm.create(Tasks.self,
@@ -147,7 +158,7 @@ struct AddTaskView: View {
                     objectToUpdate.startDate = startDate
                     objectToUpdate.dueDate = dueDate
                     objectToUpdate.taskLogoF = taskLogoF
-                    objectToUpdate.priority = priority
+                    objectToUpdate.taskPriority = taskPriority
                     objectToUpdate.status = status
                     objectToUpdate.progressF = Double(progressF) ?? 0.0
                     print("updated tasks")
@@ -157,6 +168,24 @@ struct AddTaskView: View {
                 print(error)
             }
             
+        }
+    }
+    private func setSubscription() async throws {
+        let subscriptions = realm.subscriptions
+        let foundSubscription = subscriptions.first(named: "taskToEdit")
+        try await subscriptions.update {
+            if foundSubscription != nil {
+                foundSubscription!.updateQuery(toType: Tasks.self, where: {
+                    $0._id == taskToEdit!._id
+                })
+                print("updating query taskToEdit")
+            } else {
+                subscriptions.append(
+                    QuerySubscription<Tasks>(name: "taskToEdit"){
+                    $0._id == taskToEdit!._id
+                })
+                print("appending query taskToEdit")
+            }
         }
     }
 }
