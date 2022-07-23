@@ -16,8 +16,8 @@ struct TasksView: View {
     @EnvironmentObject var model: Model
     @Environment(\.realm) var realm
     @ObservedRealmObject var project: Projects
+    @ObservedResults (Tasks.self) var tasks2
     @State private var isPresented: Bool = false
-    @State private var selectedTaskIds: [ObjectId] = []
     var tasks: [Tasks] {
         return Array(project.tasks)
     }
@@ -48,13 +48,7 @@ struct TasksView: View {
                         AddTaskView(project: project, taskToEdit: task)
                     } label: {
                         TaskRow(task: task)
-//                                if let indexToDelete = project.tasks.firstIndex(where: { $0._id == task._id }) {
-//                                    // delete the item
-//                                    $project.tasks.remove(at: indexToDelete)
-//                                }
-                      
                     }
-                    
                 }
                 .onDelete { indexSet in
 
@@ -63,19 +57,18 @@ struct TasksView: View {
                         if let indexToDelete = project.tasks.firstIndex(where: { $0._id == task._id }) {
                                                            // delete the item
                                                            $project.tasks.remove(at: indexToDelete)
-                                                       }
-//                        guard let taskToDelete = realm.object(ofType: Tasks.self, forPrimaryKey: task._id) else {
-//                            return
-//                        }
-//                        tasks.remove(taskToDelete)
+                            guard let taskToDelete = realm.object(ofType: Tasks.self, forPrimaryKey: task._id) else {
+                                                       return
+                                                   }
+                            $tasks2.remove(taskToDelete)
                     }
+                }
                 }
                 } header: {
                     Text(section.rawValue)
                 }
-                }.onDelete(perform: $project.tasks.remove)
+                }
             }
-            
             .navigationTitle(project.projectName)
         }.toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {

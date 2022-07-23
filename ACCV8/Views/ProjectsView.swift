@@ -77,7 +77,21 @@ struct ProjectsView: View {
                                   .frame(height: 300)
                               }
                              
-                          }.onDelete(perform:$projects.remove)
+                          }.onDelete {  indexSet in
+                              
+                              indexSet.forEach { index in
+                                  let project = projects[index]
+                              guard let projectToDelete = realm.object(ofType: Projects.self, forPrimaryKey: project._id) else {
+                                                            return
+                                                        }
+                                  for task in projectToDelete.tasks {
+                                                              try? realm.write {
+                                                                  realm.delete(task)
+                                                              }
+                                                          }
+                                  $projects.remove(projectToDelete)
+                          }
+
                       }
                       
                           .navigationTitle("Projects")
@@ -105,7 +119,7 @@ struct ProjectsView: View {
                 
             }
         }
-    }
+        }}
     private func setSubscription() async throws {
         let subscriptions = realm.subscriptions
         let foundSubscription = subscriptions.first(named: "allProjects")
