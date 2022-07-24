@@ -16,6 +16,7 @@ class Centre: Object, ObjectKeyIdentifiable {
     @Persisted var centreLocation: CLLocationCoordinate2D
     @Persisted var centreIndex = 0
     @Persisted var centreText = ""
+    @Persisted var centreImage2 = ""
     @Persisted var centreImage: Data?
     @Persisted var centreBackground: Data?
     @Persisted var centreLogo: Data?

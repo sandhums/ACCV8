@@ -19,7 +19,7 @@ struct SignUpView: View {
     @State private var passwordIconBounce: Bool = false
     @State private var isLoggingIn = false
     @State var error: Error?
-    @State private var signupToggle = true
+    @State private var signupToggle = false
     @State private var showAlertToggle = false
     @State private var fadeToggle = true
     @State private var alertTitle = ""
@@ -48,9 +48,9 @@ struct SignUpView: View {
                     Text("Error: \(error.localizedDescription)")
                 }
                 VStack(alignment: .leading, spacing: 16) {
-                    Text(signupToggle ? "Sign Up" : "Sign In")
+                    GradientText(text: signupToggle ? "Sign Up" : "Sign In")
                         .font(Font.largeTitle.bold())
-                        .foregroundColor(.white)
+                        .foregroundColor(.primary)
                     Text("Access to Artemis Cardiac Care is restricted to Staff and Partners")
                         .font(.subheadline)
                         .foregroundColor(Color.white.opacity(0.7))

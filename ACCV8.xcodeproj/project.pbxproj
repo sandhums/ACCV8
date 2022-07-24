@@ -140,6 +140,7 @@
 		D7BDC4CC287F0C87003ADEA5 /* ProcedureRepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BDC4CB287F0C87003ADEA5 /* ProcedureRepView.swift */; };
 		D7BDC4CE287F0CA1003ADEA5 /* RevenueRepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BDC4CD287F0CA1003ADEA5 /* RevenueRepView.swift */; };
 		D7BDC4D0288283C6003ADEA5 /* AdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BDC4CF288283C6003ADEA5 /* AdminView.swift */; };
+		D7CFE6EE288D58D9000BDE0B /* GradientText2.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CFE6ED288D58D9000BDE0B /* GradientText2.swift */; };
 		D7FFF7182884F554003FD4D6 /* AddCentre.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FFF7172884F554003FD4D6 /* AddCentre.swift */; };
 		D7FFF71A2885906E003FD4D6 /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FFF7192885906E003FD4D6 /* AddTaskView.swift */; };
 		D7FFF71C28859408003FD4D6 /* AddProjectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FFF71B28859407003FD4D6 /* AddProjectsView.swift */; };
@@ -299,6 +300,7 @@
 		D7BDC4CB287F0C87003ADEA5 /* ProcedureRepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcedureRepView.swift; sourceTree = "<group>"; };
 		D7BDC4CD287F0CA1003ADEA5 /* RevenueRepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevenueRepView.swift; sourceTree = "<group>"; };
 		D7BDC4CF288283C6003ADEA5 /* AdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminView.swift; sourceTree = "<group>"; };
+		D7CFE6ED288D58D9000BDE0B /* GradientText2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientText2.swift; sourceTree = "<group>"; };
 		D7FFF7172884F554003FD4D6 /* AddCentre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCentre.swift; sourceTree = "<group>"; };
 		D7FFF7192885906E003FD4D6 /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
 		D7FFF71B28859407003FD4D6 /* AddProjectsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProjectsView.swift; sourceTree = "<group>"; };
@@ -447,6 +449,7 @@
 				D7A210F0286EF14A00918807 /* GradientProfilePicture.swift */,
 				D7A21161286F1E4F00918807 /* CustomProgressView.swift */,
 				D79CD2D0287036EE00E7C83E /* GradientTextField.swift */,
+				D7CFE6ED288D58D9000BDE0B /* GradientText2.swift */,
 			);
 			path = CustomElements;
 			sourceTree = "<group>";
@@ -455,8 +458,8 @@
 			isa = PBXGroup;
 			children = (
 				D743C560286B76D000A42B18 /* ContentView.swift */,
-				D7A2108E286C570500918807 /* LoggedInView.swift */,
 				D7A2108A286C553900918807 /* OpenRealmView.swift */,
+				D7A2108E286C570500918807 /* LoggedInView.swift */,
 				D7A21090286C578000918807 /* ErrorView.swift */,
 				D7A21092286C57AE00918807 /* LogoutButton.swift */,
 				D7A2108C286C56E500918807 /* LoginView.swift */,
@@ -890,6 +893,7 @@
 				D7A2112B286F1C8D00918807 /* UserProfileButton.swift in Sources */,
 				D7A2112F286F1C8D00918807 /* BackButton.swift in Sources */,
 				D7A2110A286F1B3B00918807 /* Thumbnail.swift in Sources */,
+				D7CFE6EE288D58D9000BDE0B /* GradientText2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

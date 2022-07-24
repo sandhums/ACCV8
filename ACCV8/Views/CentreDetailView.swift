@@ -68,8 +68,8 @@ struct CentreDetailView: View {
         )
         .overlay(
             VStack(alignment: .leading, spacing: 16) {
-                Text(centre.centreName)
-                    .font(.title).bold()
+                GradientText2(text: "\(centre.centreName)")
+                    .font(Font.largeTitle.bold())
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .foregroundColor(.primary)
                 
