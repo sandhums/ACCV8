@@ -12,6 +12,9 @@ class Reps: Object, ObjectKeyIdentifiable {
     @Persisted var userName = ""
     @Persisted var firstName = ""
     @Persisted var lastName = ""
+    @Persisted var designation = ""
+    @Persisted var userBio = ""
+    @Persisted var userIndex = 0
     @Persisted var userMobile = ""
     @Persisted var userCentre = ""
     @Persisted var userPreferences: UserPreferences?
@@ -26,12 +29,15 @@ class Reps: Object, ObjectKeyIdentifiable {
         set { presence = newValue.asString }
     }
     
-    convenience init(userName: String, firstName: String, lastName: String, userMobile: String, userCentre: String, id: String, avatarImage: Data) {
+    convenience init(userName: String, firstName: String, lastName: String, designation: String, userBio: String, userIndex: Int, userMobile: String, userCentre: String, id: String, avatarImage: Data) {
         self.init()
         self.userName = userName
         _id = id
         self.firstName = firstName
         self.lastName = lastName
+        self.designation = designation
+        self.userBio = userBio
+        self.userIndex = userIndex
         self.userMobile = userMobile
         self.userCentre = userCentre
         self.avatarImage = avatarImage
