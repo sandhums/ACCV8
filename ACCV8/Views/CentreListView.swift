@@ -10,7 +10,7 @@ import RealmSwift
 
 struct CentreListView: View {
     @Environment(\.realm) var realm
-    @ObservedResults(Centre.self) var centres
+    @ObservedResults(Centre.self) var centres2
     @EnvironmentObject var model: Model
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     @State var contentHasScrolled = false
@@ -35,6 +35,7 @@ struct CentreListView: View {
                     .offset(y: -80)
                     .accessibilityAddTraits(.isHeader)
             LazyVGrid (columns: columns, spacing: 20) {
+                let centres = realm.objects(Centre.self).sorted(byKeyPath: "centreIndex")
                 ForEach(centres) { centre in
                     VStack {
                         Image(uiImage: UIImage(data: centre.centreLogo!) ?? UIImage())
@@ -118,21 +119,21 @@ struct CentreListView: View {
         .fullScreenCover(isPresented: $showCentre2) {
             CentreDetailView(centre: $selectedCentre)
         }
-                .task {
-                    do {
-                    try await setSubscription()
-                    } catch {
-        
-                    }
-                }
+//                .task {
+//                    do {
+//                    try await setSubscription()
+//                    } catch {
+//        
+//                    }
+//                }
         .overlay(NavigationBar(title: "Centres", contentHasScrolled: $contentHasScrolled))
         
     }
     var featured: some View {
         TabView {
-            ForEach(centres) { centre in
+            ForEach(centres2) { centre2 in
                 GeometryReader { proxy in
-                    FeaturedItem(centre: centre)
+                    FeaturedItem(centre: centre2)
                         .cornerRadius(30)
                         .modifier(OutlineModifier(cornerRadius: 30))
                         .rotation3DEffect(
@@ -143,7 +144,7 @@ struct CentreListView: View {
                                 radius: 30, x: 0, y: 30)
                         .blur(radius: abs(proxy.frame(in: .global).minX) / 40)
                         .overlay(
-                            Image(uiImage: UIImage(data: centre.centreImage!) ?? UIImage())
+                            Image(uiImage: UIImage(data: centre2.centreImage!) ?? UIImage())
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .clipShape(RoundedRectangle(cornerRadius: 20))
@@ -156,7 +157,7 @@ struct CentreListView: View {
                         .padding(20)
                         .onTapGesture {
                             showCentre = true
-                            selectedCentre = centre
+                            selectedCentre = centre2
                         }
                         .accessibilityElement(children: .combine)
                         .accessibilityAddTraits(.isButton)

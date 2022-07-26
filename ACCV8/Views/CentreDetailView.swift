@@ -18,7 +18,8 @@ struct CentreDetailView: View {
     @State var appear = [false, false, false]
     var isAnimated = true
     @State var showToggle = true
-    @ObservedResults(Chatster.self) var chatsters
+//    @ObservedResults(Chatster.self) var chatsters2
+    
     
     @EnvironmentObject var model: Model
     
@@ -86,18 +87,20 @@ struct CentreDetailView: View {
                 Divider()
                     .foregroundColor(.secondary)
                     .opacity(appear[1] ? 1 : 0)
-               
-               
-                    ForEach (chatsters) { chatster in
+                let chatsters = realm.objects(Chatster.self).sorted(byKeyPath: "userIndex")
+                let centreStaffs = chatsters.where {
+                    $0.userCentre == centre.centreName
+                }
+                    ForEach (centreStaffs) { centreStaff in
                         HStack {
-                   UserAvatarViewNoCircle(photo: chatster.avatarImage)
-                        Text(chatster.designation)
+                   UserAvatarViewNoCircle(photo: centreStaff.avatarImage)
+                        Text(centreStaff.designation)
                         .font(.footnote.weight(.medium))
                         .foregroundStyle(.secondary)
-                        Text(chatster.firstName)
+                        Text(centreStaff.firstName)
                             .font(.footnote.weight(.medium))
                             .foregroundStyle(.secondary)
-                        Text(chatster.lastName)
+                        Text(centreStaff.lastName)
                             .font(.footnote.weight(.medium))
                             .foregroundStyle(.secondary)
                     }
