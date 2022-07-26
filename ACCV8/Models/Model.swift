@@ -7,8 +7,36 @@
 
 import SwiftUI
 import Combine
+import RealmSwift
 
 class Model: ObservableObject {
+    @Published var error: String?
+    @Published var busyCount = 0
+    var shouldIndicateActivity: Bool {
+        get {
+            return busyCount > 0
+        }
+        set (newState) {
+            if newState {
+                busyCount += 1
+            } else {
+                if busyCount > 0 {
+                    busyCount -= 1
+                } else {
+                    print("Attempted to decrement busyCount below 1")
+                }
+            }
+        }
+    }
+
+    var loggedIn: Bool {
+        accApp.currentUser != nil && accApp.currentUser?.state == .loggedIn
+    }
+
+    init() {
+        accApp.currentUser?.logOut { _ in
+        }
+    }
     // Tab Bar
     @Published var showTab: Bool = true
     

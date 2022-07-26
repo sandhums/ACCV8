@@ -9,8 +9,7 @@ import SwiftUI
 import RealmSwift
 
 struct ConversationListView: View {
- 
-    @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var model: Model
     @ObservedRealmObject var user: Reps
     
     var isPreview = false
@@ -94,15 +93,6 @@ struct ConversationListView: View {
                 )
                 .padding(20)
             )
-
-            Button (action: {
-                presentationMode.wrappedValue.dismiss()
-            }, label: {
-                CloseButton()
-            })
-            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
-            .padding(20)
-            .ignoresSafeArea()
         }
         }
         .accentColor(.primary)
@@ -111,6 +101,7 @@ struct ConversationListView: View {
         }
         .sheet(isPresented: $showingAddChat) {
             NewConversationView(user: user)
+                .environmentObject(model)
                 .environment(\.realmConfiguration, accApp.currentUser!.flexibleSyncConfiguration())
         }
     }

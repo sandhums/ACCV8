@@ -10,7 +10,7 @@ import SwiftUI
 import RealmSwift
 
 struct SaveConversationButton: View {
-//    @EnvironmentObject var state: AppState
+    @EnvironmentObject var model: Model
     
     @ObservedRealmObject var user:Reps
     
@@ -25,7 +25,7 @@ struct SaveConversationButton: View {
     }
     
     private func saveConversation() {
-//        state.error = nil
+        model.error = nil
         let conversation = Conversation()
         conversation.displayName = name
         conversation.members.append(Member(userName: user.userName, state: .active))

@@ -10,7 +10,7 @@ import SwiftUI
 import RealmSwift
 
 struct NewConversationView: View {
-//    @EnvironmentObject var state: AppState
+    @EnvironmentObject var model: Model
     @Environment(\.presentationMode) var presentationMode
     @ObservedResults(Chatster.self) var chatsters
     @Environment(\.realm) var realm
@@ -82,10 +82,10 @@ struct NewConversationView: View {
                 }
                 
                 Spacer()
-//                if let error = state.error {
-//                    Text("Error: \(error)")
-//                        .foregroundColor(Color.red)
-//                }
+                if let error = model.error {
+                    Text("Error: \(error)")
+                        .foregroundColor(Color.red)
+                }
             }
             .padding()
             .navigationBarTitle("New Chat", displayMode: .inline)
@@ -139,15 +139,15 @@ struct NewConversationView: View {
     
     private func addMember(_ newMember: String) {
        
-//        state.error = nil
-//        if members.contains(newMember) {
-//            error = "\(newMember) is already part of this chat"
-//        } else {
+        model.error = nil
+        if members.contains(newMember) {
+            model.error = "\(newMember) is already part of this chat"
+        } else {
             members.append(newMember)
             candidateMember = ""
             searchUsers()
         }
-    
+    }
     
     private func deleteMember(at offsets: IndexSet) {
         members.remove(atOffsets: offsets)
