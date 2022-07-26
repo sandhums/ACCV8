@@ -18,7 +18,7 @@ struct CentreDetailView: View {
     @State var appear = [false, false, false]
     var isAnimated = true
     @State var showToggle = true
-    
+    @ObservedResults(Chatster.self) var chatsters
     
     @EnvironmentObject var model: Model
     
@@ -87,11 +87,22 @@ struct CentreDetailView: View {
                     .foregroundColor(.secondary)
                     .opacity(appear[1] ? 1 : 0)
                
-                HStack {
-                    LogoView(image: "Avatar 1")
-                    Text("Staff List ....")
+               
+                    ForEach (chatsters) { chatster in
+                        HStack {
+                   UserAvatarViewNoCircle(photo: chatster.avatarImage)
+                        Text(chatster.designation)
                         .font(.footnote.weight(.medium))
                         .foregroundStyle(.secondary)
+                        Text(chatster.firstName)
+                            .font(.footnote.weight(.medium))
+                            .foregroundStyle(.secondary)
+                        Text(chatster.lastName)
+                            .font(.footnote.weight(.medium))
+                            .foregroundStyle(.secondary)
+                    }
+                        Divider()
+                            .foregroundColor(.secondary)
                 }
               
                 .opacity(appear[1] ? 1 : 0)
@@ -114,12 +125,13 @@ struct CentreDetailView: View {
                     .backgroundStyle(cornerRadius: 30)
                     .opacity(appear[0] ? 1 : 0)
             )
-            .offset(y: scrollY > 0 ? -scrollY * 1.8 : 0)
+//                    .offset(y: scrollY > 0 ? -scrollY * 1.8 : 0)
             .frame(maxHeight: .infinity, alignment: .bottom)
-            .offset(y: 100)
+            .offset(y: 300)
             .padding(20)
         )
                 }
+                
         .frame(height: 500)
         .opacity(appear[2] ? 1 : 0)
     }
@@ -143,11 +155,6 @@ struct CentreDetailView: View {
             } label: {
                 CloseButton()
             }
-//            Button (action: {
-//                dismiss()
-//            }, label: {
-//                CloseButton()
-//            })
             .opacity(appear[0] ? 1 : 0)
             .offset(y: appear[0] ? 0 : 200)
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
@@ -171,6 +178,13 @@ struct CentreDetailView: View {
         .onAppear { fadeIn() }
         .onChange(of: showToggle) { show in
            fadeOut()
+        }
+        .task {
+            do {
+            try await setSubscription()
+            } catch {
+
+            }
         }
         .statusBar(hidden: true)
 }
@@ -227,6 +241,20 @@ struct CentreDetailView: View {
                 dismiss()
             }
            
+        }
+    }
+    private func setSubscription() async throws {
+        let subscriptions = realm.subscriptions
+        let foundSubscription = subscriptions.first(named: "allChatsters")
+        try await subscriptions.update {
+            if foundSubscription != nil {
+                foundSubscription!.updateQuery(toType: Chatster.self)
+                print("updating query allChatsters")
+            } else {
+                subscriptions.append(
+                    QuerySubscription<Chatster>(name: "allChatsters"))
+                print("appending query allChatsters")
+            }
         }
     }
 }

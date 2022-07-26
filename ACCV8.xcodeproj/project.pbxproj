@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D70DE699288FA78B00DF8CD4 /* UserAvatarViewNoCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70DE698288FA78B00DF8CD4 /* UserAvatarViewNoCircle.swift */; };
 		D70E8F962874511700D57D25 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70E8F952874511700D57D25 /* NavigationBar.swift */; };
 		D70E8F9828747D2800D57D25 /* ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70E8F9728747D2800D57D25 /* ExploreView.swift */; };
 		D743C55F286B76D000A42B18 /* AppEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D743C55E286B76D000A42B18 /* AppEntry.swift */; };
@@ -166,6 +167,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D70DE698288FA78B00DF8CD4 /* UserAvatarViewNoCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAvatarViewNoCircle.swift; sourceTree = "<group>"; };
 		D70E8F952874511700D57D25 /* NavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 		D70E8F9728747D2800D57D25 /* ExploreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreView.swift; sourceTree = "<group>"; };
 		D743C55B286B76D000A42B18 /* ACCV8.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ACCV8.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -593,6 +595,7 @@
 			isa = PBXGroup;
 			children = (
 				D7A2115D286F1D6500918807 /* UserAvatarView.swift */,
+				D70DE698288FA78B00DF8CD4 /* UserAvatarViewNoCircle.swift */,
 				D7A2115B286F1D5E00918807 /* SetUserProfileView.swift */,
 				D7A21150286F1D4400918807 /* Chat Messages */,
 				D7A21143286F1D3A00918807 /* Conversation */,
@@ -841,6 +844,7 @@
 				D7A2112D286F1C8D00918807 /* CallToActionButton.swift in Sources */,
 				D7A21095286D393D00918807 /* VisualEffectBlur.swift in Sources */,
 				D7BDC4C8287CFFBD003ADEA5 /* CentreListView.swift in Sources */,
+				D70DE699288FA78B00DF8CD4 /* UserAvatarViewNoCircle.swift in Sources */,
 				D7A210C7286EAD3400918807 /* Handbook.swift in Sources */,
 				D7A21133286F1C8D00918807 /* TextDate.swift in Sources */,
 				D7A21106286F1AD400918807 /* ThumbNailView.swift in Sources */,
