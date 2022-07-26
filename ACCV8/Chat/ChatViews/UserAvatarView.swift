@@ -37,7 +37,7 @@ struct UserAvatarView: View {
             if let image = photo {
                 return AnyView(ThumbnailPhotoView(photo: image, imageSize: Dimensions.imageSize))
             } else {
-                return AnyView(BlankPersonIconView().frame(width: Dimensions.imageSize, height: Dimensions.imageSize))
+                return AnyView(LogoView(image: "Avatar Default"))
             }
         }
     }

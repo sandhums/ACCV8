@@ -209,8 +209,12 @@ struct SignUpView: View {
             let user = try await accApp.login(credentials: Credentials.emailPassword(email: email, password: password))
             isLogged = true
             print("Successfully logged in user: \(user)")
+            print(Realm.Configuration.defaultConfiguration.fileURL!)
         } catch {
             print("Failed to log in user: \(error.localizedDescription)")
+            alertTitle = "Artemis Cardiac Care Alert!"
+            alertMessage = error.localizedDescription
+            showAlertToggle.toggle()
             self.error = error
         }
     }
@@ -225,24 +229,14 @@ struct SignUpView: View {
           
         } catch {
             print("Failed to register user: \(error.localizedDescription)")
-            alertTitle = "Uh-Oh!"
+            alertTitle = "Artemis Cardiac Care Alert!"
             alertMessage = error.localizedDescription
             showAlertToggle.toggle()
             self.error = error
         }
         } else {
-            do {
-                let user = try await accApp.login(credentials: Credentials.emailPassword(email: email, password: password))
-                isLogged = true
-                print("Successfully logged in user: \(user)")
-                print(Realm.Configuration.defaultConfiguration.fileURL!)
-            } catch {
-                print("Failed to log in user: \(error.localizedDescription)")
-                alertTitle = "Uh-Oh!"
-                alertMessage = error.localizedDescription
-                showAlertToggle.toggle()
-                self.error = error
-            }
+            await login(email: email, password: password)
+
         }
     }
     func sendPasswordResetEmail() {
