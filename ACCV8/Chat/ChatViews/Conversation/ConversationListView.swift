@@ -13,7 +13,6 @@ struct ConversationListView: View {
     @ObservedRealmObject var user: Reps
     
     var isPreview = false
-    
     @State private var conversation: Conversation?
     @State private var showConversation = false
     @State private var showingAddChat = false
@@ -51,8 +50,7 @@ struct ConversationListView: View {
                                 showConversation.toggle()
                             }) { ConversationCardView(conversation: conversation, isPreview: isPreview) }
                                
-                        }
-                        .onDelete(perform: delete)
+                        }.onDelete(perform: delete)
                     }
                     .listStyle(PlainListStyle())
                     .foregroundColor(Color.black)
@@ -65,7 +63,7 @@ struct ConversationListView: View {
                     }
                     .disabled(showingAddChat)
                 }
-                Spacer()
+                 
                 if isPreview {
                     NavigationLink(
                         destination: ChatRoomView(user: user, conversation: conversation),
@@ -91,9 +89,11 @@ struct ConversationListView: View {
                         .backgroundStyle(cornerRadius: 30)
 //                        .opacity(appear[0] ? 1 : 0)
                 )
-                .padding(20)
+                .padding(EdgeInsets(top: 20, leading: 20, bottom: 60, trailing: 20))
             )
+            
         }
+        .navigationBarHidden(true)
         }
         .accentColor(.primary)
         .onAppear {
@@ -105,8 +105,13 @@ struct ConversationListView: View {
                 .environment(\.realmConfiguration, accApp.currentUser!.flexibleSyncConfiguration())
         }
     }
-    func delete(at offsets: IndexSet) {
-        $user.conversations.remove(atOffsets: offsets)
+    func delete(at offsets: IndexSet){
+        let conversations = user.conversations.sorted(by: sortDescriptors)
+        for offset in offsets{
+            if let index = user.conversations.firstIndex(of: conversations[offset]) {
+                $user.conversations.remove(at: index)
+            }
+        }
     }
 }
 

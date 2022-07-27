@@ -18,7 +18,7 @@ struct ProjectsView: View {
                   VStack {
                       
                       if projects.isEmpty {
-                          Text("No shopping lists!")
+                          Text("No Projects!")
                       }
                       
                       List {

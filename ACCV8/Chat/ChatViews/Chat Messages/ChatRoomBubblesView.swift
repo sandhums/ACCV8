@@ -53,13 +53,14 @@ struct ChatRoomBubblesView: View {
                     }
                 }
             }
-            Spacer()
+//            Spacer()
             if isPreview {
                 ChatInputBox(user: user, send: sendMessage, focusAction: scrollToBottom)
             } else {
                 ChatInputBox(user: user, send: sendMessage, focusAction: scrollToBottom)
             }
         }
+        .padding(EdgeInsets(top: 0, leading: 0, bottom: 40, trailing: 0))
    
 //        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
 ////        .padding(20)

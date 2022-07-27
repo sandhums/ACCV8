@@ -139,7 +139,7 @@ struct NewConversationView: View {
     
     private func addMember(_ newMember: String) {
        
-        model.error = nil
+//        model.error = nil
         if members.contains(newMember) {
             model.error = "\(newMember) is already part of this chat"
         } else {
