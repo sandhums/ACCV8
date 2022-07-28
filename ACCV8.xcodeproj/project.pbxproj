@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		D70DE699288FA78B00DF8CD4 /* UserAvatarViewNoCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70DE698288FA78B00DF8CD4 /* UserAvatarViewNoCircle.swift */; };
+		D70DE69B28914D7700DF8CD4 /* ConsumptionReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70DE69A28914D7700DF8CD4 /* ConsumptionReport.swift */; };
+		D70DE69D28914E7600DF8CD4 /* Consumables.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70DE69C28914E7600DF8CD4 /* Consumables.swift */; };
+		D70DE69F2891663800DF8CD4 /* ConsumptionRepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70DE69E2891663800DF8CD4 /* ConsumptionRepView.swift */; };
+		D70DE6A128928F7A00DF8CD4 /* ConsumptionItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70DE6A028928F7A00DF8CD4 /* ConsumptionItems.swift */; };
 		D70E8F962874511700D57D25 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70E8F952874511700D57D25 /* NavigationBar.swift */; };
 		D70E8F9828747D2800D57D25 /* ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70E8F9728747D2800D57D25 /* ExploreView.swift */; };
 		D743C55F286B76D000A42B18 /* AppEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D743C55E286B76D000A42B18 /* AppEntry.swift */; };
@@ -168,6 +172,10 @@
 
 /* Begin PBXFileReference section */
 		D70DE698288FA78B00DF8CD4 /* UserAvatarViewNoCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAvatarViewNoCircle.swift; sourceTree = "<group>"; };
+		D70DE69A28914D7700DF8CD4 /* ConsumptionReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionReport.swift; sourceTree = "<group>"; };
+		D70DE69C28914E7600DF8CD4 /* Consumables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Consumables.swift; sourceTree = "<group>"; };
+		D70DE69E2891663800DF8CD4 /* ConsumptionRepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionRepView.swift; sourceTree = "<group>"; };
+		D70DE6A028928F7A00DF8CD4 /* ConsumptionItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionItems.swift; sourceTree = "<group>"; };
 		D70E8F952874511700D57D25 /* NavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 		D70E8F9728747D2800D57D25 /* ExploreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreView.swift; sourceTree = "<group>"; };
 		D743C55B286B76D000A42B18 /* ACCV8.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ACCV8.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -416,6 +424,9 @@
 				D7A21077286C100F00918807 /* Chatster.swift */,
 				D7A2107D286C311600918807 /* ProcedureReport.swift */,
 				D7A210A6286E12A800918807 /* Model.swift */,
+				D70DE69A28914D7700DF8CD4 /* ConsumptionReport.swift */,
+				D70DE69C28914E7600DF8CD4 /* Consumables.swift */,
+				D70DE6A028928F7A00DF8CD4 /* ConsumptionItems.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -474,6 +485,7 @@
 				D7BDC4C9287D010F003ADEA5 /* CentreDetailView.swift */,
 				D7BDC4CB287F0C87003ADEA5 /* ProcedureRepView.swift */,
 				D7BDC4CD287F0CA1003ADEA5 /* RevenueRepView.swift */,
+				D70DE69E2891663800DF8CD4 /* ConsumptionRepView.swift */,
 				D7BDC4CF288283C6003ADEA5 /* AdminView.swift */,
 				D7A210B9286E822500918807 /* ProjectsView.swift */,
 				D7FFF7172884F554003FD4D6 /* AddCentre.swift */,
@@ -848,6 +860,7 @@
 				D7A210C7286EAD3400918807 /* Handbook.swift in Sources */,
 				D7A21133286F1C8D00918807 /* TextDate.swift in Sources */,
 				D7A21106286F1AD400918807 /* ThumbNailView.swift in Sources */,
+				D70DE6A128928F7A00DF8CD4 /* ConsumptionItems.swift in Sources */,
 				D7A21158286F1D4400918807 /* ChatBubbleView.swift in Sources */,
 				D7A2115E286F1D6500918807 /* UserAvatarView.swift in Sources */,
 				D7A2109D286D7E6500918807 /* GradientText.swift in Sources */,
@@ -867,6 +880,7 @@
 				D7A210F7286F146200918807 /* PhotoCaptureController.swift in Sources */,
 				D7A21160286F1E2100918807 /* LocationHelper.swift in Sources */,
 				D7BDC4CC287F0C87003ADEA5 /* ProcedureRepView.swift in Sources */,
+				D70DE69D28914E7600DF8CD4 /* Consumables.swift in Sources */,
 				D7A210AF286E1AED00918807 /* Modifiers.swift in Sources */,
 				D7A21127286F1C8D00918807 /* CaptionLabel.swift in Sources */,
 				D7A2114F286F1D3A00918807 /* ConversationListView.swift in Sources */,
@@ -884,6 +898,7 @@
 				D7A210EB286EBB3F00918807 /* SectionTitleModifier.swift in Sources */,
 				D7A210FC286F18D700918807 /* PreviewHelpers.swift in Sources */,
 				D7A2114C286F1D3A00918807 /* NewConversationView.swift in Sources */,
+				D70DE69B28914D7700DF8CD4 /* ConsumptionReport.swift in Sources */,
 				D7A21136286F1C8D00918807 /* InputField.swift in Sources */,
 				D7A210E9286EBAF900918807 /* ColorExtension.swift in Sources */,
 				D7FFF71C28859408003FD4D6 /* AddProjectsView.swift in Sources */,
@@ -895,6 +910,7 @@
 				D7A21078286C100F00918807 /* Chatster.swift in Sources */,
 				D7A2116C286FF35000918807 /* ModalView.swift in Sources */,
 				D7A2112B286F1C8D00918807 /* UserProfileButton.swift in Sources */,
+				D70DE69F2891663800DF8CD4 /* ConsumptionRepView.swift in Sources */,
 				D7A2112F286F1C8D00918807 /* BackButton.swift in Sources */,
 				D7A2110A286F1B3B00918807 /* Thumbnail.swift in Sources */,
 				D7CFE6EE288D58D9000BDE0B /* GradientText2.swift in Sources */,
