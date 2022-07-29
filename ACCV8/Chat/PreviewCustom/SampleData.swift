@@ -19,22 +19,22 @@ extension Date {
         Date(timeIntervalSince1970: (50 * 365 * 24 * 3600 + Double.random(in: 0..<(3600 * 24 * 365))))
     }
 }
-extension Centre {
-    convenience init(photoName: String) {
-        self.init()
-        self.centreImage = (UIImage(named: photoName) ?? UIImage()).jpegData(compressionQuality: 0.8)
-        self.centreBackground = (UIImage(named: photoName) ?? UIImage()).jpegData(compressionQuality: 0.8)
-        self.centreLogo = (UIImage(named: photoName) ?? UIImage()).jpegData(compressionQuality: 0.8)
-    }
-    convenience init(_ centre: Centre) {
-        self.init()
-        
-        self.centreImage = centre.centreImage
-        self.centreBackground = centre.centreBackground
-        self.centreLogo = centre.centreLogo
-        
-    }
-}
+//extension Centre {
+//    convenience init(photoName: String) {
+//        self.init()
+//        self.centreImage = (UIImage(named: photoName) ?? UIImage()).jpegData(compressionQuality: 0.8)
+//        self.centreBackground = (UIImage(named: photoName) ?? UIImage()).jpegData(compressionQuality: 0.8)
+//        self.centreLogo = (UIImage(named: photoName) ?? UIImage()).jpegData(compressionQuality: 0.8)
+//    }
+//    convenience init(_ centre: Centre) {
+//        self.init()
+//        
+//        self.centreImage = centre.centreImage
+//        self.centreBackground = centre.centreBackground
+//        self.centreLogo = centre.centreLogo
+//        
+//    }
+//}
 //extension Centre: Samplable {
 //    static var samples: [Centre] { [sample] }
 //    static var sample: Centre {

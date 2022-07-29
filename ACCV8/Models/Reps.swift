@@ -16,12 +16,12 @@ class Reps: Object, ObjectKeyIdentifiable {
     @Persisted var userBio = ""
     @Persisted var userIndex = 0
     @Persisted var userMobile = ""
-    @Persisted var userCentre = ""
+    @Persisted var centreName = ""
     @Persisted var userPreferences: UserPreferences?
     @Persisted var lastSeenAt: Date?
     @Persisted var conversations = List<Conversation>()
     @Persisted var presence = "On-Line"
-    @Persisted var avatarImage: Data?
+    
 
     var isProfileSet: Bool { !(userPreferences?.isEmpty ?? true) }
     var presenceState: Presence {
@@ -29,7 +29,7 @@ class Reps: Object, ObjectKeyIdentifiable {
         set { presence = newValue.asString }
     }
     
-    convenience init(userName: String, firstName: String, lastName: String, designation: String, userBio: String, userIndex: Int, userMobile: String, userCentre: String, id: String, avatarImage: Data) {
+    convenience init(userName: String, firstName: String, lastName: String, designation: String, userBio: String, userIndex: Int, userMobile: String, centreName: String, id: String) {
         self.init()
         self.userName = userName
         _id = id
@@ -39,8 +39,7 @@ class Reps: Object, ObjectKeyIdentifiable {
         self.userBio = userBio
         self.userIndex = userIndex
         self.userMobile = userMobile
-        self.userCentre = userCentre
-        self.avatarImage = avatarImage
+        self.centreName = centreName
         userPreferences = UserPreferences()
         userPreferences?.displayName = userName
         presence = "On-Line"

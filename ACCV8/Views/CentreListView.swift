@@ -38,7 +38,8 @@ struct CentreListView: View {
                 let centres = realm.objects(Centre.self).sorted(byKeyPath: "centreIndex")
                 ForEach(centres) { centre in
                     VStack {
-                        Image(uiImage: UIImage(data: centre.centreLogo!) ?? UIImage())
+                        Image(uiImage: UIImage(named: centre.centreLogoF)!)
+//                        Image(uiImage: UIImage(data: centre.centreLogo!) ?? UIImage())
                             .resizable()
                             .frame(width: 26, height: 26)
                             .cornerRadius(10)
@@ -85,7 +86,8 @@ struct CentreListView: View {
                             .offset(y: -30)
                     )
                     .background(
-                        Image(uiImage: UIImage(data: centre.centreBackground!) ?? UIImage())
+                        Image(uiImage: UIImage(named: centre.centreBackgrnd)!)
+//                        Image(uiImage: UIImage(data: centre.centreBackground!) ?? UIImage())
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .disabled(true)

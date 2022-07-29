@@ -270,7 +270,7 @@ struct ConsumptionRepView: View {
     }
     func saveProcRep() {
         let reps = users.first
-        reportOfCentre = reps!.userCentre
+        reportOfCentre = reps!.centreName
         let p1 = ConsumptionItems(value: ["category": consCat1, "name": consName1, "quantity": consQty1])
         let p2 = ConsumptionItems(value: ["category": consCat1, "name": consName2, "quantity": consQty2])
         let p3 = ConsumptionItems(value: ["category": consCat1, "name": consName3, "quantity": consQty3])
@@ -284,7 +284,7 @@ struct ConsumptionRepView: View {
         let rep = ConsumptionReport()
         rep.reportedBy = reportedBy!
         rep.reportedById = reportedById!
-        rep.reportOfCentre = reportOfCentre
+        rep.centreName = reportOfCentre
         rep.reportDate = reportDate
         rep.consumptionItems.append(objectsIn: [p1, p2, p3, p4, p5, p6, p7, p8, p9, p10])
         $consReports.append(rep)

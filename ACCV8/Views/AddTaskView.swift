@@ -40,11 +40,9 @@ struct AddTaskView: View {
                 _title = State(initialValue: taskToEdit.taskTitle)
                 _desc = State(initialValue: taskToEdit.taskDescription)
                 _text = State(initialValue: taskToEdit.taskText)
-                _startDate = State(initialValue: taskToEdit.startDate)
                 _dueDate = State(initialValue: taskToEdit.dueDate)
                 _taskLogoF = State(initialValue: taskToEdit.taskLogoF)
                 _taskPriority = State(initialValue: taskToEdit.taskPriority)
-                _status = State(initialValue: taskToEdit.status)
                 _progressF = State(initialValue: String(taskToEdit.progressF))
             }
         }
@@ -125,11 +123,9 @@ struct AddTaskView: View {
         task.taskText = text
         task.taskOwner = taskOwner!
         task.taskOwnerId = taskOwnerId!
-        task.startDate = startDate
         task.dueDate = dueDate
         task.taskLogoF = taskLogoF
         task.taskPriority = taskPriority
-        task.status = status
         task.progressF = Double(progressF) ?? 0.0
         $project.tasks.append(task)
     }
@@ -155,11 +151,9 @@ struct AddTaskView: View {
                     objectToUpdate.taskText = text
                     objectToUpdate.taskOwner = taskOwner!
                     objectToUpdate.taskOwnerId = taskOwnerId!
-                    objectToUpdate.startDate = startDate
                     objectToUpdate.dueDate = dueDate
                     objectToUpdate.taskLogoF = taskLogoF
                     objectToUpdate.taskPriority = taskPriority
-                    objectToUpdate.status = status
                     objectToUpdate.progressF = Double(progressF) ?? 0.0
                     print("updated tasks")
                 }

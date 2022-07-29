@@ -10,11 +10,15 @@ import RealmSwift
 
 struct ProcedureRepView: View {
     @Environment(\.realm) var realm
+    @EnvironmentObject var model: Model
     @Environment(\.dismiss) var dismiss
     @ObservedResults(Reps.self) var users
     @ObservedResults(ProcedureReport.self) var procReports
 
-
+    @State private var alertTitle = "Artemis Cardiac Care Alert!"
+    @State private var alertMessage = ""
+    @State private var showAlertToggle = false
+   
     
     @State private var reportedBy = accApp.currentUser?.profile.email
     @State private var reportedById = accApp.currentUser?.id
@@ -158,10 +162,14 @@ struct ProcedureRepView: View {
                 
             }
         }
+        .alert(isPresented: $showAlertToggle, content: {
+                Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .cancel())
+            })
 }
     func saveProcRep() {
+     
         let reps = users.first
-        reportOfCentre = reps!.userCentre
+        reportOfCentre = reps!.centreName
         let p1 = Procedures(value: ["procName": procName1, "procQty": procQty])
         let p2 = Procedures(value: ["procName": procName2, "procQty": procQty2])
         let p3 = Procedures(value: ["procName": procName3, "procQty": procQty3])
@@ -173,82 +181,24 @@ struct ProcedureRepView: View {
         let rep = ProcedureReport()
         rep.reportedBy = reportedBy!
         rep.reportedById = reportedById!
-        rep.reportOfCentre = reportOfCentre
+        rep.centreName = reportOfCentre
         rep.reportDate = reportDate
         rep.procedures.append(objectsIn: [p1, p2, p3, p4, p5, p6, p7, p8])
         $procReports.append(rep)
-        
-//        let p1 = Procedures(value: [procName1, procQty])
-//        let p2 = Procedures(value: [procName2, procQty2])
-//        let p3 = Procedures(value: [procName3, procQty3])
-//        let p4 = Procedures(value: [procName4, procQty4])
-//        let p5 = Procedures(value: [procName5, procQty5])
-//        let p6 = Procedures(value: [procName6, procQty6])
-//        let p7 = Procedures(value: [procName7, procQty7])
-//        let p8 = Procedures(value: [procName8, procQty8])
-       
-//       let procs = [(procName1, procQty),(procName2, procQty2), (procName3, procQty3), (procName4, procQty4), (procName5, procQty5),(procName6, procQty6), (procName7, procQty7), (procName8, procQty8)]
-//        let procs = Procedures()
-//        procs.procName = procName1
-//        procs.procQty = procQty
-//        let procsA = [(procs.procName = procName1, procs.procQty = procQty), (procs.procName = procName2, procs.procQty = procQty2), (procs.procName = procName3, procs.procQty = procQty3), (procs.procName = procName4, procs.procQty = procQty4), (procs.procName = procName5, procs.procQty = procQty5), (procs.procName = procName6, procs.procQty = procQty6), (procs.procName = procName7, procs.procQty = procQty7), (procs.procName = procName8, procs.procQty = procQty8)]
-//        $pro.reportedBy.wrappedValue = self.reportedBy!
-//        $pro.reportedById.wrappedValue = self.reportedById!
-//        $pro.reportOfCentre.wrappedValue = self.reportOfCentre
-//        $pro.reportDate.wrappedValue = self.reportDate
-//        $pro.procedures.append(procs)
-//        $pro.procedures.append(p1)
-//        $pro.procedures.append(p2)
-//        $pro.procedures.append(p3)
-//        $pro.procedures.append(p4)
-//        $pro.procedures.append(p5)
-//        $pro.procedures.append(p6)
-//        $pro.procedures.append(p7)
-//        $pro.procedures.append(p8)
-//        pro.procedures.append(objectsIn: [p1, p2, p3, p4, p5, p6, p7, p8])
         dismiss()
-    }
-    func saveRep() {
-        let user = users.first
-        let reportOfCentre = user!.userCentre
-        let report = ProcedureReport(value: [ObjectId.generate(), reportedBy!, reportedById!, reportOfCentre, reportDate, [[procName1, procQty],[procName2, procQty2],[procName3, procQty3],[procName4, procQty4], [procName5, procQty5], [procName6, procQty6], [procName7, procQty7], [procName8, procQty8]]])
-        do {
-        let realm = try Realm()
-        realm.writeAsync {
-            realm.add(report)
-            print("report saved")
-            dismiss()
-        }
-        } catch {
-            print("error saving report")
-        }
+        accApp.syncManager.errorHandler = { error, session in
+            // handle error
 
+            print("my error\(error.localizedDescription)")
+        }
+//            alertTitle = "Artemis Cardiac Care Alert!"
+//            alertMessage = "\(error)"
+//            showAlertToggle.toggle()
+//        }
+        
+        
     }
-    func insertReport() {
-        let rep = users.first
-        reportOfCentre = rep!.userCentre
-        let user = accApp.currentUser!
-        let client = user.mongoClient("mongodb-atlas")
-         let database = client.database(named: "ACC8DB")
-         let collection = database.collection(withName: "ProcedureReport")
-         // Insert the custom user data object
-        collection.insertOne([
-            "_id": AnyBSON(ObjectId.generate()),
-            "reportOfCentre": AnyBSON(reportOfCentre),
-            "reportedBy": AnyBSON(reportedBy!),
-            "reportedById": AnyBSON(reportedById!),
-            "reportDate": AnyBSON(reportDate),
-            "procedures.procName": [[AnyBSON(procName1)],[AnyBSON(procName2)], [AnyBSON(procName3)],[AnyBSON(procName4)],[AnyBSON(procName5)],[AnyBSON(procName6)],[AnyBSON(procName7)],[AnyBSON(procName8)]],
-            "procedures.procQty" : [[AnyBSON(procQty)],[AnyBSON(procQty2)],[AnyBSON(procQty3)],[AnyBSON(procQty4)],[AnyBSON(procQty5)],[AnyBSON(procQty6)],[AnyBSON(procQty7)],[AnyBSON(procQty8)],]
-             ]) { (result) in
-             switch result {
-             case .failure(let error):
-                 print("Failed to insert document: \(error.localizedDescription)")
-             case .success(let newObjectId):
-                 print("Inserted custom user data document with object ID: \(newObjectId)")
-             }
-             }
-    }
+  
     private func setSubscription() async throws {
         let subscriptions = realm.subscriptions
         let foundSubscription = subscriptions.first(named: "allProcRep")

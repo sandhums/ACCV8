@@ -126,11 +126,11 @@ struct RevenueRepView: View {
         let revenueTot = revIPDouble + revOPDouble
         let collectAmtDouble = Double(collectAmt) ?? 0.0
         let reps = users.first
-        revenueOfCentre = reps!.userCentre
+        revenueOfCentre = reps!.centreName
         let rep = RevenueReport()
         rep.revenueReportedBy = revenueReportedBy!
         rep.revenueReportedById = revenueReportedById!
-        rep.revenueOfCentre = revenueOfCentre
+        rep.centreName = revenueOfCentre
         rep.revenueDate = revenueDate
         rep.revenueIPD = revIPDouble
         rep.revenueOPD = revOPDouble
@@ -141,7 +141,7 @@ struct RevenueRepView: View {
     }
     func insertReport() {
         let rep = users.first
-        revenueOfCentre = rep!.userCentre
+        revenueOfCentre = rep!.centreName
         let revIPDouble = Double(revenueIPD) ?? 0.0
         let revOPDouble = Double(revenueOPD) ?? 0.0
         let revenueTot = revIPDouble + revOPDouble

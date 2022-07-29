@@ -12,7 +12,7 @@ class RevenueReport: Object, ObjectKeyIdentifiable {
     @Persisted var _id: ObjectId
     @Persisted var revenueReportedBy = ""
     @Persisted var revenueReportedById = ""
-    @Persisted var revenueOfCentre = ""
+    @Persisted var centreName = ""
     @Persisted var revenueDate = Date()
     @Persisted var revenueIPD: Double?
     @Persisted var revenueOPD: Double?
@@ -22,11 +22,11 @@ class RevenueReport: Object, ObjectKeyIdentifiable {
     override static func primaryKey() -> String? {
           return "_id"
       }
-    convenience init(revenueReportedBy: String, revenueReportedById: String, revenueOfCentre: String, revenueIPD: Double?, revenueOPD: Double?, revenueTot: Double?, collectAmt: Double?) {
+    convenience init(revenueReportedBy: String, revenueReportedById: String, centreName: String, revenueIPD: Double?, revenueOPD: Double?, revenueTot: Double?, collectAmt: Double?) {
         self.init()
         self.revenueReportedBy = revenueReportedBy
         self.revenueReportedById = revenueReportedById
-        self.revenueOfCentre = revenueOfCentre
+        self.centreName = centreName
         self.revenueIPD = revenueIPD
         self.revenueOPD = revenueOPD
         self.revenueTot = revenueTot

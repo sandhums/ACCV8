@@ -19,7 +19,6 @@ struct AddProjectsView: View {
     @State var projectOwner = ""
     @State var projectOwnerId = ""
     @State var projectAdmin = ""
-    @State var projectImage2 = ""
     @State var projectBackgrnd = ""
     @State var projectLogoF = ""
     @State var latitude = ""
@@ -30,7 +29,6 @@ struct AddProjectsView: View {
         TextField("Project Text", text: $projectText)
         TextField("Project Owner", text: $projectOwner)
         TextField("Project OwnerId", text: $projectOwnerId)
-        TextField("Project Image2", text: $projectImage2)
         TextField("Project Background", text: $projectBackgrnd)
         TextField("Project Logo", text: $projectLogoF)
         TextField("Latitude", text: $latitude)
@@ -45,7 +43,6 @@ struct AddProjectsView: View {
             project.projectText = projectText
             project.projectOwner = projectOwner
             project.projectOwnerId = projectOwnerId
-            project.projectImage2 = projectImage2
             project.projectBackgrnd = projectBackgrnd
             project.projectLogoF = projectLogoF
             project.projectLocation.latitude = latD

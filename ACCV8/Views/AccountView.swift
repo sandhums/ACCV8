@@ -164,7 +164,7 @@ struct AccountView: View {
         $user.firstName.wrappedValue = self.firstName
         $user.lastName.wrappedValue = self.lastName
         $user.userMobile.wrappedValue = self.userMobile
-        $user.userCentre.wrappedValue = self.selectedCentre
+        $user.centreName.wrappedValue = self.selectedCentre
         print("settings saved")
         presentationMode.wrappedValue.dismiss()
     }
@@ -174,7 +174,7 @@ struct AccountView: View {
         firstName = user.firstName
         lastName = user.lastName
         userMobile = user.userMobile
-        selectedCentre = user.userCentre
+        selectedCentre = user.centreName
     }
     private func showPhotoTaker() {
         PhotoCaptureController.show(source: .camera) { controller, photo in

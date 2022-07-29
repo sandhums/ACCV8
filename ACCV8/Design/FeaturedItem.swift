@@ -17,7 +17,8 @@ struct FeaturedItem: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             Spacer()
-            Image(uiImage: UIImage(data: centre.centreLogo!) ?? UIImage())
+            Image(uiImage: UIImage(named: centre.centreLogoF)!)
+//            Image(uiImage: UIImage(data: centre.centreLogo!) ?? UIImage())
                 .resizable()
                 .frame(width: 26, height: 26)
                 .cornerRadius(10)

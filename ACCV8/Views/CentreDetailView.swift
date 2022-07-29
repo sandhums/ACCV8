@@ -47,7 +47,7 @@ struct CentreDetailView: View {
 //                .offset(y: appear[0] ? 0 : 200)
         )
         .background(
-            Image(uiImage: UIImage(data: centre.centreBackground!) ?? UIImage())
+            Image(uiImage: UIImage(named: centre.centreBackgrnd)!)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .offset(y: scrollY > 0 ? -scrollY : 0)
@@ -163,7 +163,8 @@ struct CentreDetailView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
             .padding(20)
             .ignoresSafeArea()
-            Image(uiImage: UIImage(data: centre.centreLogo!) ?? UIImage())
+            Image(uiImage: UIImage(named: centre.centreLogoF)!)
+//            Image(uiImage: UIImage(data: centre.centreLogo!) ?? UIImage())
                 .resizable()
                 .frame(width: 26, height: 26)
                 .cornerRadius(10)

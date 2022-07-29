@@ -58,7 +58,7 @@ struct ProjectsView: View {
                                       )
                                   }
                                   .background(
-                                    Image(uiImage: UIImage(named: project.projectImage2)!)
+                                    Image(uiImage: UIImage(data: project.projectImage!) ?? UIImage())
                                         .resizable()
                                         .aspectRatio(contentMode: .fit)
                                         .padding(20)

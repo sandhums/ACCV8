@@ -103,7 +103,7 @@ struct SetUserProfileView: View {
         firstName = user.firstName
         lastName = user.lastName
         userMobile = user.userMobile
-        selectedCentre = user.userCentre
+        selectedCentre = user.centreName
     }
     
     private func saveProfile() {
@@ -123,7 +123,7 @@ struct SetUserProfileView: View {
         $user.firstName.wrappedValue = firstName
         $user.lastName.wrappedValue = lastName
         $user.userMobile.wrappedValue = userMobile
-        $user.userCentre.wrappedValue = selectedCentre
+        $user.centreName.wrappedValue = selectedCentre
 //        isPresented.toggle()
     }
     

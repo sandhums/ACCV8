@@ -12,7 +12,7 @@ class ProcedureReport:Object, ObjectKeyIdentifiable {
     @Persisted var _id: ObjectId
     @Persisted var reportedBy = ""
     @Persisted var reportedById = ""
-    @Persisted var reportOfCentre = ""
+    @Persisted var centreName = ""
     @Persisted var reportDate = Date()
     @Persisted var procedures: List<Procedures>
     
@@ -20,11 +20,11 @@ class ProcedureReport:Object, ObjectKeyIdentifiable {
     override static func primaryKey() -> String? {
           return "_id"
       }
-    convenience init(reportedBy: String, reportedById: String, reportOfCentre: String, procedures: [Procedures]) {
+    convenience init(reportedBy: String, reportedById: String, reportOfCentre: String, centreName: String, procedures: [Procedures]) {
         self.init()
         self.reportedBy = reportedBy
         self.reportedById = reportedById
-        self.reportOfCentre = reportOfCentre
+        self.centreName = centreName
         self.procedures.append(objectsIn: procedures)
         }
 }
