@@ -185,18 +185,18 @@ struct ProcedureRepView: View {
         rep.reportDate = reportDate
         rep.procedures.append(objectsIn: [p1, p2, p3, p4, p5, p6, p7, p8])
         $procReports.append(rep)
-        dismiss()
-        accApp.syncManager.errorHandler = { error, session in
-            // handle error
-
-            Text("my error\(error.localizedDescription)")
-        }
+       
+//        accApp.syncManager.errorHandler = { error, session in
+//            // handle error
+//
+//            Text("my error\(error.localizedDescription)")
+//        }
 //            alertTitle = "Artemis Cardiac Care Alert!"
 //            alertMessage = "\(error)"
 //            showAlertToggle.toggle()
 //        }
         
-        
+        dismiss()
     }
   
     private func setSubscription() async throws {
