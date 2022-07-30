@@ -1075,6 +1075,9 @@
 				DEVELOPMENT_TEAM = GWS577L2NX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Allow Artemis Cardiac Care to access your Camera";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Artemis Cardiac Care would like to use your Location for optimum functionality";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Allow Artemis Cardiac Care access to your Photo Library";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1105,6 +1108,9 @@
 				DEVELOPMENT_TEAM = GWS577L2NX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Allow Artemis Cardiac Care to access your Camera";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Artemis Cardiac Care would like to use your Location for optimum functionality";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Allow Artemis Cardiac Care access to your Photo Library";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

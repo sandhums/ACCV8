@@ -17,7 +17,7 @@ class Chatster: Object, ObjectKeyIdentifiable {
     @Persisted var userBio = ""
     @Persisted var userIndex = 0
     @Persisted var userMobile = ""
-    @Persisted var userCentre = ""
+    @Persisted var centreName = ""
     @Persisted var displayName: String?
     @Persisted var avatarImage: Photo?
     @Persisted var lastSeenAt: Date?

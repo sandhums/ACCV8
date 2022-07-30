@@ -189,7 +189,7 @@ struct ProcedureRepView: View {
         accApp.syncManager.errorHandler = { error, session in
             // handle error
 
-            print("my error\(error.localizedDescription)")
+            Text("my error\(error.localizedDescription)")
         }
 //            alertTitle = "Artemis Cardiac Care Alert!"
 //            alertMessage = "\(error)"

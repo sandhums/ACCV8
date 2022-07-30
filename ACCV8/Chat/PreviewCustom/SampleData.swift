@@ -42,9 +42,16 @@ extension Date {
 //    }
 //}
 extension Reps {
-    convenience init(username: String, presence: Presence, userPreferences: UserPreferences, conversations: [Conversation]) {
+    convenience init(username: String, firstName: String, lastName: String, designation: String, userBio: String, userIndex: Int, userMobile: String, centreName: String, presence: Presence, userPreferences: UserPreferences, conversations: [Conversation]) {
         self.init()
         self.userName = username
+        self.firstName = firstName
+        self.lastName = lastName
+        self.designation = designation
+        self.userBio = userBio
+        self.userIndex = userIndex
+        self.userMobile = userMobile
+        self.centreName = centreName
         self.presence = presence.asString
         self.userPreferences = userPreferences
         self.lastSeenAt = Date.random
@@ -56,6 +63,13 @@ extension Reps {
     convenience init(_ user: Reps) {
         self.init()
         userName = user.userName
+        firstName = user.firstName
+        lastName = user.lastName
+        designation = user.designation
+        userBio = user.userBio
+        userIndex = user.userIndex
+        userMobile = user.userMobile
+        centreName = user.centreName
         userPreferences = UserPreferences(user.userPreferences)
         lastSeenAt = user.lastSeenAt
         conversations.append(objectsIn: user.conversations.map { Conversation($0) })
@@ -66,13 +80,13 @@ extension Reps {
 extension Reps: Samplable {
     static var samples: [Reps] { [sample, sample2, sample3] }
     static var sample: Reps {
-        Reps(username: "rod@contoso.com", presence: .onLine, userPreferences: .sample, conversations: [.sample, .sample2, .sample3])
+        Reps(username: "999@999.com", firstName: "Nico", lastName: "Sandhu", designation: "Consultant", userBio: "He he he..", userIndex: 1, userMobile: "9999999999", centreName: "Head Office", presence: .onLine, userPreferences: .sample, conversations: [.sample, .sample2, .sample3])
     }
     static var sample2: Reps {
-        Reps(username: "jane@contoso.com", presence: .offLine, userPreferences: .sample2, conversations: [.sample, .sample2])
+        Reps(username: "888@888.com", firstName: "Milo", lastName: "Sandhu", designation: "Consultant", userBio: "He he he..", userIndex: 1, userMobile: "888888888", centreName: "Panipat", presence: .offLine, userPreferences: .sample2, conversations: [.sample, .sample2])
     }
     static var sample3: Reps {
-        Reps(username: "freddy@contoso.com", presence: .hidden, userPreferences: .sample3, conversations: [.sample, .sample3])
+        Reps(username: "777@777.com", firstName: "Zoey", lastName: "Sandhu", designation: "Technician", userBio: "He he he..", userIndex: 1, userMobile: "7777777777", centreName: "Ranchi", presence: .hidden, userPreferences: .sample3, conversations: [.sample, .sample3])
     }
 }
 
@@ -94,9 +108,9 @@ extension UserPreferences {
 
 extension UserPreferences: Samplable {
     static var samples: [UserPreferences] { [sample, sample2, sample3] }
-    static var sample = UserPreferences(displayName: "Rod Burton", photo: .sample)
-    static var sample2 = UserPreferences(displayName: "Jane Tucker", photo: .sample2)
-    static var sample3 = UserPreferences(displayName: "Freddy Marks", photo: .sample3)
+    static var sample = UserPreferences(displayName: "Kilroy", photo: .sample)
+    static var sample2 = UserPreferences(displayName: "IronMan", photo: .sample2)
+    static var sample3 = UserPreferences(displayName: "Jim Morrison", photo: .sample3)
 }
 
 extension Conversation {
@@ -122,13 +136,13 @@ extension Conversation {
 extension Conversation: Samplable {
     static var samples: [Conversation] { [sample, sample2, sample3] }
     static var sample: Conversation {
-        Conversation(displayName: "Sample chat", unreadCount: 2, members: Member.samples)
+        Conversation(displayName: "Test chat", unreadCount: 2, members: Member.samples)
     }
     static var sample2: Conversation {
-        Conversation(displayName: "Fishy chat", unreadCount: 0, members: Member.samples)
+        Conversation(displayName: "Cool chat", unreadCount: 0, members: Member.samples)
     }
     static var sample3: Conversation {
-        Conversation(displayName: "Third chat", unreadCount: 1, members: Member.samples)
+        Conversation(displayName: "Hot chat", unreadCount: 1, members: Member.samples)
     }
 }
 
@@ -143,13 +157,13 @@ extension Member {
 extension Member: Samplable {
     static var samples: [Member] { [sample, sample2, sample3] }
     static var sample: Member {
-        Member(userName: "rod@contoso.com", state: .active)
+        Member(userName: "999@999.com", state: .active)
     }
     static var sample2: Member {
-        Member(userName: "jane@contoso.com", state: .active)
+        Member(userName: "888@888.com", state: .active)
     }
     static var sample3: Member {
-        Member(userName: "freddy@contoso.com", state: .pending)
+        Member(userName: "777@777.com", state: .pending)
     }
 }
 
@@ -181,12 +195,12 @@ extension Chatster: Samplable {
     static var sample3: Chatster { Chatster(user: Reps(.sample3)) }
 }
 
-//extension AppState: Samplable {
-//    static var samples: [AppState] { [sample, sample2, sample3] }
-//    static var sample: AppState { AppState() }
-//    static var sample2: AppState { AppState() }
-//    static var sample3: AppState { AppState() }
-//}
+extension Model: Samplable {
+    static var samples: [Model] { [sample, sample2, sample3] }
+    static var sample: Model { Model() }
+    static var sample2: Model { Model() }
+    static var sample3: Model { Model() }
+}
 
 extension Photo {
     convenience init(photoName: String) {

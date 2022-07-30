@@ -29,7 +29,7 @@ class Reps: Object, ObjectKeyIdentifiable {
         set { presence = newValue.asString }
     }
     
-    convenience init(userName: String, firstName: String, lastName: String, designation: String, userBio: String, userIndex: Int, userMobile: String, centreName: String, id: String) {
+    convenience init(userName: String, id: String, firstName: String, lastName: String, designation: String, userBio: String, userIndex: Int, userMobile: String, centreName: String) {
         self.init()
         self.userName = userName
         _id = id

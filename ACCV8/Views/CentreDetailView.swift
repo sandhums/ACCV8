@@ -89,7 +89,7 @@ struct CentreDetailView: View {
                     .opacity(appear[1] ? 1 : 0)
                 let chatsters = realm.objects(Chatster.self).sorted(byKeyPath: "userIndex")
                 let centreStaffs = chatsters.where {
-                    $0.userCentre == centre.centreName
+                    $0.centreName == centre.centreName
                 }
                     ForEach (centreStaffs) { centreStaff in
                         HStack {
