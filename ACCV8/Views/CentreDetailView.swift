@@ -266,6 +266,11 @@ struct CentreDetailView: View {
 
 struct CentreDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        CentreDetailView(centre: .constant(Centre()))
+        Realm.bootstrap()
+        
+        return AppearancePreviews(CentreDetailView(centre: .constant(Centre.sample)))
+                 .previewLayout(.sizeThatFits)
+                 .padding()
+                 .environment(\.realmConfiguration, (accApp.currentUser?.flexibleSyncConfiguration())!)
     }
 }

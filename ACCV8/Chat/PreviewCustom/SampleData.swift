@@ -19,28 +19,40 @@ extension Date {
         Date(timeIntervalSince1970: (50 * 365 * 24 * 3600 + Double.random(in: 0..<(3600 * 24 * 365))))
     }
 }
-//extension Centre {
-//    convenience init(photoName: String) {
-//        self.init()
-//        self.centreImage = (UIImage(named: photoName) ?? UIImage()).jpegData(compressionQuality: 0.8)
-//        self.centreBackground = (UIImage(named: photoName) ?? UIImage()).jpegData(compressionQuality: 0.8)
-//        self.centreLogo = (UIImage(named: photoName) ?? UIImage()).jpegData(compressionQuality: 0.8)
-//    }
-//    convenience init(_ centre: Centre) {
-//        self.init()
-//        
-//        self.centreImage = centre.centreImage
-//        self.centreBackground = centre.centreBackground
-//        self.centreLogo = centre.centreLogo
-//        
-//    }
-//}
-//extension Centre: Samplable {
-//    static var samples: [Centre] { [sample] }
-//    static var sample: Centre {
-//        Centre(centreName: "Ranchi", centreDesc: "Artemis Heart Centre at Raj Hospital", centreIndex: 1, centreText: "placeholder text", centreImage: Centre(photoName: "Illustration 3"), centreBackground: Centre(photoName: "Background 4"), centreLogo: Centre(photoName: "Logo1"))
-//    }
-//}
+extension Centre {
+    convenience init(centreName: String, centreDesc: String, centreIndex: Int, centreText: String, centreImage: Data?, centreBackgrnd: String, centreLogoF: String) {
+    self.init()
+    self.centreName = centreName
+    self.centreDesc = centreDesc
+    self.centreIndex = centreIndex
+    self.centreText = centreText
+    self.centreImage = centreImage
+    self.centreBackgrnd = centreBackgrnd
+    self.centreLogoF = centreLogoF
+ }
+    convenience init(_ centre: Centre) {
+        self.init()
+        centreName = centre.centreName
+        centreDesc = centre.centreDesc
+        centreIndex = centre.centreIndex
+        centreText = centre.centreText
+        centreImage = centre.centreImage
+        centreBackgrnd = centre.centreBackgrnd
+        centreLogoF  = centre.centreLogoF
+    }
+}
+extension Centre: Samplable {
+    static var samples: [Centre] { [sample, sample2, sample3] }
+    static var sample: Centre {
+        Centre(centreName: "Ranchi", centreDesc: "Artemis Heart Centre at Raj Hospital", centreIndex: 1, centreText: "placeholder text", centreImage: (UIImage(named: "Illustration 1") ?? UIImage()).jpegData(compressionQuality: 0.8), centreBackgrnd: "Background 1", centreLogoF: "Logo 1")
+    }
+    static var sample2: Centre {
+        Centre(centreName: "Panipat", centreDesc: "Artemis Heart Centre at Ravindra Hospital", centreIndex: 1, centreText: "placeholder text", centreImage: (UIImage(named: "Illustration 2") ?? UIImage()).jpegData(compressionQuality: 0.8), centreBackgrnd: "Background 2", centreLogoF: "Logo 2")
+    }
+    static var sample3: Centre {
+        Centre(centreName: "Head Office", centreDesc: "Artemis Heart Centre at Gurgaon", centreIndex: 1, centreText: "placeholder text", centreImage: (UIImage(named: "Illustration 3") ?? UIImage()).jpegData(compressionQuality: 0.8), centreBackgrnd: "Background 3", centreLogoF: "Logo 3")
+    }
+}
 extension Reps {
     convenience init(username: String, firstName: String, lastName: String, designation: String, userBio: String, userIndex: Int, userMobile: String, centreName: String, presence: Presence, userPreferences: UserPreferences, conversations: [Conversation]) {
         self.init()
@@ -80,10 +92,10 @@ extension Reps {
 extension Reps: Samplable {
     static var samples: [Reps] { [sample, sample2, sample3] }
     static var sample: Reps {
-        Reps(username: "999@999.com", firstName: "Nico", lastName: "Sandhu", designation: "Consultant", userBio: "He he he..", userIndex: 1, userMobile: "9999999999", centreName: "Head Office", presence: .onLine, userPreferences: .sample, conversations: [.sample, .sample2, .sample3])
+        Reps(username: "999@999.com", firstName: "Nico", lastName: "Sandhu", designation: "Consultant", userBio: "Super champ dog..", userIndex: 1, userMobile: "9999999999", centreName: "Head Office", presence: .onLine, userPreferences: .sample, conversations: [.sample, .sample2, .sample3])
     }
     static var sample2: Reps {
-        Reps(username: "888@888.com", firstName: "Milo", lastName: "Sandhu", designation: "Consultant", userBio: "He he he..", userIndex: 1, userMobile: "888888888", centreName: "Panipat", presence: .offLine, userPreferences: .sample2, conversations: [.sample, .sample2])
+        Reps(username: "888@888.com", firstName: "Milo", lastName: "Sandhu", designation: "Consultant", userBio: "Grandmaster..", userIndex: 1, userMobile: "888888888", centreName: "Panipat", presence: .offLine, userPreferences: .sample2, conversations: [.sample, .sample2])
     }
     static var sample3: Reps {
         Reps(username: "777@777.com", firstName: "Zoey", lastName: "Sandhu", designation: "Technician", userBio: "He he he..", userIndex: 1, userMobile: "7777777777", centreName: "Ranchi", presence: .hidden, userPreferences: .sample3, conversations: [.sample, .sample3])
@@ -283,6 +295,9 @@ extension Realm: Samplable {
             }
             ChatMessage.samples.forEach { message in
                 realm.add(message)
+            }
+            Centre.samples.forEach { centre in
+                realm.add(centre)
             }
         }
         return realm

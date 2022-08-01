@@ -24,10 +24,11 @@ class Centre: Object, ObjectKeyIdentifiable {
           return "_id"
       }
   
-    convenience init(centreName: String, centreDesc: String, centreIndex: Int, centreText: String, centreImage: Data?, centreBackgrnd: String, centreLogoF: String) {
+    convenience init(centreName: String, centreDesc: String, centreLocation: CLLocationCoordinate2D, centreIndex: Int, centreText: String, centreImage: Data?, centreBackgrnd: String, centreLogoF: String) {
         self.init()
         self.centreName = centreName
         self.centreDesc = centreDesc
+        self.centreLocation = centreLocation
         self.centreIndex = centreIndex
         self.centreText = centreText
         self.centreImage = centreImage

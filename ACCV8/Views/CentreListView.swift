@@ -210,7 +210,12 @@ struct CentreListView: View {
 
 struct CentreListView_Previews: PreviewProvider {
     static var previews: some View {
-        CentreListView(selectedCentre: Centre())
+        Realm.bootstrap()
+        
+        return AppearancePreviews(CentreListView( selectedCentre: Centre.sample))
+                 .previewLayout(.sizeThatFits)
+                 .padding()
+        
             .environmentObject(Model())
     }
 }

@@ -202,6 +202,7 @@ struct AccountView: View {
 struct AccountView_Previews: PreviewProvider {
     static var previews: some View {
         AccountView(user: Reps())
+            
     }
 }
 
