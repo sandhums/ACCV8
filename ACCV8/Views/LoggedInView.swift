@@ -7,6 +7,7 @@
 
 import SwiftUI
 import RealmSwift
+import FirebaseMessaging
 
 struct LoggedInView: View {
     @EnvironmentObject var model: Model
@@ -47,6 +48,7 @@ struct LoggedInView: View {
             
 
         }
+        .onAppear(perform: addFCMToken)
         .dynamicTypeSize(.large ... .xxLarge)
         .sheet(isPresented: $showAccount) {
             if let user = users.first {
@@ -99,7 +101,53 @@ struct LoggedInView: View {
         center.removeAllDeliveredNotifications()
         center.removeAllPendingNotificationRequests()
     }
+    func addFCMToken() {
+        if let user = accApp.currentUser {
+            Messaging.messaging().token { token, error in
+                if let error = error {
+                    print("Error fetching FCM registration token: \(error)")
+                } else if let token = token {
+                    print("FCM registration token: \(token)")
+                    // Save token in user collection
+                    user.functions.updateFCMUserToken([AnyBSON(token), AnyBSON("add")], self.onCustomDataUpdated(result:realmError:))
+                }
+            }
+            user.refreshCustomData { (_) in
+                DispatchQueue.main.async {
+                }
+            }
+        } else {
+            SignUpView()
+        }
     }
+     func onCustomDataUpdated(result: AnyBSON?, realmError: Error?) {
+        DispatchQueue.main.async {
+            
+            var errorMessage: String? = nil
+            
+            if (realmError != nil) {
+                // Error from Realm (failed function call, network error...)
+                errorMessage = realmError!.localizedDescription
+            } else if let resultDocument = result?.documentValue {
+                // Check for user error. The addTeamMember function we defined returns an object
+                // with the `error` field set if there was a user error.
+                errorMessage = resultDocument["error"]??.stringValue
+            } else {
+                // The function call did not fail but the result was not a document.
+                // This is unexpected.
+                errorMessage = "Unexpected result returned from server"
+            }
+            // Present error message if any
+            guard errorMessage == nil else {
+                let error = NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: errorMessage!])
+                print("Update user FCM token failed: \(errorMessage!)")
+                return
+            }
+            print("Update user FCM token success")
+        }
+    }
+    
+}
 
 
 struct LoggedInView_Previews: PreviewProvider {

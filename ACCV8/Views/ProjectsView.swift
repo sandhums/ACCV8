@@ -13,8 +13,25 @@ struct ProjectsView: View {
     @EnvironmentObject var model: Model
     @ObservedResults(Projects.self) var projects
      @State private var isPresented: Bool = false
+    @State var contentHasScrolled = false
     var body: some View {
+        ZStack {
+            VStack {
+                Spacer()
+                }
+            .background(Color("Background"))
+            .frame(maxWidth: .infinity)
+    //        .frame(height: 500)
+            .background(
+                Image("background-1")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+    //                .opacity(0.8)
+                    .ignoresSafeArea()
+                    .accessibility(hidden: true))
+          
         NavigationView {
+          
                   VStack {
                       
                       if projects.isEmpty {
@@ -57,14 +74,14 @@ struct ProjectsView: View {
 //                                            .blur(radius: 30)
                                       )
                                   }
-                                  .background(
-                                    Image(uiImage: UIImage(data: project.projectImage!) ?? UIImage())
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .padding(20)
-                                        .opacity(0.4)
-                                        .offset(y: -30)
-                                  )
+//                                  .background(
+////                                    Image(uiImage: UIImage(data: project.projectImage!) ?? UIImage())
+//                                        .resizable()
+//                                        .aspectRatio(contentMode: .fit)
+//                                        .padding(20)
+//                                        .opacity(0.4)
+//                                        .offset(y: -30)
+//                                  )
                                   .background(
                                     Image(uiImage: UIImage(named: project.projectBackgrnd)!)
                                         .resizable()
@@ -97,29 +114,51 @@ struct ProjectsView: View {
                           .navigationTitle("Projects")
                          
                   }
+                      .toolbar {
+                          ToolbarItem(placement: .navigationBarTrailing) {
+                              Button {
+                                  // action
+                                  isPresented = true
+                              } label: {
+                                  Image(systemName: "plus")
+                              }
+                          }
+                      }
                   .sheet(isPresented: $isPresented, content: {
                      AddProjectsView()
                   })
-                  .toolbar {
-                      ToolbarItem(placement: .navigationBarTrailing) {
-                          Button {
-                              // action
-                              isPresented = true
-                          } label: {
-                              Image(systemName: "plus")
-                          }
+    
+              }
 
-                      }
-              }
-              }
-        .task {
-            do {
-            try await setSubscription()
-            } catch {
-                
+            .task {
+                do {
+                try await setSubscription()
+                } catch {
+                    
+                }
+        }
+            
+        }
+
+        .coordinateSpace(name: "scroll")
+        }
+//        .overlay(NavigationBar(title: "Projects", contentHasScrolled: $contentHasScrolled))
+    }
+    var scrollDetection: some View {
+        GeometryReader { proxy in
+            let offset = proxy.frame(in: .named("scroll")).minY
+            Color.clear.preference(key: ScrollPreferenceKey.self, value: offset)
+        }
+        .onPreferenceChange(ScrollPreferenceKey.self) { value in
+            withAnimation(.easeInOut) {
+                if value < 0 {
+                    contentHasScrolled = true
+                } else {
+                    contentHasScrolled = false
+                }
             }
         }
-        }}
+    }
     private func setSubscription() async throws {
         let subscriptions = realm.subscriptions
         let foundSubscription = subscriptions.first(named: "allProjects")

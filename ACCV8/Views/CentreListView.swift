@@ -52,20 +52,20 @@ struct CentreListView: View {
                         Spacer()
                         
                         VStack(alignment: .leading, spacing: 8) {
-                            Text(centre.centreName)
-                                .font(.title).bold()
+                            GradientText2(text: "\(centre.centreName)")
+                                .font(Font.largeTitle.bold())
                                 .frame(maxWidth: .infinity, alignment: .leading)
-                                .foregroundColor(.white)
+                                .foregroundColor(.primary)
                             
                             Text(centre.centreDesc)
-                                .font(.footnote).bold()
+                                .font(Font.subheadline.bold())
                                 .frame(maxWidth: .infinity, alignment: .leading)
-                                .foregroundColor(.white.opacity(0.7))
+                                .foregroundColor(.primary)
                             
                             Text(centre.centreText)
                                 .font(.footnote)
                                 .frame(maxWidth: .infinity, alignment: .leading)
-                                .foregroundColor(.white.opacity(0.7))
+                                .foregroundColor(.primary)
                         }
                         .padding(20)
                         .background(
@@ -82,7 +82,7 @@ struct CentreListView: View {
                             .aspectRatio(contentMode: .fit)
                             .clipShape(RoundedRectangle(cornerRadius: 20))
                             .padding(20)
-                            .opacity(0.4)
+                            .opacity(0.6)
                             .offset(y: -30)
                     )
                     .background(
@@ -99,7 +99,7 @@ struct CentreListView: View {
                         Image(horizontalSizeClass == .compact ? "Waves 1" : "Waves 2")
                             .frame(maxHeight: .infinity, alignment: .bottom)
                             .offset(y: 0)
-                            .opacity(0)
+                            .opacity(0.7)
                     )
                     .frame(height: 300)
                     
