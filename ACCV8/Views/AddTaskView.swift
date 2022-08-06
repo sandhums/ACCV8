@@ -13,7 +13,7 @@ struct AddTaskView: View {
     @Environment(\.realm) var realm
     @ObservedRealmObject var project: Projects
     var taskToEdit: Tasks?
-       
+    @ObservedResults(Reps.self) var users
     @Environment(\.dismiss) private var dismiss
     @State private var title = ""
     @State private var desc = ""
@@ -67,7 +67,6 @@ struct AddTaskView: View {
                     .textFieldStyle(.roundedBorder)
                 TextField("Text", text: $text)
                 .textFieldStyle(.roundedBorder)
-                DatePicker(selection: $startDate, label: { Text("Start Date") })
                 DatePicker(selection: $dueDate, label: { Text("Due Date") })
             }
             VStack {
@@ -78,8 +77,6 @@ struct AddTaskView: View {
                         Text(priority.rawValue)
                     }
                 }.pickerStyle(.segmented)
-                TextField("Status", text: $status)
-                .textFieldStyle(.roundedBorder)
                 TextField("Progress",  text: $progressF)
                 .textFieldStyle(.roundedBorder)
             }
@@ -131,26 +128,29 @@ struct AddTaskView: View {
     }
     
     private func update() {
-      
+        let user = users.first
         if let taskToEdit = taskToEdit {
             do {
                 let realm = try Realm()
-                print("so far so good")
+//                print("so far so good")
 //                let idOfContactToUpdate = taskToEdit._id
 //                print("Contact \(idOfContactToUpdate) found")
-//                let objectToUpdate = realm.object(ofType: Tasks.self, forPrimaryKey: idOfContactToUpdate)
-                guard let objectToUpdate = realm.object(ofType: Tasks.self, forPrimaryKey: taskToEdit._id) else {
-                    print("Contact \(taskToEdit._id) not found")
-                    return }
+//                guard let objectToUpdate = realm.object(ofType: Tasks.self, forPrimaryKey: taskToEdit._id) else {
+//                    print("Contact \(taskToEdit._id) not found")
+//               return }
+//                guard let objectToUpdate = realm.object(ofType: Tasks.self, forPrimaryKey: taskToEdit._id) else {
+//                    print("Contact \(taskToEdit._id) not found")
+//                    return }
+                let objectToUpdate = realm.objects(Tasks.self).first!
                 try realm.write {
+//                let taskToModify = Tasks(value: ["_id": taskToEdit._id, "taskTitle": title, "taskDescription": desc, "taskText": text, "dueDate": dueDate, "taskLogoF": taskLogoF, "taskPriority": taskPriority, "progressF": Double(progressF) ?? 0.0])
+//                    realm.add(taskToModify, update: .all)
 //                    realm.create(Tasks.self,
 //                                 value: ["_id": taskToEdit._id, "taskTitle": title, "taskDescription": desc, "taskText": text, "startDate": startDate, "dueDate": dueDate, "taskLogoF": taskLogoF, "priority": priority, "status": status, "progressF": Double(progressF) ?? 0.0],
 //                                    update: .modified)
                     objectToUpdate.taskTitle = title
                     objectToUpdate.taskDescription = desc
                     objectToUpdate.taskText = text
-                    objectToUpdate.taskOwner = taskOwner!
-                    objectToUpdate.taskOwnerId = taskOwnerId!
                     objectToUpdate.dueDate = dueDate
                     objectToUpdate.taskLogoF = taskLogoF
                     objectToUpdate.taskPriority = taskPriority

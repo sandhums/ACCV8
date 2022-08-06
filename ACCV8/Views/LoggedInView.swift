@@ -49,6 +49,7 @@ struct LoggedInView: View {
 
         }
         .onAppear(perform: addFCMToken)
+        .onAppear(perform: setSyncManager)
         .dynamicTypeSize(.large ... .xxLarge)
         .sheet(isPresented: $showAccount) {
             if let user = users.first {
@@ -64,6 +65,10 @@ struct LoggedInView: View {
             clearNotifications()
         }
         }
+    func setSyncManager() {
+        let syncManager = accApp.syncManager
+        syncManager.logLevel = .debug
+    }
     func addNotification(timeInHours: Int) {
         let center = UNUserNotificationCenter.current()
 

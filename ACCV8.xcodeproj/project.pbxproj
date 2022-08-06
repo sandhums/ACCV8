@@ -24,11 +24,7 @@
 		D746E2752896E52C008DAAC3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D746E2742896E52C008DAAC3 /* GoogleService-Info.plist */; };
 		D746E280289BF15A008DAAC3 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D746E27F289BF15A008DAAC3 /* NotificationService.swift */; };
 		D746E284289BF15A008DAAC3 /* NotificationPayloadExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D746E27D289BF15A008DAAC3 /* NotificationPayloadExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		D746E290289BF204008DAAC3 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D746E28F289BF204008DAAC3 /* UserNotifications.framework */; };
-		D746E292289BF204008DAAC3 /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D746E291289BF204008DAAC3 /* UserNotificationsUI.framework */; };
-		D746E295289BF204008DAAC3 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D746E294289BF204008DAAC3 /* NotificationViewController.swift */; };
-		D746E298289BF204008DAAC3 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D746E296289BF204008DAAC3 /* MainInterface.storyboard */; };
-		D746E29C289BF204008DAAC3 /* NotificationContentExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D746E28D289BF204008DAAC3 /* NotificationContentExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D746E2A1289D5E0C008DAAC3 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = D746E2A0289D5E0C008DAAC3 /* FirebaseMessaging */; };
 		D769626A2896B33000EAA306 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = D76962692896B33000EAA306 /* FirebaseAnalytics */; };
 		D769626E2896B33000EAA306 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D769626D2896B33000EAA306 /* FirebaseAnalyticsSwift */; };
 		D76962702896B33000EAA306 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = D769626F2896B33000EAA306 /* FirebaseAppCheck */; };
@@ -37,9 +33,9 @@
 		D76962762896B33000EAA306 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = D76962752896B33000EAA306 /* FirebaseDatabase */; };
 		D76962782896B33000EAA306 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D76962772896B33000EAA306 /* FirebaseDatabaseSwift */; };
 		D769627A2896B33000EAA306 /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = D76962792896B33000EAA306 /* FirebaseFunctions */; };
-		D769627C2896B33000EAA306 /* FirebaseInAppMessaging-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = D769627B2896B33000EAA306 /* FirebaseInAppMessaging-Beta */; };
+		D769627C2896B33000EAA306 /* FirebaseInAppMessaging-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = D769627B2896B33000EAA306 /* FirebaseInAppMessaging-Beta */; settings = {ATTRIBUTES = (Required, ); }; };
 		D769627E2896B33000EAA306 /* FirebaseInAppMessagingSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = D769627D2896B33000EAA306 /* FirebaseInAppMessagingSwift-Beta */; };
-		D76962802896B33000EAA306 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = D769627F2896B33000EAA306 /* FirebaseMessaging */; };
+		D76962802896B33000EAA306 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = D769627F2896B33000EAA306 /* FirebaseMessaging */; settings = {ATTRIBUTES = (Required, ); }; };
 		D76962822896B33000EAA306 /* FirebasePerformance in Frameworks */ = {isa = PBXBuildFile; productRef = D76962812896B33000EAA306 /* FirebasePerformance */; };
 		D76962842896B33000EAA306 /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = D76962832896B33000EAA306 /* FirebaseRemoteConfig */; };
 		D76962862896B33000EAA306 /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D76962852896B33000EAA306 /* FirebaseRemoteConfigSwift */; };
@@ -197,13 +193,6 @@
 			remoteGlobalIDString = D746E27C289BF15A008DAAC3;
 			remoteInfo = NotificationPayloadExtension;
 		};
-		D746E29A289BF204008DAAC3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D743C553286B76D000A42B18 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D746E28C289BF204008DAAC3;
-			remoteInfo = NotificationContentExtension;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -214,7 +203,6 @@
 			dstSubfolderSpec = 13;
 			files = (
 				D746E284289BF15A008DAAC3 /* NotificationPayloadExtension.appex in Embed App Extensions */,
-				D746E29C289BF204008DAAC3 /* NotificationContentExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -244,12 +232,8 @@
 		D746E27D289BF15A008DAAC3 /* NotificationPayloadExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotificationPayloadExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		D746E27F289BF15A008DAAC3 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		D746E281289BF15A008DAAC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D746E28D289BF204008DAAC3 /* NotificationContentExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotificationContentExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		D746E28F289BF204008DAAC3 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		D746E291289BF204008DAAC3 /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
-		D746E294289BF204008DAAC3 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
-		D746E297289BF204008DAAC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
-		D746E299289BF204008DAAC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D76962872896B84C00EAA306 /* ACCV8Release.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ACCV8Release.entitlements; sourceTree = "<group>"; };
 		D76962882896B85D00EAA306 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D79CD2D0287036EE00E7C83E /* GradientTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientTextField.swift; sourceTree = "<group>"; };
@@ -424,15 +408,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D746E28A289BF204008DAAC3 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D746E292289BF204008DAAC3 /* UserNotificationsUI.framework in Frameworks */,
-				D746E290289BF204008DAAC3 /* UserNotifications.framework in Frameworks */,
+				D746E2A1289D5E0C008DAAC3 /* FirebaseMessaging in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,7 +422,6 @@
 				D743C56E286B76D100A42B18 /* ACCV8Tests */,
 				D743C578286B76D100A42B18 /* ACCV8UITests */,
 				D746E27E289BF15A008DAAC3 /* NotificationPayloadExtension */,
-				D746E293289BF204008DAAC3 /* NotificationContentExtension */,
 				D746E28E289BF204008DAAC3 /* Frameworks */,
 				D743C55C286B76D000A42B18 /* Products */,
 			);
@@ -459,7 +434,6 @@
 				D743C56B286B76D100A42B18 /* ACCV8Tests.xctest */,
 				D743C575286B76D100A42B18 /* ACCV8UITests.xctest */,
 				D746E27D289BF15A008DAAC3 /* NotificationPayloadExtension.appex */,
-				D746E28D289BF204008DAAC3 /* NotificationContentExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -525,16 +499,6 @@
 				D746E291289BF204008DAAC3 /* UserNotificationsUI.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		D746E293289BF204008DAAC3 /* NotificationContentExtension */ = {
-			isa = PBXGroup;
-			children = (
-				D746E294289BF204008DAAC3 /* NotificationViewController.swift */,
-				D746E296289BF204008DAAC3 /* MainInterface.storyboard */,
-				D746E299289BF204008DAAC3 /* Info.plist */,
-			);
-			path = NotificationContentExtension;
 			sourceTree = "<group>";
 		};
 		D7A21089286C470A00918807 /* Models */ = {
@@ -787,7 +751,6 @@
 			);
 			dependencies = (
 				D746E283289BF15A008DAAC3 /* PBXTargetDependency */,
-				D746E29B289BF204008DAAC3 /* PBXTargetDependency */,
 			);
 			name = ACCV8;
 			packageProductDependencies = (
@@ -861,25 +824,11 @@
 			dependencies = (
 			);
 			name = NotificationPayloadExtension;
+			packageProductDependencies = (
+				D746E2A0289D5E0C008DAAC3 /* FirebaseMessaging */,
+			);
 			productName = NotificationPayloadExtension;
 			productReference = D746E27D289BF15A008DAAC3 /* NotificationPayloadExtension.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
-		D746E28C289BF204008DAAC3 /* NotificationContentExtension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D746E29D289BF204008DAAC3 /* Build configuration list for PBXNativeTarget "NotificationContentExtension" */;
-			buildPhases = (
-				D746E289289BF204008DAAC3 /* Sources */,
-				D746E28A289BF204008DAAC3 /* Frameworks */,
-				D746E28B289BF204008DAAC3 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = NotificationContentExtension;
-			productName = NotificationContentExtension;
-			productReference = D746E28D289BF204008DAAC3 /* NotificationContentExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
@@ -906,9 +855,6 @@
 					D746E27C289BF15A008DAAC3 = {
 						CreatedOnToolsVersion = 13.4.1;
 					};
-					D746E28C289BF204008DAAC3 = {
-						CreatedOnToolsVersion = 13.4.1;
-					};
 				};
 			};
 			buildConfigurationList = D743C556286B76D000A42B18 /* Build configuration list for PBXProject "ACCV8" */;
@@ -932,7 +878,6 @@
 				D743C56A286B76D100A42B18 /* ACCV8Tests */,
 				D743C574286B76D100A42B18 /* ACCV8UITests */,
 				D746E27C289BF15A008DAAC3 /* NotificationPayloadExtension */,
-				D746E28C289BF204008DAAC3 /* NotificationContentExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -966,14 +911,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D746E28B289BF204008DAAC3 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D746E298289BF204008DAAC3 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1149,14 +1086,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D746E289289BF204008DAAC3 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D746E295289BF204008DAAC3 /* NotificationViewController.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1175,23 +1104,7 @@
 			target = D746E27C289BF15A008DAAC3 /* NotificationPayloadExtension */;
 			targetProxy = D746E282289BF15A008DAAC3 /* PBXContainerItemProxy */;
 		};
-		D746E29B289BF204008DAAC3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D746E28C289BF204008DAAC3 /* NotificationContentExtension */;
-			targetProxy = D746E29A289BF204008DAAC3 /* PBXContainerItemProxy */;
-		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		D746E296289BF204008DAAC3 /* MainInterface.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D746E297289BF204008DAAC3 /* Base */,
-			);
-			name = MainInterface.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		D743C57D286B76D100A42B18 /* Debug */ = {
@@ -1512,60 +1425,6 @@
 			};
 			name = Release;
 		};
-		D746E29E289BF204008DAAC3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = GWS577L2NX;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = NotificationContentExtension/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = NotificationContentExtension;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.mssandhu.ACCV8.NotificationContentExtension;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		D746E29F289BF204008DAAC3 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = GWS577L2NX;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = NotificationContentExtension/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = NotificationContentExtension;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.mssandhu.ACCV8.NotificationContentExtension;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1614,15 +1473,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D746E29D289BF204008DAAC3 /* Build configuration list for PBXNativeTarget "NotificationContentExtension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D746E29E289BF204008DAAC3 /* Debug */,
-				D746E29F289BF204008DAAC3 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
@@ -1645,6 +1495,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		D746E2A0289D5E0C008DAAC3 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D76962682896B33000EAA306 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
 		D76962692896B33000EAA306 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D76962682896B33000EAA306 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

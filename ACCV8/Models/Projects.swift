@@ -10,7 +10,7 @@ import RealmSwift
 import MapKit
 
 class Projects: Object, ObjectKeyIdentifiable {
-    @Persisted var _id: ObjectId
+    @Persisted(primaryKey: true) var _id: ObjectId
     @Persisted var projectName = ""
     @Persisted var projectText = ""
     @Persisted var projectOwner = ""
@@ -20,7 +20,7 @@ class Projects: Object, ObjectKeyIdentifiable {
     @Persisted var projectBackgrnd = ""
     @Persisted var projectLogoF = ""
     @Persisted var projectLocation: CLLocationCoordinate2D
-    @Persisted var tasks: RealmSwift.List<Tasks>
+    @Persisted var tasks: List<Tasks> = List<Tasks>()
     
     override static func primaryKey() -> String? {
           return "_id"

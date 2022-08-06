@@ -10,7 +10,7 @@ import RealmSwift
 import SwiftUI
 
 class Tasks: Object, ObjectKeyIdentifiable {
-    @Persisted var _id: ObjectId
+    @Persisted(primaryKey: true) var _id: ObjectId
     @Persisted var taskTitle = ""
     @Persisted var taskDescription = ""
     @Persisted var taskText = ""
@@ -23,7 +23,7 @@ class Tasks: Object, ObjectKeyIdentifiable {
     @Persisted var taskPriority = TaskPriority.medium
 
 
-    @Persisted(originProperty: "tasks") var assignee: LinkingObjects<Projects>
+//    @Persisted(originProperty: "tasks") var assignee: LinkingObjects<Projects>
     
     override static func primaryKey() -> String? {
           return "_id"

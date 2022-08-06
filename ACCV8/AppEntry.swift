@@ -12,17 +12,21 @@ import FirebaseMessaging
 import FirebaseAnalytics
 import UserNotifications
 
+
 let accAppId = "accv8-vofbt"
 let accApp = RealmSwift.App(id: accAppId)
+
 
 @main
 struct AppEntry: SwiftUI.App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @StateObject var model = Model()
+    
     var body: some Scene {
         WindowGroup {
                 ContentView(app: accApp)
                 .environmentObject(model)
+            
         }
     }
 }
@@ -61,8 +65,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         // this callback will not be fired till the user taps on the notification launching the application.
         // TODO: Handle data of notification
         // With swizzling disabled you must let Messaging know about the message, for Analytics
-        // Messaging.messaging().appDidReceiveMessage(userInfo)
-        // Print message ID.
+//         Messaging.messaging().appDidReceiveMessage(userInfo)
+//         Print message ID.
       if let messageID = userInfo[gcmMessageIDKey] {
         print("Message ID: \(messageID)")
       }

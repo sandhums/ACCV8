@@ -17,7 +17,6 @@ class Reps: Object, ObjectKeyIdentifiable {
     @Persisted var userIndex = 0
     @Persisted var userMobile = ""
     @Persisted var centreName = ""
-    @Persisted var taskNotifications: Bool = false
     @Persisted var userPreferences: UserPreferences?
     @Persisted var lastSeenAt: Date?
     @Persisted var conversations = List<Conversation>()
