@@ -31,7 +31,7 @@ struct ContentView: View {
                 OpenRealmView()
                     .environment(\.realmConfiguration, config)
         } else {
-            SignUpView()
+            SignInView()
         }
            
 }

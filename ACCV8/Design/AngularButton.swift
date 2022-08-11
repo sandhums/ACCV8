@@ -9,12 +9,9 @@ import SwiftUI
 
 struct AngularButton: View {
     var title = ""
-    @State var tap = false
-    @GestureState var isDetectingLongPress = false
-    @State var completedLongPress = false
     
     var body: some View {
-        Text(completedLongPress ? "Loading..." : title)
+        Text(title)
             .fontWeight(.semibold)
             .frame(maxWidth: .infinity, maxHeight: 50)
             .background(
@@ -27,24 +24,8 @@ struct AngularButton: View {
             )
             .frame(height: 50)
             .accentColor(.primary.opacity(0.7))
-//            .background(angularGradient)
-            .scaleEffect(isDetectingLongPress ? 0.8 : 1)
-//            .gesture(
-//                LongPressGesture(minimumDuration: 0.5)
-//                    .updating($isDetectingLongPress, body: { currentState, gestureState, transaction in
-//                        gestureState = currentState
-//                        transaction.animation = .spring(response: 0.5, dampingFraction: 0.5)
-//                    })
-//                    .onEnded({ finished in
-//                        completedLongPress = finished
-//                    })
-//            )
-//            .simultaneousGesture(
-//                TapGesture().onEnded({ value in
-//                    completedLongPress = true
-//                })
-//            )
     }
+    
     
     var angularGradient: some View {
         RoundedRectangle(cornerRadius: 20)

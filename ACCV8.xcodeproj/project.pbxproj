@@ -158,6 +158,8 @@
 		D7A21169286F1FE300918807 /* PreviewNoDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A21165286F1FE300918807 /* PreviewNoDevice.swift */; };
 		D7A2116A286F1FE300918807 /* PreviewDevices.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A21166286F1FE300918807 /* PreviewDevices.swift */; };
 		D7A2116C286FF35000918807 /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A2116B286FF35000918807 /* ModalView.swift */; };
+		D7BB8FF728A147F40012A3DE /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB8FF628A147F40012A3DE /* SignInView.swift */; };
+		D7BB8FF928A4D1F00012A3DE /* SignInWithAppleButtonCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB8FF828A4D1F00012A3DE /* SignInWithAppleButtonCoordinator.swift */; };
 		D7BDC4C8287CFFBD003ADEA5 /* CentreListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BDC4C7287CFFBD003ADEA5 /* CentreListView.swift */; };
 		D7BDC4CA287D010F003ADEA5 /* CentreDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BDC4C9287D010F003ADEA5 /* CentreDetailView.swift */; };
 		D7BDC4CC287F0C87003ADEA5 /* ProcedureRepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BDC4CB287F0C87003ADEA5 /* ProcedureRepView.swift */; };
@@ -353,6 +355,8 @@
 		D7A21165286F1FE300918807 /* PreviewNoDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewNoDevice.swift; sourceTree = "<group>"; };
 		D7A21166286F1FE300918807 /* PreviewDevices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewDevices.swift; sourceTree = "<group>"; };
 		D7A2116B286FF35000918807 /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
+		D7BB8FF628A147F40012A3DE /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		D7BB8FF828A4D1F00012A3DE /* SignInWithAppleButtonCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInWithAppleButtonCoordinator.swift; sourceTree = "<group>"; };
 		D7BDC4C7287CFFBD003ADEA5 /* CentreListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentreListView.swift; sourceTree = "<group>"; };
 		D7BDC4C9287D010F003ADEA5 /* CentreDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentreDetailView.swift; sourceTree = "<group>"; };
 		D7BDC4CB287F0C87003ADEA5 /* ProcedureRepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcedureRepView.swift; sourceTree = "<group>"; };
@@ -537,6 +541,7 @@
 				D7A210E8286EBAF900918807 /* ColorExtension.swift */,
 				D7A210F6286F146200918807 /* PhotoCaptureController.swift */,
 				D7A2115F286F1E2100918807 /* LocationHelper.swift */,
+				D7BB8FF828A4D1F00012A3DE /* SignInWithAppleButtonCoordinator.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -571,6 +576,7 @@
 				D7A21090286C578000918807 /* ErrorView.swift */,
 				D7A21092286C57AE00918807 /* LogoutButton.swift */,
 				D7A2108C286C56E500918807 /* LoginView.swift */,
+				D7BB8FF628A147F40012A3DE /* SignInView.swift */,
 				D7A21099286D3A5600918807 /* SignUpView.swift */,
 				D7A210B5286E81D700918807 /* ReportsView.swift */,
 				D7A210B7286E820A00918807 /* ChatView.swift */,
@@ -1003,8 +1009,10 @@
 				D7BDC4C8287CFFBD003ADEA5 /* CentreListView.swift in Sources */,
 				D70DE699288FA78B00DF8CD4 /* UserAvatarViewNoCircle.swift in Sources */,
 				D7A210C7286EAD3400918807 /* Handbook.swift in Sources */,
+				D7BB8FF928A4D1F00012A3DE /* SignInWithAppleButtonCoordinator.swift in Sources */,
 				D7A21133286F1C8D00918807 /* TextDate.swift in Sources */,
 				D7A21106286F1AD400918807 /* ThumbNailView.swift in Sources */,
+				D7BB8FF728A147F40012A3DE /* SignInView.swift in Sources */,
 				D70DE6A128928F7A00DF8CD4 /* ConsumptionItems.swift in Sources */,
 				D7A21158286F1D4400918807 /* ChatBubbleView.swift in Sources */,
 				D7A2115E286F1D6500918807 /* UserAvatarView.swift in Sources */,

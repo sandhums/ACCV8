@@ -9,7 +9,6 @@ import SwiftUI
 import RealmSwift
 import Firebase
 import FirebaseMessaging
-import FirebaseAnalytics
 import UserNotifications
 
 

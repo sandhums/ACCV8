@@ -37,9 +37,9 @@ struct SignUpView: View {
                 .aspectRatio(contentMode: .fill)
                 .edgesIgnoringSafeArea(.all)
                 .opacity(fadeToggle ? 1.0 : 0.0)
-            Color("secondaryBackground")
-                .edgesIgnoringSafeArea(.all)
-                .opacity(fadeToggle ? 0 : 0.5)
+//            Color("secondaryBackground")
+//                .edgesIgnoringSafeArea(.all)
+//                .opacity(fadeToggle ? 0 : 0.5)
             VStack {
                 if isLoggingIn {
                     ProgressView()
@@ -128,6 +128,7 @@ struct SignUpView: View {
                             isLoggingIn = false
                         }
                     })
+                  
                     if signupToggle {
                         Text("By clicking on Sign up, you agree to our Terms of service and Privacy policy.")
                             .font(.footnote)
