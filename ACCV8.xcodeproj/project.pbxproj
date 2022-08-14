@@ -160,6 +160,9 @@
 		D7A2116C286FF35000918807 /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A2116B286FF35000918807 /* ModalView.swift */; };
 		D7BB8FF728A147F40012A3DE /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB8FF628A147F40012A3DE /* SignInView.swift */; };
 		D7BB8FF928A4D1F00012A3DE /* SignInWithAppleButtonCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB8FF828A4D1F00012A3DE /* SignInWithAppleButtonCoordinator.swift */; };
+		D7BB900528A8FC550012A3DE /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB900428A8FC550012A3DE /* LocationView.swift */; };
+		D7BB900928A8FCA40012A3DE /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB900828A8FCA40012A3DE /* AnnotationView.swift */; };
+		D7BB900B28A91F920012A3DE /* GradientText3.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB900A28A91F920012A3DE /* GradientText3.swift */; };
 		D7BDC4C8287CFFBD003ADEA5 /* CentreListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BDC4C7287CFFBD003ADEA5 /* CentreListView.swift */; };
 		D7BDC4CA287D010F003ADEA5 /* CentreDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BDC4C9287D010F003ADEA5 /* CentreDetailView.swift */; };
 		D7BDC4CC287F0C87003ADEA5 /* ProcedureRepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BDC4CB287F0C87003ADEA5 /* ProcedureRepView.swift */; };
@@ -357,6 +360,9 @@
 		D7A2116B286FF35000918807 /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
 		D7BB8FF628A147F40012A3DE /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		D7BB8FF828A4D1F00012A3DE /* SignInWithAppleButtonCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInWithAppleButtonCoordinator.swift; sourceTree = "<group>"; };
+		D7BB900428A8FC550012A3DE /* LocationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
+		D7BB900828A8FCA40012A3DE /* AnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnotationView.swift; sourceTree = "<group>"; };
+		D7BB900A28A91F920012A3DE /* GradientText3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientText3.swift; sourceTree = "<group>"; };
 		D7BDC4C7287CFFBD003ADEA5 /* CentreListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentreListView.swift; sourceTree = "<group>"; };
 		D7BDC4C9287D010F003ADEA5 /* CentreDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentreDetailView.swift; sourceTree = "<group>"; };
 		D7BDC4CB287F0C87003ADEA5 /* ProcedureRepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcedureRepView.swift; sourceTree = "<group>"; };
@@ -563,6 +569,7 @@
 				D7A21161286F1E4F00918807 /* CustomProgressView.swift */,
 				D79CD2D0287036EE00E7C83E /* GradientTextField.swift */,
 				D7CFE6ED288D58D9000BDE0B /* GradientText2.swift */,
+				D7BB900A28A91F920012A3DE /* GradientText3.swift */,
 			);
 			path = CustomElements;
 			sourceTree = "<group>";
@@ -580,6 +587,8 @@
 				D7A21099286D3A5600918807 /* SignUpView.swift */,
 				D7A210B5286E81D700918807 /* ReportsView.swift */,
 				D7A210B7286E820A00918807 /* ChatView.swift */,
+				D7BB900428A8FC550012A3DE /* LocationView.swift */,
+				D7BB900828A8FCA40012A3DE /* AnnotationView.swift */,
 				D7A210F2286F020000918807 /* AccountView.swift */,
 				D7A2116B286FF35000918807 /* ModalView.swift */,
 				D7BDC4C7287CFFBD003ADEA5 /* CentreListView.swift */,
@@ -950,6 +959,7 @@
 				D7A2114E286F1D3A00918807 /* SaveConversationButton.swift in Sources */,
 				D7A210B1286E1B4800918807 /* Animations.swift in Sources */,
 				D7A21082286C3CD700918807 /* Centre.swift in Sources */,
+				D7BB900928A8FCA40012A3DE /* AnnotationView.swift in Sources */,
 				D7FFF71E2885980D003FD4D6 /* TasksView.swift in Sources */,
 				D7A210B6286E81D700918807 /* ReportsView.swift in Sources */,
 				D7A21132286F1C8D00918807 /* SearchBox.swift in Sources */,
@@ -967,6 +977,7 @@
 				D7A2114B286F1D3A00918807 /* ConversationCardView.swift in Sources */,
 				D7A210DB286EB97700918807 /* PlayButton.swift in Sources */,
 				D7A21129286F1C8D00918807 /* DeleteButton.swift in Sources */,
+				D7BB900B28A91F920012A3DE /* GradientText3.swift in Sources */,
 				D7A210C5286EAD1100918807 /* Topic.swift in Sources */,
 				D7BDC4CA287D010F003ADEA5 /* CentreDetailView.swift in Sources */,
 				D7A21070286C0F5E00918807 /* UserPreferences.swift in Sources */,
@@ -1064,6 +1075,7 @@
 				D7A2112B286F1C8D00918807 /* UserProfileButton.swift in Sources */,
 				D70DE69F2891663800DF8CD4 /* ConsumptionRepView.swift in Sources */,
 				D7A2112F286F1C8D00918807 /* BackButton.swift in Sources */,
+				D7BB900528A8FC550012A3DE /* LocationView.swift in Sources */,
 				D7A2110A286F1B3B00918807 /* Thumbnail.swift in Sources */,
 				D7CFE6EE288D58D9000BDE0B /* GradientText2.swift in Sources */,
 			);

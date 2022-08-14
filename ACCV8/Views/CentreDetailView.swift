@@ -8,18 +8,25 @@
 import SwiftUI
 import RealmSwift
 import MessageUI
+import MapKit
 
 struct CentreDetailView: View {
     @Environment(\.realm) var realm
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.dismiss) var dismiss
     @Binding var centre: Centre
+    @ObservedResults(Centre.self) var centres
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     @State var viewState: CGSize = .zero
     @State var appear = [false, false, false]
     var isAnimated = true
     @State var showToggle = true
     @EnvironmentObject var model: Model
+    @State private var showingFullMap = false
+    @State private var region = MKCoordinateRegion(
+        center: CLLocationCoordinate2D(latitude: 24.681_858, longitude: 81.811_623),
+        span: MKCoordinateSpan(latitudeDelta: 16, longitudeDelta: 16)
+    )
     
     var body: some View {
         ZStack {
@@ -129,7 +136,8 @@ struct CentreDetailView: View {
             .font(Font.largeTitle.bold())
             .frame(maxWidth: .infinity, alignment: .leading)
             .foregroundColor(.primary)
-        
+        HStack {
+        VStack {
         Text(centre.centreDesc.uppercased())
             .font(.footnote).bold()
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -140,6 +148,19 @@ struct CentreDetailView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .foregroundColor(.primary.opacity(0.7))
             .accessibilityElement(children: .combine)
+        }
+            VStack {
+                Button(action: { showingFullMap.toggle() }) {     Map(coordinateRegion: $region, annotationItems: centres, annotationContent: { centre in
+                    MapMarker(coordinate: centre.centreLocation) 
+                    
+                 })
+                    
+                .frame(width: 70, height: 70, alignment: .center)
+                .clipShape(RoundedRectangle(cornerRadius: 8))
+            }
+                .buttonStyle(.plain)
+            }
+        }
     }
     
     .padding(20)
@@ -164,7 +185,10 @@ struct CentreDetailView: View {
     .padding(20)
 )
         }
-.frame(height: 500)
+        .sheet(isPresented: $showingFullMap){
+            LocationView()
+        }
+        .frame(height: 500)
     }
     
     var staffDetail: some View {
@@ -191,6 +215,7 @@ struct CentreDetailView: View {
                             UIApplication.shared.open(url)
                            }) {
                                Image (systemName: "phone.circle.fill")
+                                   .symbolRenderingMode(.multicolor)
                            }.buttonStyle(.plain)
                     }
                     HStack {
@@ -204,7 +229,8 @@ struct CentreDetailView: View {
                             guard let url = URL(string: emailformatted) else { return }
                             UIApplication.shared.open(url)
                               }) {
-                             Image (systemName: "envelope.open.fill")
+                             Image (systemName: "envelope.circle.fill")
+                                .symbolRenderingMode(.multicolor)
                          }
                            .buttonStyle(.plain)
                     }

@@ -29,7 +29,7 @@ struct LoggedInView: View {
                     CentreListView(selectedCentre: Centre())
                        
                 case .reports:
-                    ReportsView()
+                    LocationView()
                 case .chat:
                     if let user = users.first {
                     ConversationListView(user: user)
