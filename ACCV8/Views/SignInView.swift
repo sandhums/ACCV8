@@ -115,13 +115,14 @@ struct SignInView: View {
                             self.sendPasswordResetEmail()
                         }, label: {
                             HStack(spacing: 4) {
-                                Text("Forgot password? Fill email to")
+                                Text("Forgot password?")
                                     .font(.footnote)
                                     .foregroundColor(.primary.opacity(0.7))
                                 GradientText(text: "Reset Password")
                                     .font(Font.footnote.bold())
                             }
                         })
+                        .buttonStyle(.plain)
                     }
                     
                     Button(action: {
@@ -132,7 +133,7 @@ struct SignInView: View {
                             .frame(height: 50)
                             .cornerRadius(16)
                     })
-                    
+                    .buttonStyle(.plain)
                 }
                 .coordinateSpace(name: "stack")
                 .padding(20)

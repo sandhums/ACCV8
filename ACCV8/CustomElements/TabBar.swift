@@ -46,7 +46,7 @@ struct TabBar: View {
             .frame(maxHeight: .infinity, alignment: .bottom)
             .ignoresSafeArea()
             .offset(y: showTab ? 0 : 200)
-//            .accessibility(hidden: !model.showTab)
+
         }
     }
     
@@ -84,6 +84,7 @@ struct TabBar: View {
                     }
                 )
             }
+            .buttonStyle(.plain)
             .frame(width: 44)
             .foregroundColor(selectedTab == tab.selection ? .primary : .secondary)
             .blendMode(selectedTab == tab.selection ? .overlay : .normal)

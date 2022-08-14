@@ -33,16 +33,14 @@ struct GradientTextfield: View {
                     }
                 }
             }
-            .colorScheme(.dark)
-            .foregroundColor(Color.white.opacity(0.7))
+//            .background(.thinMaterial)
+            .foregroundColor(Color.primary.opacity(0.7))
         }
+        .background(.thinMaterial)
         .overlay(
             RoundedRectangle(cornerRadius: 16, style: .circular)
-                .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                .stroke(Color.primary.opacity(0.1), lineWidth: 1)
         )
-        .background(
-            Color.init(red: 26/255, green: 20/255, blue: 51/255)
-                .cornerRadius(16)
-        )
+
     }
 }

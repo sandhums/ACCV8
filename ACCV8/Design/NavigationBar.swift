@@ -16,7 +16,6 @@ struct NavigationBar: View {
     @AppStorage("showAccount") var showAccount = false
     @AppStorage("isLogged") var isLogged = false
     @ObservedResults(Reps.self) var users
-//    @ObservedRealmObject var user: Reps
     var body: some View {
      
         ZStack {
@@ -38,18 +37,19 @@ struct NavigationBar: View {
                 .opacity(contentHasScrolled ? 0.7 : 1)
             
             HStack(spacing: 16) {
-               LogoutButton(user: Reps())
+              
                 Button {
                     withAnimation {
                         if isLogged {
                             showAccount = true
                         } else {
-                            model.showModal = true
+                            showAccount = false
                         }
                     }
                 } label: {
                     avatar
                 }
+                .buttonStyle(.plain)
                 .accessibilityElement()
                 .accessibilityLabel("Account")
             }
@@ -73,6 +73,7 @@ struct NavigationBar: View {
             }
         } else {
             LogoView(image: "Avatar Default")
+               
         }
         }
     }

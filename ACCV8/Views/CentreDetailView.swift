@@ -7,6 +7,7 @@
 
 import SwiftUI
 import RealmSwift
+import MessageUI
 
 struct CentreDetailView: View {
     @Environment(\.realm) var realm
@@ -18,9 +19,6 @@ struct CentreDetailView: View {
     @State var appear = [false, false, false]
     var isAnimated = true
     @State var showToggle = true
-//    @ObservedResults(Chatster.self) var chatsters2
-    
-    
     @EnvironmentObject var model: Model
     
     var body: some View {
@@ -34,13 +32,13 @@ struct CentreDetailView: View {
         .frame(maxWidth: .infinity)
         .frame(height: 500)
         .background(
-            Image(uiImage: UIImage(data: centre.centreImage!) ?? UIImage())
+            Image(uiImage: UIImage(named: centre.centrePic)!)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .clipShape(RoundedRectangle(cornerRadius: 20))
                 .padding(20)
                 .opacity(0.9)
-                .offset(y: -50)
+                .offset(y: -75)
                 .offset(y: scrollY > 0 ? -scrollY : 0)
                 .accessibility(hidden: true)
 //                .opacity(appear[0] ? 1 : 0)
@@ -92,18 +90,41 @@ struct CentreDetailView: View {
                     $0.centreName == centre.centreName
                 }
                     ForEach (centreStaffs) { centreStaff in
-                        HStack {
-                   UserAvatarViewNoCircle(photo: centreStaff.avatarImage)
-                        Text(centreStaff.designation)
-                        .font(.footnote.weight(.medium))
-                        .foregroundStyle(.secondary)
-                        Text(centreStaff.firstName)
-                            .font(.footnote.weight(.medium))
-                            .foregroundStyle(.secondary)
-                        Text(centreStaff.lastName)
-                            .font(.footnote.weight(.medium))
-                            .foregroundStyle(.secondary)
-                    }
+                        VStack {
+                            HStack {
+                       UserAvatarViewNoCircle(photo: centreStaff.avatarImage)
+                            Text(centreStaff.firstName)
+                                .font(.footnote.weight(.medium))
+                                .foregroundStyle(.secondary)
+                            Text(centreStaff.lastName)
+                                .font(.footnote.weight(.medium))
+                                .foregroundStyle(.secondary)
+                                Spacer()
+                                Button(action: {
+                                    let phone = "tel://"
+                                    let phoneNumberformatted = phone + centreStaff.userMobile
+                                    guard let url = URL(string: phoneNumberformatted) else { return }
+                                    UIApplication.shared.open(url)
+                                   }) {
+                                       Image (systemName: "phone.circle.fill")
+                                   }.buttonStyle(.plain)
+                            }
+                            HStack {
+                                Text(centreStaff.designation)
+                                .font(.footnote.weight(.medium))
+                                .foregroundStyle(.secondary)
+                                Spacer()
+                                Button(action: {
+                                    let email = "mailto://"
+                                    let emailformatted = email + centreStaff.userName
+                                    guard let url = URL(string: emailformatted) else { return }
+                                    UIApplication.shared.open(url)
+                                      }) {
+                                     Image (systemName: "envelope.open.fill")
+                                 }
+                                   .buttonStyle(.plain)
+                            }
+                        }
                         Divider()
                             .foregroundColor(.secondary)
                 }
@@ -158,6 +179,7 @@ struct CentreDetailView: View {
             } label: {
                 CloseButton()
             }
+            .buttonStyle(.plain)
             .opacity(appear[0] ? 1 : 0)
             .offset(y: appear[0] ? 0 : 200)
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)

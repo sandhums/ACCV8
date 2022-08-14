@@ -12,7 +12,7 @@ struct GradientText2: View {
     
     var body: some View {
         Text(text)
-            .gradientForeground2(colors: [Color(#colorLiteral(red: 0.1702193916, green: 0.01387358829, blue: 0.6049716473, alpha: 1)), Color(#colorLiteral(red: 0.7609714866, green: 0.3232724369, blue: 0.6690420508, alpha: 1))])
+            .gradientForeground2(colors: [Color(#colorLiteral(red: 1, green: 0.5607843137, blue: 0.9803921569, alpha: 1)), Color(#colorLiteral(red: 0.6201313138, green: 0.6803289056, blue: 1, alpha: 1))])
             
         
     }

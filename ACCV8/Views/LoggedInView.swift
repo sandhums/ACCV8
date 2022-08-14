@@ -13,8 +13,6 @@ struct LoggedInView: View {
     @EnvironmentObject var model: Model
     @Environment(\.realm) var realm
     @ObservedResults(Reps.self) var users
-//    @ObservedRealmObject var user: Reps
-//    @State private var showingProfileView = false
     @AppStorage("shouldRemindOnlineUser") var shouldRemindOnlineUser = false
     @AppStorage("onlineUserReminderHours") var onlineUserReminderHours = 8.0
     @AppStorage("selectedTab") var selectedTab: Tab = .centres

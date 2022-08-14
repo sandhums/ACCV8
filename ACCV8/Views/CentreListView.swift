@@ -77,13 +77,13 @@ struct CentreListView: View {
                         )
                     }
                     .background(
-                        Image(uiImage: UIImage(data: centre.centreImage!) ?? UIImage())
+                        Image(uiImage: UIImage(named: centre.centrePic)!)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .clipShape(RoundedRectangle(cornerRadius: 20))
                             .padding(20)
-                            .opacity(0.6)
-                            .offset(y: -30)
+                            .opacity(0.9)
+                            .offset(x: 20, y: -50)
                     )
                     .background(
                         Image(uiImage: UIImage(named: centre.centreBackgrnd)!)
@@ -102,8 +102,6 @@ struct CentreListView: View {
                             .opacity(0.7)
                     )
                     .frame(height: 300)
-                    
-                
                 .onTapGesture {
                     showCentre2 = true
                     selectedCentre = centre
@@ -116,18 +114,10 @@ struct CentreListView: View {
             
             }
             .coordinateSpace(name: "scroll")
-//            .background(Image("Blob 1").offset(x: 150, y: -200))
         }
         .fullScreenCover(isPresented: $showCentre2) {
             CentreDetailView(centre: $selectedCentre)
         }
-//                .task {
-//                    do {
-//                    try await setSubscription()
-//                    } catch {
-//        
-//                    }
-//                }
         .overlay(NavigationBar(title: "Centres", contentHasScrolled: $contentHasScrolled))
         
     }
@@ -146,13 +136,13 @@ struct CentreListView: View {
                                 radius: 30, x: 0, y: 30)
                         .blur(radius: abs(proxy.frame(in: .global).minX) / 40)
                         .overlay(
-                            Image(uiImage: UIImage(data: centre2.centreImage!) ?? UIImage())
+                            Image(uiImage: UIImage(named: centre2.centrePic)!)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .clipShape(RoundedRectangle(cornerRadius: 20))
-                                .offset(x: 12, y: -80)
+                                .offset(x: 30, y: -90)
                                 .opacity(0.7)
-                                .frame(width: 280, height: 230)
+                                .frame(width: 320, height: 270)
                                 .offset(x: proxy.frame(in: .global).minX / 2)
                                 .blur(radius: abs(proxy.frame(in: .global).minX) / 50)
                         )
@@ -189,20 +179,6 @@ struct CentreListView: View {
                 } else {
                     contentHasScrolled = false
                 }
-            }
-        }
-    }
-    private func setSubscription() async throws {
-        let subscriptions = realm.subscriptions
-        let foundSubscription = subscriptions.first(named: "allCentres")
-        try await subscriptions.update {
-            if foundSubscription != nil {
-                foundSubscription!.updateQuery(toType: Centre.self)
-                print("updating query allCentres")
-            } else {
-                subscriptions.append(
-                    QuerySubscription<Centre>(name: "allCentres"))
-                print("appending query allCentres")
             }
         }
     }

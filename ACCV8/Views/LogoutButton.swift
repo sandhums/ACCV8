@@ -19,7 +19,7 @@ struct LogoutButton: View {
         if isLoggingOut {
             ProgressView()
         }
-        Button("Log Out") {
+        Button (action:{
             guard let user = accApp.currentUser else {
                 return
             }
@@ -28,7 +28,11 @@ struct LogoutButton: View {
                 await logout(user: user)
                 isLoggingOut = false
             }
-        }.disabled(accApp.currentUser == nil || isLoggingOut)
+        }, label: {
+            AngularButton(title: "Log Out")
+    })
+        .buttonStyle(.plain)
+      .disabled(accApp.currentUser == nil || isLoggingOut)
         .alert(item: $errorMessage) { errorMessage in
             Alert(
                 title: Text("Failed to log out"),

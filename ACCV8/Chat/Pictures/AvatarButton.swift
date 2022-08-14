@@ -22,6 +22,7 @@ struct AvatarButton: View {
             Button(action: action) {
                 AvatarThumbNailView(photo: photo)
             }
+            .buttonStyle(.plain)
         }
     }
 }

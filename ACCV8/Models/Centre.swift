@@ -19,12 +19,12 @@ class Centre: Object, ObjectKeyIdentifiable {
     @Persisted var centreImage: Data?
     @Persisted var centreBackgrnd = ""
     @Persisted var centreLogoF = ""
-    
+    @Persisted var centrePic = ""
     override static func primaryKey() -> String? {
           return "_id"
       }
   
-    convenience init(centreName: String, centreDesc: String, centreLocation: CLLocationCoordinate2D, centreIndex: Int, centreText: String, centreImage: Data?, centreBackgrnd: String, centreLogoF: String) {
+    convenience init(centreName: String, centreDesc: String, centreLocation: CLLocationCoordinate2D, centreIndex: Int, centreText: String, centreImage: Data?, centreBackgrnd: String, centreLogoF: String, centrePic: String) {
         self.init()
         self.centreName = centreName
         self.centreDesc = centreDesc
@@ -34,6 +34,7 @@ class Centre: Object, ObjectKeyIdentifiable {
         self.centreImage = centreImage
         self.centreBackgrnd = centreBackgrnd
         self.centreLogoF = centreLogoF
+        self.centrePic = centrePic
      }
 //    var coordinate: CLLocationCoordinate2D {
 //        CLLocationCoordinate2D(latitude: (centreLocation?.y)!, longitude: (centreLocation?.x)!)
