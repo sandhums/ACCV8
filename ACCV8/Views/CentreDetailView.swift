@@ -24,141 +24,10 @@ struct CentreDetailView: View {
     var body: some View {
         ZStack {
             ScrollView {
-                GeometryReader { proxy in
-                    let scrollY = proxy.frame(in: .named("scroll")).minY
-                VStack {
-                    Spacer()
-                    }
-        .frame(maxWidth: .infinity)
-        .frame(height: 500)
-        .background(
-            Image(uiImage: UIImage(named: centre.centrePic)!)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .clipShape(RoundedRectangle(cornerRadius: 20))
-                .padding(20)
-                .opacity(0.9)
-                .offset(y: -75)
-                .offset(y: scrollY > 0 ? -scrollY : 0)
-                .accessibility(hidden: true)
-//                .opacity(appear[0] ? 1 : 0)
-//                .offset(y: appear[0] ? 0 : 200)
-        )
-        .background(
-            Image(uiImage: UIImage(named: centre.centreBackgrnd)!)
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .offset(y: scrollY > 0 ? -scrollY : 0)
-                .scaleEffect(scrollY > 0 ? scrollY / 1000 + 1 : 1)
-                .blur(radius: scrollY > 0 ? scrollY / 10 : 0)
-                .accessibility(hidden: true)
-        )
-        .mask(
-            RoundedRectangle(cornerRadius: appear[0] ? 0 : 30)
-                .offset(y: scrollY > 0 ? -scrollY : 0)
-        )
-        .overlay(
-            Image(horizontalSizeClass == .compact ? "Waves 1" : "Waves 2")
-                .frame(maxHeight: .infinity, alignment: .bottom)
-                .offset(y: scrollY > 0 ? -scrollY : 0)
-                .scaleEffect(scrollY > 0 ? scrollY / 500 + 1 : 1)
-                .opacity(1)
-                .accessibility(hidden: true)
-        )
-        .overlay(
-            VStack(alignment: .leading, spacing: 16) {
-                GradientText2(text: "\(centre.centreName)")
-                    .font(Font.largeTitle.bold())
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .foregroundColor(.primary)
-                
-                Text(centre.centreDesc.uppercased())
-                    .font(.footnote).bold()
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .foregroundColor(.primary.opacity(0.7))
-                
-                Text("Centre related stufff like facilities/equipment...")
-                    .font(.footnote)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .foregroundColor(.primary.opacity(0.7))
-                
-                Divider()
-                    .foregroundColor(.secondary)
-                    .opacity(appear[1] ? 1 : 0)
-                let chatsters = realm.objects(Chatster.self).sorted(byKeyPath: "userIndex")
-                let centreStaffs = chatsters.where {
-                    $0.centreName == centre.centreName
+                centreDetail
+                staffDetail
+                    .opacity(appear[2] ? 1 : 0)
                 }
-                    ForEach (centreStaffs) { centreStaff in
-                        VStack {
-                            HStack {
-                       UserAvatarViewNoCircle(photo: centreStaff.avatarImage)
-                            Text(centreStaff.firstName)
-                                .font(.footnote.weight(.medium))
-                                .foregroundStyle(.secondary)
-                            Text(centreStaff.lastName)
-                                .font(.footnote.weight(.medium))
-                                .foregroundStyle(.secondary)
-                                Spacer()
-                                Button(action: {
-                                    let phone = "tel://"
-                                    let phoneNumberformatted = phone + centreStaff.userMobile
-                                    guard let url = URL(string: phoneNumberformatted) else { return }
-                                    UIApplication.shared.open(url)
-                                   }) {
-                                       Image (systemName: "phone.circle.fill")
-                                   }.buttonStyle(.plain)
-                            }
-                            HStack {
-                                Text(centreStaff.designation)
-                                .font(.footnote.weight(.medium))
-                                .foregroundStyle(.secondary)
-                                Spacer()
-                                Button(action: {
-                                    let email = "mailto://"
-                                    let emailformatted = email + centreStaff.userName
-                                    guard let url = URL(string: emailformatted) else { return }
-                                    UIApplication.shared.open(url)
-                                      }) {
-                                     Image (systemName: "envelope.open.fill")
-                                 }
-                                   .buttonStyle(.plain)
-                            }
-                        }
-                        Divider()
-                            .foregroundColor(.secondary)
-                }
-              
-                .opacity(appear[1] ? 1 : 0)
-                .accessibilityElement(children: .combine)
-            }
-            
-            .padding(20)
-            .padding(.vertical, 10)
-            .background(
-                Rectangle()
-                    .fill(.ultraThinMaterial)
-                    .frame(maxHeight: .infinity, alignment: .bottom)
-                    .cornerRadius(30)
-                    .blur(radius: 30)
-                    .opacity(appear[0] ? 0 : 1)
-            )
-            .background(
-                Rectangle()
-                    .fill(.ultraThinMaterial)
-                    .backgroundStyle(cornerRadius: 30)
-                    .opacity(appear[0] ? 1 : 0)
-            )
-//                    .offset(y: scrollY > 0 ? -scrollY * 1.8 : 0)
-            .frame(maxHeight: .infinity, alignment: .bottom)
-            .offset(y: 300)
-            .padding(20)
-        )
-                }
-                
-        .frame(height: 500)
-        .opacity(appear[2] ? 1 : 0)
-    }
             .coordinateSpace(name: "scroll")
             .background(Color("Background"))
             .mask(RoundedRectangle(cornerRadius: appear[0] ? 0 : 30))
@@ -214,6 +83,145 @@ struct CentreDetailView: View {
         }
         .statusBar(hidden: true)
 }
+    var centreDetail: some View {
+        GeometryReader { proxy in
+            let scrollY = proxy.frame(in: .named("scroll")).minY
+        VStack {
+            Spacer()
+            }
+.frame(maxWidth: .infinity)
+.frame(height: scrollY > 0 ? 500 + scrollY : 500)
+.background(
+    Image(uiImage: UIImage(named: centre.centrePic)!)
+        .resizable()
+        .aspectRatio(contentMode: .fit)
+        .clipShape(RoundedRectangle(cornerRadius: 20))
+        .padding(20)
+        .opacity(0.9)
+        .offset(y: -75)
+        .offset(y: scrollY > 0 ? -scrollY : 0)
+        .accessibility(hidden: true)
+)
+.background(
+    Image(uiImage: UIImage(named: centre.centreBackgrnd)!)
+        .resizable()
+        .aspectRatio(contentMode: .fill)
+        .offset(y: scrollY > 0 ? -scrollY : 0)
+        .scaleEffect(scrollY > 0 ? scrollY / 1000 + 1 : 1)
+        .blur(radius: scrollY > 0 ? scrollY / 10 : 0)
+        .accessibility(hidden: true)
+)
+.mask(
+    RoundedRectangle(cornerRadius: appear[0] ? 0 : 30)
+        .offset(y: scrollY > 0 ? -scrollY : 0)
+)
+.overlay(
+    Image(horizontalSizeClass == .compact ? "Waves 1" : "Waves 2")
+        .frame(maxHeight: .infinity, alignment: .bottom)
+        .offset(y: scrollY > 0 ? -scrollY : 0)
+        .scaleEffect(scrollY > 0 ? scrollY / 500 + 1 : 1)
+        .opacity(1)
+        .accessibility(hidden: true)
+)
+.overlay(
+    VStack(alignment: .leading, spacing: 16) {
+        GradientText2(text: "\(centre.centreName)")
+            .font(Font.largeTitle.bold())
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .foregroundColor(.primary)
+        
+        Text(centre.centreDesc.uppercased())
+            .font(.footnote).bold()
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .foregroundColor(.primary.opacity(0.7))
+            .frame(height: 60)
+        Text(centre.centreText)
+            .font(.footnote)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .foregroundColor(.primary.opacity(0.7))
+            .accessibilityElement(children: .combine)
+    }
+    
+    .padding(20)
+    .padding(.vertical, 10)
+    .background(
+        Rectangle()
+            .fill(.ultraThinMaterial)
+            .frame(maxHeight: .infinity, alignment: .bottom)
+            .cornerRadius(30)
+            .blur(radius: 30)
+            .opacity(appear[0] ? 0 : 1)
+    )
+    .background(
+        Rectangle()
+            .fill(.ultraThinMaterial)
+            .backgroundStyle(cornerRadius: 30)
+            .opacity(appear[0] ? 1 : 0)
+    )
+    .offset(y: scrollY > 0 ? -scrollY * 1.8 : 0)
+    .frame(maxHeight: .infinity, alignment: .bottom)
+    .offset(y: 100)
+    .padding(20)
+)
+        }
+.frame(height: 500)
+    }
+    
+    var staffDetail: some View {
+        VStack(spacing: 16) {
+        let chatsters = realm.objects(Chatster.self).sorted(byKeyPath: "userIndex")
+        let centreStaffs = chatsters.where {
+            $0.centreName == centre.centreName
+        }
+            ForEach (centreStaffs) { centreStaff in
+                VStack {
+                    HStack {
+               UserAvatarViewNoCircle(photo: centreStaff.avatarImage)
+                    Text(centreStaff.firstName)
+                        .font(.footnote.weight(.bold))
+                        .foregroundStyle(.secondary)
+                    Text(centreStaff.lastName)
+                        .font(.footnote.weight(.bold))
+                        .foregroundStyle(.secondary)
+                        Spacer()
+                        Button(action: {
+                            let phone = "tel://"
+                            let phoneNumberformatted = phone + centreStaff.userMobile
+                            guard let url = URL(string: phoneNumberformatted) else { return }
+                            UIApplication.shared.open(url)
+                           }) {
+                               Image (systemName: "phone.circle.fill")
+                           }.buttonStyle(.plain)
+                    }
+                    HStack {
+                        Text(centreStaff.designation)
+                        .font(.footnote.weight(.medium))
+                        .foregroundStyle(.secondary)
+                        Spacer()
+                        Button(action: {
+                            let email = "mailto://"
+                            let emailformatted = email + centreStaff.userName
+                            guard let url = URL(string: emailformatted) else { return }
+                            UIApplication.shared.open(url)
+                              }) {
+                             Image (systemName: "envelope.open.fill")
+                         }
+                           .buttonStyle(.plain)
+                    }
+                }
+                Divider()
+                    .foregroundColor(.secondary)
+        }
+        }
+        .padding(20)
+        .background(.ultraThinMaterial)
+        .backgroundStyle(cornerRadius: 30)
+        .padding(20)
+        .padding(.vertical, 80)
+//        .sheet(isPresented: $showSection) {
+//            SectionView(section: $selectedSection)
+//        }
+    }
     func close() {
         withAnimation {
             viewState = .zero
