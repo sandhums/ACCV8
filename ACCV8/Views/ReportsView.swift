@@ -13,6 +13,7 @@ struct ReportsView: View {
     @State var showProc = false
     @State var showRev = false
     @State var showCons = false
+    @State var showProcByCentre = false
     
     var body: some View {
         ZStack {
@@ -193,7 +194,7 @@ struct ReportsView: View {
                 )
                 .shadow(color: .clear, radius: 0, x: 0, y: 0)
                 .onTapGesture {
-                    showRev = true
+                    showProcByCentre = true
                 }
             }
             .offset(y: -50)
@@ -208,6 +209,9 @@ struct ReportsView: View {
         }
         .sheet(isPresented: $showCons) {
            ConsumptionRepView()
+        }
+        .sheet(isPresented: $showProcByCentre) {
+           ProcByCentreView()
         }
         .coordinateSpace(name: "scroll")
         .overlay(NavigationBar(title: "Reports", contentHasScrolled: $contentHasScrolled))

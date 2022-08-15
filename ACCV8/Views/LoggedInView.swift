@@ -29,7 +29,7 @@ struct LoggedInView: View {
                     CentreListView(selectedCentre: Centre())
                        
                 case .reports:
-                    LocationView()
+                    ReportsView()
                 case .chat:
                     if let user = users.first {
                     ConversationListView(user: user)
@@ -119,8 +119,6 @@ struct LoggedInView: View {
                 DispatchQueue.main.async {
                 }
             }
-        } else {
-            SignUpView()
         }
     }
      func onCustomDataUpdated(result: AnyBSON?, realmError: Error?) {
@@ -142,7 +140,7 @@ struct LoggedInView: View {
             }
             // Present error message if any
             guard errorMessage == nil else {
-                let error = NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: errorMessage!])
+                _ = NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: errorMessage!])
                 print("Update user FCM token failed: \(errorMessage!)")
                 return
             }

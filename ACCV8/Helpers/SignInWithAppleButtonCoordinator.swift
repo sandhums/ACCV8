@@ -100,14 +100,14 @@ extension SignInWithAppleButtonCoordinator: ASAuthorizationControllerDelegate {
       case let appleIDCredential as ASAuthorizationAppleIDCredential:
           
           // Create an account in your system.
-          let userIdentifier = appleIDCredential.user
-          let firstName = appleIDCredential.fullName?.givenName ?? ""
-          let lastName = appleIDCredential.fullName?.familyName ?? ""
-//          let fullName = appleIDCredential.fullName
-          let email = appleIDCredential.email
+//          let userIdentifier = appleIDCredential.user
+//          let firstName = appleIDCredential.fullName?.givenName ?? ""
+//          let lastName = appleIDCredential.fullName?.familyName ?? ""
+////          let fullName = appleIDCredential.fullName
+//          let email = appleIDCredential.email
           
           let identityToken = String(data: appleIDCredential.identityToken ?? Data(), encoding: .utf8)
-          let nonce = currentNonce
+//          let nonce = currentNonce
           let app = App(id: "accv8-vofbt")
           
           // Fetch IDToken via the Apple SDK
@@ -120,8 +120,8 @@ extension SignInWithAppleButtonCoordinator: ASAuthorizationControllerDelegate {
                   print("Successfully logged in as user \(user)")
               }
           }
-      case let passwordCredential as ASPasswordCredential:
-          break
+//      case let passwordCredential as ASPasswordCredential:
+//          break
       default:
           break
       }

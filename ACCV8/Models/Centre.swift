@@ -10,7 +10,7 @@ import RealmSwift
 import MapKit
 
 class Centre: Object, ObjectKeyIdentifiable {
-    @Persisted var _id: ObjectId
+    @Persisted(primaryKey: true) var _id: ObjectId
     @Persisted var centreName = ""
     @Persisted var centreDesc = ""
     @Persisted var centreLocation: CLLocationCoordinate2D

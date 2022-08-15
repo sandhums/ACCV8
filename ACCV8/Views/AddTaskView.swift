@@ -128,7 +128,7 @@ struct AddTaskView: View {
     }
     
     private func update() {
-        let user = users.first
+//        let user = users.first
         if let taskToEdit = taskToEdit {
             do {
                 let realm = try Realm()

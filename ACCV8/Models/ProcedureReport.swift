@@ -9,7 +9,7 @@ import Foundation
 import RealmSwift
 
 class ProcedureReport:Object, ObjectKeyIdentifiable {
-    @Persisted var _id: ObjectId
+    @Persisted(primaryKey: true) var _id: ObjectId
     @Persisted var reportedBy = ""
     @Persisted var reportedById = ""
     @Persisted var centreName = ""

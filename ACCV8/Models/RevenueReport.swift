@@ -9,7 +9,7 @@ import Foundation
 import RealmSwift
 
 class RevenueReport: Object, ObjectKeyIdentifiable {
-    @Persisted var _id: ObjectId
+    @Persisted(primaryKey: true) var _id: ObjectId
     @Persisted var revenueReportedBy = ""
     @Persisted var revenueReportedById = ""
     @Persisted var centreName = ""

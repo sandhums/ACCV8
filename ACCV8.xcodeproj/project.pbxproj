@@ -163,6 +163,15 @@
 		D7BB900528A8FC550012A3DE /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB900428A8FC550012A3DE /* LocationView.swift */; };
 		D7BB900928A8FCA40012A3DE /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB900828A8FCA40012A3DE /* AnnotationView.swift */; };
 		D7BB900B28A91F920012A3DE /* GradientText3.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB900A28A91F920012A3DE /* GradientText3.swift */; };
+		D7BB900D28AA07AE0012A3DE /* ViewReports.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB900C28AA07AE0012A3DE /* ViewReports.swift */; };
+		D7BB901028AA0F780012A3DE /* PlastyByCentre.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB900F28AA0F780012A3DE /* PlastyByCentre.swift */; };
+		D7BB901228AA0FEF0012A3DE /* BarChartGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB901128AA0FEF0012A3DE /* BarChartGrid.swift */; };
+		D7BB901428AA10250012A3DE /* BarChartAxes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB901328AA10250012A3DE /* BarChartAxes.swift */; };
+		D7BB901628AA10880012A3DE /* BarStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB901528AA10880012A3DE /* BarStack.swift */; };
+		D7BB901828AA10BD0012A3DE /* BarPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB901728AA10BD0012A3DE /* BarPath.swift */; };
+		D7BB901A28AA10E20012A3DE /* LabelStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB901928AA10E20012A3DE /* LabelStack.swift */; };
+		D7BB901C28AA1A0B0012A3DE /* ProcByCentreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB901B28AA1A0B0012A3DE /* ProcByCentreView.swift */; };
+		D7BB901E28AA980F0012A3DE /* SFSafariViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB901D28AA980F0012A3DE /* SFSafariViewWrapper.swift */; };
 		D7BDC4C8287CFFBD003ADEA5 /* CentreListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BDC4C7287CFFBD003ADEA5 /* CentreListView.swift */; };
 		D7BDC4CA287D010F003ADEA5 /* CentreDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BDC4C9287D010F003ADEA5 /* CentreDetailView.swift */; };
 		D7BDC4CC287F0C87003ADEA5 /* ProcedureRepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BDC4CB287F0C87003ADEA5 /* ProcedureRepView.swift */; };
@@ -363,6 +372,15 @@
 		D7BB900428A8FC550012A3DE /* LocationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
 		D7BB900828A8FCA40012A3DE /* AnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnotationView.swift; sourceTree = "<group>"; };
 		D7BB900A28A91F920012A3DE /* GradientText3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientText3.swift; sourceTree = "<group>"; };
+		D7BB900C28AA07AE0012A3DE /* ViewReports.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewReports.swift; sourceTree = "<group>"; };
+		D7BB900F28AA0F780012A3DE /* PlastyByCentre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlastyByCentre.swift; sourceTree = "<group>"; };
+		D7BB901128AA0FEF0012A3DE /* BarChartGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartGrid.swift; sourceTree = "<group>"; };
+		D7BB901328AA10250012A3DE /* BarChartAxes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartAxes.swift; sourceTree = "<group>"; };
+		D7BB901528AA10880012A3DE /* BarStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarStack.swift; sourceTree = "<group>"; };
+		D7BB901728AA10BD0012A3DE /* BarPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarPath.swift; sourceTree = "<group>"; };
+		D7BB901928AA10E20012A3DE /* LabelStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelStack.swift; sourceTree = "<group>"; };
+		D7BB901B28AA1A0B0012A3DE /* ProcByCentreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcByCentreView.swift; sourceTree = "<group>"; };
+		D7BB901D28AA980F0012A3DE /* SFSafariViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSafariViewWrapper.swift; sourceTree = "<group>"; };
 		D7BDC4C7287CFFBD003ADEA5 /* CentreListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentreListView.swift; sourceTree = "<group>"; };
 		D7BDC4C9287D010F003ADEA5 /* CentreDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentreDetailView.swift; sourceTree = "<group>"; };
 		D7BDC4CB287F0C87003ADEA5 /* ProcedureRepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcedureRepView.swift; sourceTree = "<group>"; };
@@ -451,6 +469,7 @@
 		D743C55D286B76D000A42B18 /* ACCV8 */ = {
 			isa = PBXGroup;
 			children = (
+				D7BB900E28AA0F260012A3DE /* Charts */,
 				D746E2762896E7D9008DAAC3 /* ACCV8Debug.entitlements */,
 				D76962882896B85D00EAA306 /* Info.plist */,
 				D76962872896B84C00EAA306 /* ACCV8Release.entitlements */,
@@ -523,6 +542,7 @@
 				D7A2107F286C321100918807 /* RevenueReport.swift */,
 				D7A21075286C0FEB00918807 /* Member.swift */,
 				D7A21081286C3CD700918807 /* Centre.swift */,
+				D7BB900C28AA07AE0012A3DE /* ViewReports.swift */,
 				D7A21085286C3DCD00918807 /* Projects.swift */,
 				D7A21083286C3D2200918807 /* Coordinates.swift */,
 				D7A21087286C3DEE00918807 /* Tasks.swift */,
@@ -548,6 +568,7 @@
 				D7A210F6286F146200918807 /* PhotoCaptureController.swift */,
 				D7A2115F286F1E2100918807 /* LocationHelper.swift */,
 				D7BB8FF828A4D1F00012A3DE /* SignInWithAppleButtonCoordinator.swift */,
+				D7BB901D28AA980F0012A3DE /* SFSafariViewWrapper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -586,6 +607,7 @@
 				D7BB8FF628A147F40012A3DE /* SignInView.swift */,
 				D7A21099286D3A5600918807 /* SignUpView.swift */,
 				D7A210B5286E81D700918807 /* ReportsView.swift */,
+				D7BB901B28AA1A0B0012A3DE /* ProcByCentreView.swift */,
 				D7A210B7286E820A00918807 /* ChatView.swift */,
 				D7BB900428A8FC550012A3DE /* LocationView.swift */,
 				D7BB900828A8FCA40012A3DE /* AnnotationView.swift */,
@@ -748,6 +770,19 @@
 				D7A21155286F1D4400918807 /* ChatInputBox.swift */,
 			);
 			path = "Chat Messages";
+			sourceTree = "<group>";
+		};
+		D7BB900E28AA0F260012A3DE /* Charts */ = {
+			isa = PBXGroup;
+			children = (
+				D7BB900F28AA0F780012A3DE /* PlastyByCentre.swift */,
+				D7BB901128AA0FEF0012A3DE /* BarChartGrid.swift */,
+				D7BB901328AA10250012A3DE /* BarChartAxes.swift */,
+				D7BB901528AA10880012A3DE /* BarStack.swift */,
+				D7BB901728AA10BD0012A3DE /* BarPath.swift */,
+				D7BB901928AA10E20012A3DE /* LabelStack.swift */,
+			);
+			path = Charts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -948,16 +983,20 @@
 				D7A21167286F1FE300918807 /* PreviewOrientation.swift in Sources */,
 				D7A21168286F1FE300918807 /* PreviewColorScheme.swift in Sources */,
 				D7A21135286F1C8D00918807 /* LabeledText.swift in Sources */,
+				D7BB901628AA10880012A3DE /* BarStack.swift in Sources */,
 				D7A21102286F1A4500918807 /* PhotoFullSizeView.swift in Sources */,
 				D7A2113F286F1CAD00918807 /* MapThumbnailWithExpand.swift in Sources */,
 				D7A2108F286C570500918807 /* LoggedInView.swift in Sources */,
+				D7BB901228AA0FEF0012A3DE /* BarChartGrid.swift in Sources */,
 				D7A21169286F1FE300918807 /* PreviewNoDevice.swift in Sources */,
+				D7BB901828AA10BD0012A3DE /* BarPath.swift in Sources */,
 				D7A210E1286EB9E400918807 /* Wave.swift in Sources */,
 				D7A2109A286D3A5600918807 /* SignUpView.swift in Sources */,
 				D7A2106E286C0E1300918807 /* Reps.swift in Sources */,
 				D7A210F1286EF14A00918807 /* GradientProfilePicture.swift in Sources */,
 				D7A2114E286F1D3A00918807 /* SaveConversationButton.swift in Sources */,
 				D7A210B1286E1B4800918807 /* Animations.swift in Sources */,
+				D7BB900D28AA07AE0012A3DE /* ViewReports.swift in Sources */,
 				D7A21082286C3CD700918807 /* Centre.swift in Sources */,
 				D7BB900928A8FCA40012A3DE /* AnnotationView.swift in Sources */,
 				D7FFF71E2885980D003FD4D6 /* TasksView.swift in Sources */,
@@ -995,6 +1034,8 @@
 				D7BDC4D0288283C6003ADEA5 /* AdminView.swift in Sources */,
 				D7A2108B286C553900918807 /* OpenRealmView.swift in Sources */,
 				D7A21156286F1D4400918807 /* ChatRoomView.swift in Sources */,
+				D7BB901A28AA10E20012A3DE /* LabelStack.swift in Sources */,
+				D7BB901428AA10250012A3DE /* BarChartAxes.swift in Sources */,
 				D7A210ED286EBD4B00918807 /* SectionView.swift in Sources */,
 				D7A21084286C3D2200918807 /* Coordinates.swift in Sources */,
 				D7A21098286D399800918807 /* ImagePicker.swift in Sources */,
@@ -1023,6 +1064,7 @@
 				D7BB8FF928A4D1F00012A3DE /* SignInWithAppleButtonCoordinator.swift in Sources */,
 				D7A21133286F1C8D00918807 /* TextDate.swift in Sources */,
 				D7A21106286F1AD400918807 /* ThumbNailView.swift in Sources */,
+				D7BB901028AA0F780012A3DE /* PlastyByCentre.swift in Sources */,
 				D7BB8FF728A147F40012A3DE /* SignInView.swift in Sources */,
 				D70DE6A128928F7A00DF8CD4 /* ConsumptionItems.swift in Sources */,
 				D7A21158286F1D4400918807 /* ChatBubbleView.swift in Sources */,
@@ -1031,10 +1073,12 @@
 				D7A210AB286E192400918807 /* TabBar.swift in Sources */,
 				D7A2116A286F1FE300918807 /* PreviewDevices.swift in Sources */,
 				D7A21076286C0FEB00918807 /* Member.swift in Sources */,
+				D7BB901E28AA980F0012A3DE /* SFSafariViewWrapper.swift in Sources */,
 				D7A2108D286C56E500918807 /* LoginView.swift in Sources */,
 				D7A21159286F1D4400918807 /* ChatRoomBubblesView.swift in Sources */,
 				D7A210FA286F16D600918807 /* SampleData.swift in Sources */,
 				D7A210E5286EBA2A00918807 /* HexagonView.swift in Sources */,
+				D7BB901C28AA1A0B0012A3DE /* ProcByCentreView.swift in Sources */,
 				D7A2107E286C311600918807 /* ProcedureReport.swift in Sources */,
 				D7A21091286C578000918807 /* ErrorView.swift in Sources */,
 				D7A210CD286EAE7200918807 /* HandbookItem.swift in Sources */,

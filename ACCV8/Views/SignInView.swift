@@ -167,6 +167,7 @@ struct SignInView: View {
     func login(email: String, password: String) async {
         do {
             let user = try await accApp.login(credentials: Credentials.emailPassword(email: email, password: password))
+            isLogged = true
             print("Successfully logged in user: \(user)")
             print(Realm.Configuration.defaultConfiguration.fileURL!)
         } catch {

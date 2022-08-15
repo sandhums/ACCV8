@@ -14,6 +14,10 @@ struct ProjectsView: View {
     @ObservedResults(Projects.self) var projects
      @State private var isPresented: Bool = false
     @State var contentHasScrolled = false
+    @State private var showAlertToggle = false
+    @State private var alertTitle = ""
+    @State private var alertMessage = ""
+   
     var body: some View {
         ZStack {
             VStack {
@@ -137,7 +141,6 @@ struct ProjectsView: View {
                     
                 }
         }
-            
         }
 
         .coordinateSpace(name: "scroll")
@@ -173,6 +176,18 @@ struct ProjectsView: View {
             }
         }
     }
+    private func syncError() {
+        accApp.syncManager.errorHandler = { error, session in
+                // handle error
+    
+//                Text("my error\(error.localizedDescription)")
+            
+                alertTitle = "Artemis Cardiac Care Alert!"
+                alertMessage = "\(error)"
+                showAlertToggle.toggle()
+    }
+    }
+            
 }
 
 struct ProjectsView_Previews: PreviewProvider {
