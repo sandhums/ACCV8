@@ -11,7 +11,7 @@ struct SectionTitleModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(.footnote.weight(.semibold))
-            .foregroundColor(.secondary)
+            .foregroundColor(.primary)
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(10)
     }

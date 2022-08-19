@@ -211,48 +211,12 @@ struct ReportsView: View {
            ConsumptionRepView()
         }
         .sheet(isPresented: $showProcByCentre) {
-           ProcByCentreView()
+          ViewReportsView()
         }
         .coordinateSpace(name: "scroll")
         .overlay(NavigationBar(title: "Reports", contentHasScrolled: $contentHasScrolled))
     }
     
-    var coursesSection: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 16) {
-                ForEach(courses) { item in
-                    SmallCourseItem(course: item)
-                }
-            }
-            .padding(20)
-            .padding(.bottom, 40)
-        }
-        .padding(.top, 60)
-    }
-    
-    var topicsSection: some View {
-        VStack {
-            ForEach(Array(topics.enumerated()), id: \.offset) { index, topic in
-                ListRow(title: topic.title, icon: topic.icon)
-                if index != topics.count - 1 {
-                    Divider()
-                }
-            }
-        }
-        .padding(20)
-        .background(.ultraThinMaterial)
-        .backgroundStyle(cornerRadius: 30)
-        .padding(.horizontal, 20)
-    }
-    
-    var handbooksSection: some View {
-        HStack(alignment: .top, spacing: 16) {
-            ForEach(handbooks) { handbook in
-                HandbookItem(handbook: handbook)
-            }
-        }
-        .padding(.horizontal, 20)
-    }
     
     var scrollDetection: some View {
         GeometryReader { proxy in

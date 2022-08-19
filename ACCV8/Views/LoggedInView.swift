@@ -27,7 +27,6 @@ struct LoggedInView: View {
                 switch selectedTab {
                 case .centres:
                     CentreListView(selectedCentre: Centre())
-                       
                 case .reports:
                     ReportsView()
                 case .chat:
@@ -35,7 +34,7 @@ struct LoggedInView: View {
                     ConversationListView(user: user)
                     }
                 case .projects:
-                    ProjectsView()
+                    ProjectView()
                 }
             }
             .safeAreaInset(edge: .bottom) {

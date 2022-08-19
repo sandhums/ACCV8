@@ -16,6 +16,7 @@ struct TasksView: View {
     @EnvironmentObject var model: Model
     @Environment(\.realm) var realm
     @ObservedRealmObject var project: Projects
+//    @Binding var project: Projects
     @ObservedResults (Tasks.self) var tasks2
     @State private var isPresented: Bool = false
     var tasks: [Tasks] {
@@ -42,13 +43,9 @@ struct TasksView: View {
                         if filteredTasks.isEmpty {
                             Text("No tasks.")
                         }
-                ForEach(filteredTasks, id: \._id) { task in
-                    
-                    NavigationLink {
-                        AddTaskView(project: project, taskToEdit: task)
-                    } label: {
+                        ForEach(filteredTasks, id: \.self) { task in
                         TaskRow(task: task)
-                    }
+                    
                 }
                 .onDelete { indexSet in
 

@@ -42,6 +42,7 @@ struct ProcedureRepView: View {
     @State private var procQty8 = 0
     var body: some View {
         ZStack {
+            
             VStack {
                 Spacer()
                 }
@@ -56,6 +57,7 @@ struct ProcedureRepView: View {
 //                .opacity(0.8)
                 .ignoresSafeArea()
                 .accessibility(hidden: true))
+        
         .overlay(
             VStack {
                 DatePicker(selection: $reportDate, label: { Text("Report Date") })
@@ -124,6 +126,7 @@ struct ProcedureRepView: View {
                 } label: {
                     AngularButton(title: "Submit")
                 }
+                
             }
                 .padding(20)
                 .padding(.vertical, 10)
@@ -141,12 +144,14 @@ struct ProcedureRepView: View {
 //                        .opacity(appear[0] ? 1 : 0)
                 )
                 .padding(20)
-          )
+            
+        )
             Button (action: {
                 dismiss()
             }, label: {
                 CloseButton()
             })
+            .buttonStyle(.plain)
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
             .padding(20)
             .ignoresSafeArea()

@@ -11,12 +11,15 @@ import RealmSwift
 struct ProjectsView: View {
     @Environment(\.realm) var realm
     @EnvironmentObject var model: Model
+    @ObservedRealmObject var user: Reps
     @ObservedResults(Projects.self) var projects
      @State private var isPresented: Bool = false
     @State var contentHasScrolled = false
     @State private var showAlertToggle = false
     @State private var alertTitle = ""
     @State private var alertMessage = ""
+    @AppStorage("isLogged") var isLogged = false
+    @AppStorage("showAccount") var showAccount = false
    
     var body: some View {
         ZStack {
@@ -25,14 +28,6 @@ struct ProjectsView: View {
                 }
             .background(Color("Background"))
             .frame(maxWidth: .infinity)
-    //        .frame(height: 500)
-            .background(
-                Image("background-1")
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-    //                .opacity(0.8)
-                    .ignoresSafeArea()
-                    .accessibility(hidden: true))
           
         NavigationView {
           
@@ -116,6 +111,7 @@ struct ProjectsView: View {
                       }
                       
                           .navigationTitle("Projects")
+                          .navigationBarTitleDisplayMode(.inline)
                          
                   }
                       .toolbar {
@@ -127,6 +123,30 @@ struct ProjectsView: View {
                                   Image(systemName: "plus")
                               }
                           }
+                          ToolbarItem(placement: .navigationBarLeading) {
+                              Button {
+                                  withAnimation {
+                                      if isLogged {
+                                          showAccount = true
+                                      } else {
+                                          showAccount = false
+                                      }
+                                  }
+                              } label: {
+                                  if isLogged {
+                                      UserAvatarView(
+                                          photo: user.userPreferences?.avatarImage,
+                                          online: true)
+                                  } else {
+                                      LogoView(image: "Avatar Default")
+
+                                  }
+                              }
+                              .buttonStyle(.plain)
+//                              LogoutButton(user: user)
+//                                  .buttonStyle(.plain)
+                          }
+                          
                       }
                   .sheet(isPresented: $isPresented, content: {
                      AddProjectsView()
@@ -162,6 +182,17 @@ struct ProjectsView: View {
             }
         }
     }
+    @ViewBuilder
+    var avatar: some View {
+        if isLogged {
+            UserAvatarView(
+                photo: user.userPreferences?.avatarImage,
+                online: true)
+        } else {
+            LogoView(image: "Avatar Default")
+
+        }
+        }
     private func setSubscription() async throws {
         let subscriptions = realm.subscriptions
         let foundSubscription = subscriptions.first(named: "allProjects")
@@ -192,6 +223,6 @@ struct ProjectsView: View {
 
 struct ProjectsView_Previews: PreviewProvider {
     static var previews: some View {
-        ProjectsView()
+        ProjectsView(user: Reps())
     }
 }

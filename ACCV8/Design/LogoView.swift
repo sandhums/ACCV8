@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LogoView: View {
-    var image = courses[0].logo
+    var image = ""
     
     var body: some View {
         Image(image)

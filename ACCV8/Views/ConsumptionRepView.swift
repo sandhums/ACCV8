@@ -66,6 +66,7 @@ struct ConsumptionRepView: View {
             .ignoresSafeArea()
             .accessibility(hidden: true))
         .overlay (
+            ScrollView {
             VStack {
                
             DatePicker(selection: $reportDate, label: { Text("Report Date") })
@@ -243,21 +244,22 @@ struct ConsumptionRepView: View {
                 .backgroundStyle(cornerRadius: 30)
 //                        .opacity(appear[0] ? 1 : 0)
         )
-        .padding(EdgeInsets(top: 40, leading: 10, bottom: 20, trailing: 10))
+        .padding(EdgeInsets(top: 60, leading: 10, bottom: 20, trailing: 10))
+            }
         )
         Button (action: {
             dismiss()
         }, label: {
             CloseButton()
         })
-    
+        .buttonStyle(.plain)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
         .padding(20)
         .ignoresSafeArea()
         Text("Submit Consumption Report")
-            .font(.title3).bold()
+                .font(.subheadline).bold()
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-            .padding(10)
+            .padding(20)
         }
             .task {
                 do {

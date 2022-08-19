@@ -21,6 +21,7 @@ struct SaveConversationButton: View {
     var body: some View {
         Button(action: saveConversation) {
             Text("Save")
+                .foregroundColor(.primary)
         }
     }
     

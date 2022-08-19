@@ -9,11 +9,11 @@ import SwiftUI
 import RealmSwift
 
 struct OpenRealmView: View {
-    @AutoOpen(appId: accAppId, timeout: 4000) var autoOpen
+    @AsyncOpen(appId: accAppId, timeout: 4000) var asyncOpen
     @EnvironmentObject var model: Model
        
     var body: some View {
-       switch autoOpen {
+       switch asyncOpen {
        case .connecting:
            ProgressView()
        case .waitingForUser:

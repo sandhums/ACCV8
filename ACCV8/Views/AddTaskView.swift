@@ -18,8 +18,8 @@ struct AddTaskView: View {
     @State private var title = ""
     @State private var desc = ""
     @State private var text = ""
-    @State private var taskOwner = accApp.currentUser?.profile.email
-    @State private var taskOwnerId = accApp.currentUser?.id
+    @State private var taskOwner = ""
+    @State private var taskOwnerId = ""
     @State private var startDate = Date()
     @State private var dueDate = Date()
     @State private var taskLogoF = ""
@@ -118,8 +118,8 @@ struct AddTaskView: View {
         task.taskTitle = title
         task.taskDescription = desc
         task.taskText = text
-        task.taskOwner = taskOwner!
-        task.taskOwnerId = taskOwnerId!
+//        task.taskOwner = taskOwner
+//        task.taskOwnerId = taskOwnerId
         task.dueDate = dueDate
         task.taskLogoF = taskLogoF
         task.taskPriority = taskPriority
@@ -133,15 +133,14 @@ struct AddTaskView: View {
             do {
                 let realm = try Realm()
 //                print("so far so good")
-//                let idOfContactToUpdate = taskToEdit._id
-//                print("Contact \(idOfContactToUpdate) found")
+//                let objectToUpdate = taskToEdit._id
+//                print("Contact \(objectToUpdate) found")
 //                guard let objectToUpdate = realm.object(ofType: Tasks.self, forPrimaryKey: taskToEdit._id) else {
 //                    print("Contact \(taskToEdit._id) not found")
 //               return }
-//                guard let objectToUpdate = realm.object(ofType: Tasks.self, forPrimaryKey: taskToEdit._id) else {
-//                    print("Contact \(taskToEdit._id) not found")
-//                    return }
-                let objectToUpdate = realm.objects(Tasks.self).first!
+                guard let objectToUpdate = realm.object(ofType: Tasks.self, forPrimaryKey: taskToEdit._id) else {
+                    return }
+//               guard let objectToUpdate = realm.object(Tasks.self, forPrimaryKey: taskToEdit._id) else {return}
                 try realm.write {
 //                let taskToModify = Tasks(value: ["_id": taskToEdit._id, "taskTitle": title, "taskDescription": desc, "taskText": text, "dueDate": dueDate, "taskLogoF": taskLogoF, "taskPriority": taskPriority, "progressF": Double(progressF) ?? 0.0])
 //                    realm.add(taskToModify, update: .all)

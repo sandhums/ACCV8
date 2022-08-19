@@ -16,6 +16,7 @@ class Projects: Object, ObjectKeyIdentifiable {
     @Persisted var projectOwner = ""
     @Persisted var projectOwnerId = ""
     @Persisted var projectAdmin = ""
+    @Persisted var projectPic = ""
     @Persisted var projectImage: Data?
     @Persisted var projectBackgrnd = ""
     @Persisted var projectLogoF = ""

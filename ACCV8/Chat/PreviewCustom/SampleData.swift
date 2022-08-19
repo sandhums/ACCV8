@@ -53,6 +53,28 @@ extension Centre: Samplable {
         Centre(centreName: "Head Office", centreDesc: "Artemis Heart Centre at Gurgaon", centreIndex: 1, centreText: "placeholder text", centreImage: (UIImage(named: "Illustration 3") ?? UIImage()).jpegData(compressionQuality: 0.8), centreBackgrnd: "Background 3", centreLogoF: "Logo 3")
     }
 }
+extension Projects {
+    convenience init(projectName: String, projectText: String, projectPic: String, projectBackgrnd: String, projectLogoF: String) {
+    self.init()
+    self.projectName = projectName
+    self.projectText = projectText
+    self.projectPic = projectPic
+    self.projectBackgrnd = projectBackgrnd
+    self.projectLogoF = projectLogoF
+ }
+}
+extension Projects: Samplable {
+    static var samples: [Projects] { [sample, sample2, sample3] }
+    static var sample: Projects {
+        Projects (projectName: "Ranchi", projectText: "placeholder text", projectPic: "gurgaon", projectBackgrnd: "Background 1", projectLogoF: "Logo 1")
+    }
+    static var sample2: Projects {
+        Projects (projectName: "Ranchi", projectText: "placeholder text", projectPic: "gurgaon", projectBackgrnd: "Background 1", projectLogoF: "Logo 1")
+    }
+    static var sample3: Projects {
+        Projects (projectName: "Ranchi", projectText: "placeholder text", projectPic: "gurgaon", projectBackgrnd: "Background 1", projectLogoF: "Logo 1")
+    }
+}
 extension Reps {
     convenience init(username: String, firstName: String, lastName: String, designation: String, userBio: String, userIndex: Int, userMobile: String, centreName: String, presence: Presence, userPreferences: UserPreferences, conversations: [Conversation]) {
         self.init()
