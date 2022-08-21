@@ -20,22 +20,36 @@ struct AddProjectsView: View {
     @State var projectOwnerId = ""
     @State var projectAdmin = ""
     @State var projectBackgrnd = ""
+    @State var projectPic = ""
     @State var projectLogoF = ""
     @State var latitude = ""
     @State var longitude = ""
     var body: some View {
-        VStack {
-        TextField("Project Name", text: $projectName)
-        TextField("Project Text", text: $projectText)
-        TextField("Project Owner", text: $projectOwner)
-        TextField("Project OwnerId", text: $projectOwnerId)
-        TextField("Project Background", text: $projectBackgrnd)
-        TextField("Project Logo", text: $projectLogoF)
-        TextField("Latitude", text: $latitude)
-        TextField("Longitude", text: $longitude)
-        }
+        ZStack {
+            Color("Background").ignoresSafeArea()
+
+        VStack (alignment: .leading, spacing: 20){
+            Text("Add Project")
+                .font(.title.weight(.bold))
+                .blendMode(.overlay)
+            Text("(Authorisation required)")
+                .font(.title3)
+                .blendMode(.overlay)
+            TextField("Project Name", text: $projectName)
+                .customField(icon: "folder.circle")
+            TextField("Project Text", text: $projectText)
+                .customField(icon: "text.bubble")
+            TextField("Project Background", text: $projectBackgrnd)
+                .customField(icon: "folder.circle.fill")
+            TextField("Project Logo", text: $projectLogoF)
+                .customField(icon: "photo.fill")
+            TextField("Latitude", text: $latitude)
+                .customField(icon: "location.circle")
+            TextField("Longitude", text: $longitude)
+                .customField(icon: "location.circle.fill")
+       
         Button {
-                     
+                    
             let latD = Double(latitude) ?? 0.0
             let longD = Double(longitude) ?? 0.0
             let project = Projects()
@@ -44,6 +58,7 @@ struct AddProjectsView: View {
             project.projectOwner = projectOwner
             project.projectOwnerId = projectOwnerId
             project.projectBackgrnd = projectBackgrnd
+            project.projectPic = projectPic
             project.projectLogoF = projectLogoF
             project.projectLocation.latitude = latD
             project.projectLocation.longitude = longD
@@ -52,10 +67,17 @@ struct AddProjectsView: View {
             dismiss()
             
         } label: {
-            Text("Save")
-                .frame(maxWidth: .infinity)
-        }.buttonStyle(.bordered)
- 
+            AngularButton(title: "Save")
+                
+        }.buttonStyle(.plain)
+        }
+        .padding(.horizontal, 20)
+        .background(
+            Image("Blob 1")
+                .offset(x: 70, y: -100)
+                .accessibility(hidden: true)
+        )
+        }
     }
 
 }

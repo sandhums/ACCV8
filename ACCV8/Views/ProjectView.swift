@@ -12,8 +12,8 @@ struct ProjectView: View {
     @Environment(\.realm) var realm
     @EnvironmentObject var model: Model
     @ObservedResults(Projects.self) var projects
-//    @State var showTasks = false
-//    @State var selectedProject: Projects
+    @State var showTasks = false
+    @State var selectedProject: Projects
     @State var contentHasScrolled = false
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     var columns = [GridItem(.adaptive(minimum: 250), spacing: 20)]
@@ -105,12 +105,19 @@ struct ProjectView: View {
                         .opacity(0.4)
                 )
                 .frame(height: 300)
+                .onTapGesture {
+                    showTasks = true
+                    selectedProject = project
+                }
             }
         }
         .padding(.horizontal, 20)
         .offset(y: -80)
         }
         .coordinateSpace(name: "scroll")
+        .sheet(isPresented: $showTasks) {
+//            TasksView(project: $selectedProject)
+        }
         .overlay(NavigationBar(title: "Projects", contentHasScrolled: $contentHasScrolled))
     }
     var scrollDetection: some View {
@@ -146,6 +153,6 @@ struct ProjectView: View {
 
 struct ProjectView_Previews: PreviewProvider {
     static var previews: some View {
-        ProjectView()
+        ProjectView(selectedProject: Projects())
     }
 }

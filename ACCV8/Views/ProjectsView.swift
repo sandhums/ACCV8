@@ -18,19 +18,12 @@ struct ProjectsView: View {
     @State private var showAlertToggle = false
     @State private var alertTitle = ""
     @State private var alertMessage = ""
-    @AppStorage("isLogged") var isLogged = false
-    @AppStorage("showAccount") var showAccount = false
    
     var body: some View {
-        ZStack {
-            VStack {
-                Spacer()
-                }
-            .background(Color("Background"))
-            .frame(maxWidth: .infinity)
-          
         NavigationView {
-          
+            ZStack {
+                Color("Background").ignoresSafeArea()
+                .background(Image("Blob 1").offset(x: -100, y: -400))
                   VStack {
                       
                       if projects.isEmpty {
@@ -57,12 +50,12 @@ struct ProjectsView: View {
                                           Text(project.projectName)
                                               .font(.title).bold()
                                               .frame(maxWidth: .infinity, alignment: .leading)
-                                              .foregroundColor(.white)
+                                              .foregroundColor(.primary)
                                           
                                           Text(project.projectText)
                                               .font(.footnote).bold()
                                               .frame(maxWidth: .infinity, alignment: .leading)
-                                              .foregroundColor(.white.opacity(0.7))
+                                              .foregroundColor(.primary.opacity(0.7))
                                       }
                                       .padding(20)
                                       .background(
@@ -73,14 +66,6 @@ struct ProjectsView: View {
 //                                            .blur(radius: 30)
                                       )
                                   }
-//                                  .background(
-////                                    Image(uiImage: UIImage(data: project.projectImage!) ?? UIImage())
-//                                        .resizable()
-//                                        .aspectRatio(contentMode: .fit)
-//                                        .padding(20)
-//                                        .opacity(0.4)
-//                                        .offset(y: -30)
-//                                  )
                                   .background(
                                     Image(uiImage: UIImage(named: project.projectBackgrnd)!)
                                         .resizable()
@@ -124,27 +109,9 @@ struct ProjectsView: View {
                               }
                           }
                           ToolbarItem(placement: .navigationBarLeading) {
-                              Button {
-                                  withAnimation {
-                                      if isLogged {
-                                          showAccount = true
-                                      } else {
-                                          showAccount = false
-                                      }
-                                  }
-                              } label: {
-                                  if isLogged {
-                                      UserAvatarView(
-                                          photo: user.userPreferences?.avatarImage,
-                                          online: true)
-                                  } else {
-                                      LogoView(image: "Avatar Default")
-
-                                  }
-                              }
-                              .buttonStyle(.plain)
-//                              LogoutButton(user: user)
-//                                  .buttonStyle(.plain)
+                              LogoutButton(user: user)
+                                  .buttonStyle(.plain)
+                                  .frame(width: 60, height: 30)
                           }
                           
                       }
@@ -153,7 +120,6 @@ struct ProjectsView: View {
                   })
     
               }
-
             .task {
                 do {
                 try await setSubscription()
@@ -162,37 +128,11 @@ struct ProjectsView: View {
                 }
         }
         }
-
-        .coordinateSpace(name: "scroll")
+            
         }
-//        .overlay(NavigationBar(title: "Projects", contentHasScrolled: $contentHasScrolled))
+    
     }
-    var scrollDetection: some View {
-        GeometryReader { proxy in
-            let offset = proxy.frame(in: .named("scroll")).minY
-            Color.clear.preference(key: ScrollPreferenceKey.self, value: offset)
-        }
-        .onPreferenceChange(ScrollPreferenceKey.self) { value in
-            withAnimation(.easeInOut) {
-                if value < 0 {
-                    contentHasScrolled = true
-                } else {
-                    contentHasScrolled = false
-                }
-            }
-        }
-    }
-    @ViewBuilder
-    var avatar: some View {
-        if isLogged {
-            UserAvatarView(
-                photo: user.userPreferences?.avatarImage,
-                online: true)
-        } else {
-            LogoView(image: "Avatar Default")
-
-        }
-        }
+   
     private func setSubscription() async throws {
         let subscriptions = realm.subscriptions
         let foundSubscription = subscriptions.first(named: "allProjects")

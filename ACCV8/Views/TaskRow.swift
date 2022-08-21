@@ -51,8 +51,8 @@ struct TaskRow: View {
                     .fontWeight(.semibold)
                     Spacer()
                     Text(task.taskPriority.rawValue)
-                        .font(.caption.weight(.medium))
-                        .foregroundStyle(.white)
+                        .font(.caption)
+                        .foregroundStyle(.primary)
                         .padding(4)
                         .frame(width: 60)
                         .background(priorityBackground(task.taskPriority))
@@ -63,11 +63,15 @@ struct TaskRow: View {
                     .foregroundStyle(.secondary)
                 Text(task.taskText)
                     .font(.caption.weight(.medium))
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(.primary)
                 HStack {
-                ProgressView(value: task.progressF)
-                    .accentColor(.purple)
-                    .frame(maxWidth: 132)
+                    Text ("Due: \(task.dueDate.formatted(.dateTime.day().month().year()))")
+                        .font(.caption.weight(.bold))
+                        .foregroundStyle(.secondary)
+
+//                ProgressView(value: task.progressF)
+//                    .accentColor(.purple)
+//                    .frame(maxWidth: 132)
                     Spacer()
                     Image(systemName: task.isCompleted ? "record.circle": "circle")
                         .font(.caption.weight(.medium))
@@ -78,9 +82,6 @@ struct TaskRow: View {
                                 taskToUpdate?.isCompleted.toggle()
                             }
                         }
-//                Text("Status: \(task.status)")
-//                    .font(.caption.weight(.bold))
-//                    .foregroundStyle(.secondary)
                 }
             }
     

@@ -10,8 +10,8 @@ import RealmSwift
 import AuthenticationServices
 
 struct SignInView: View {
-    @State var email = "999@999.com"
-    @State var password = "999999"
+    @State var email = "888@888.com"
+    @State var password = "888888"
     @State var circleInitialY = CGFloat.zero
     @State var circleY = CGFloat.zero
     @FocusState var isEmailFocused: Bool
@@ -39,11 +39,11 @@ struct SignInView: View {
                         Image("TLogo")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 130, height: 130)
+                            .frame(width: 120, height: 120)
                     }
                     
-                    Text("Access to Artemis Cardiac Care is restricted to Staff and Partners")
-                        .font(.headline)
+                    Text("Access to **Artemis Cardiac Care** is restricted to Staff and Partners")
+                        .font(.subheadline)
                         .foregroundStyle(.secondary)
                         .slideFadeIn(show: appear[1], offset: 20)
                     

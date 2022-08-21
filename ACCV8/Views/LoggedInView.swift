@@ -34,7 +34,9 @@ struct LoggedInView: View {
                     ConversationListView(user: user)
                     }
                 case .projects:
-                    ProjectView()
+                    if let user = users.first {
+                    ProjectsView(user: user)
+                    }
                 }
             }
             .safeAreaInset(edge: .bottom) {

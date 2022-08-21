@@ -51,7 +51,8 @@ struct AddTaskView: View {
             taskToEdit == nil ? false: true
         }
     var body: some View {
- 
+        ZStack {
+            Color("Background").ignoresSafeArea()
         VStack(alignment: .leading) {
                 
                 if !isEditing {
@@ -62,23 +63,23 @@ struct AddTaskView: View {
                 Spacer().frame(height: 60)
             VStack {
                 TextField("Title", text: $title)
-                    .textFieldStyle(.roundedBorder)
+                    .customField(icon: "textformat")
                 TextField("Description", text: $desc)
-                    .textFieldStyle(.roundedBorder)
+                    .customField(icon: "text.alignleft")
                 TextField("Text", text: $text)
-                .textFieldStyle(.roundedBorder)
+                    .customField(icon: "list.bullet.circle")
                 DatePicker(selection: $dueDate, label: { Text("Due Date") })
             }
             VStack {
                 TextField("Logo", text: $taskLogoF)
-                    .textFieldStyle(.roundedBorder)
+                    .customField(icon: "photo.circle")
                 Picker("Priority", selection: $taskPriority) {
                     ForEach(TaskPriority.allCases, id: \.self) { priority in
                         Text(priority.rawValue)
                     }
                 }.pickerStyle(.segmented)
                 TextField("Progress",  text: $progressF)
-                .textFieldStyle(.roundedBorder)
+                    .customField(icon: "number.square")
             }
                 Button {
                     // save or update the item
@@ -94,15 +95,20 @@ struct AddTaskView: View {
                     dismiss()
                     
                 } label: {
-                    Text(isEditing ? "Update": "Save")
+                    AngularButton(title: isEditing ? "Update": "Save")
                         .frame(maxWidth: .infinity, maxHeight: 40)
-                }.buttonStyle(.bordered)
+                }.buttonStyle(.plain)
                     .padding(.top, 20)
                 Spacer()
 
                     .navigationTitle(isEditing ? "Update Task": "Add Task")
             }
         .padding()
+        .background(
+            Image("Blob 1")
+                .offset(x: 70, y: -100)
+                .accessibility(hidden: true)
+        )
 //        .task {
 //            do {
 //            try await setSubscription()
@@ -110,6 +116,7 @@ struct AddTaskView: View {
 //
 //            }
 //        }
+        }
     }
     
     private func save() {
@@ -131,29 +138,30 @@ struct AddTaskView: View {
 //        let user = users.first
         if let taskToEdit = taskToEdit {
             do {
-                let realm = try Realm()
+                var config = accApp.currentUser?.flexibleSyncConfiguration()
+                let realm = try Realm(configuration: config!)
 //                print("so far so good")
 //                let objectToUpdate = taskToEdit._id
 //                print("Contact \(objectToUpdate) found")
 //                guard let objectToUpdate = realm.object(ofType: Tasks.self, forPrimaryKey: taskToEdit._id) else {
 //                    print("Contact \(taskToEdit._id) not found")
 //               return }
-                guard let objectToUpdate = realm.object(ofType: Tasks.self, forPrimaryKey: taskToEdit._id) else {
-                    return }
+//                guard let objectToUpdate = realm.object(ofType: Tasks.self, forPrimaryKey: taskToEdit._id) else {
+//                    return }
 //               guard let objectToUpdate = realm.object(Tasks.self, forPrimaryKey: taskToEdit._id) else {return}
                 try realm.write {
 //                let taskToModify = Tasks(value: ["_id": taskToEdit._id, "taskTitle": title, "taskDescription": desc, "taskText": text, "dueDate": dueDate, "taskLogoF": taskLogoF, "taskPriority": taskPriority, "progressF": Double(progressF) ?? 0.0])
 //                    realm.add(taskToModify, update: .all)
-//                    realm.create(Tasks.self,
-//                                 value: ["_id": taskToEdit._id, "taskTitle": title, "taskDescription": desc, "taskText": text, "startDate": startDate, "dueDate": dueDate, "taskLogoF": taskLogoF, "priority": priority, "status": status, "progressF": Double(progressF) ?? 0.0],
-//                                    update: .modified)
-                    objectToUpdate.taskTitle = title
-                    objectToUpdate.taskDescription = desc
-                    objectToUpdate.taskText = text
-                    objectToUpdate.dueDate = dueDate
-                    objectToUpdate.taskLogoF = taskLogoF
-                    objectToUpdate.taskPriority = taskPriority
-                    objectToUpdate.progressF = Double(progressF) ?? 0.0
+                    realm.create(Tasks.self,
+                                 value: ["_id": taskToEdit._id, "taskText": text, "progressF": Double(progressF) ?? 0.0],
+                                    update: .modified)
+//                    objectToUpdate.taskTitle = title
+//                    objectToUpdate.taskDescription = desc
+//                    objectToUpdate.taskText = text
+//                    objectToUpdate.dueDate = dueDate
+//                    objectToUpdate.taskLogoF = taskLogoF
+//                    objectToUpdate.taskPriority = taskPriority
+//                    objectToUpdate.progressF = Double(progressF) ?? 0.0
                     print("updated tasks")
                 }
             }

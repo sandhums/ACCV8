@@ -30,6 +30,8 @@ struct TasksView: View {
           project.tasks.filter { $0.isCompleted == true }
       }
     var body: some View {
+        ZStack {
+            Color("Background").ignoresSafeArea()
         VStack {
             if tasks.isEmpty {
                 Text("No tasks found.")
@@ -44,7 +46,11 @@ struct TasksView: View {
                             Text("No tasks.")
                         }
                         ForEach(filteredTasks, id: \.self) { task in
+                            NavigationLink {
+                                AddTaskView(project: project, taskToEdit: task)
+                            } label: {
                         TaskRow(task: task)
+                            }
                     
                 }
                 .onDelete { indexSet in
@@ -76,7 +82,9 @@ struct TasksView: View {
                     Image(systemName: "plus")
                 }
             }
-        }.sheet(isPresented: $isPresented) {
+        }
+        }
+        .sheet(isPresented: $isPresented) {
             AddTaskView(project: project)
         }
         .task {
@@ -106,5 +114,6 @@ struct TasksView: View {
 struct TasksView_Previews: PreviewProvider {
     static var previews: some View {
         TasksView(project: Projects())
+        
     }
 }
