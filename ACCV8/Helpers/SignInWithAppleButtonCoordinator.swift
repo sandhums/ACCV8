@@ -9,9 +9,11 @@ import AuthenticationServices
 import CryptoKit
 import FirebaseAuth
 import RealmSwift
+import SwiftUI
 
 class SignInWithAppleButtonCoordinator: NSObject {
     private var currentNonce: String?
+    @AppStorage("isLogged") var isLogged = false
     
     func signInWithApple() {
         let request = ASAuthorizationAppleIDProvider().createRequest()
@@ -117,6 +119,7 @@ extension SignInWithAppleButtonCoordinator: ASAuthorizationControllerDelegate {
               case .failure(let error):
                   print("Login failed: \(error.localizedDescription)")
               case .success(let user):
+                  self.isLogged = true
                   print("Successfully logged in as user \(user)")
               }
           }

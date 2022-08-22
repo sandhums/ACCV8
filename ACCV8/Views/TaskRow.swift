@@ -15,9 +15,9 @@ struct TaskRow: View {
     private func priorityBackground(_ taskPriority: TaskPriority) -> Color {
            switch taskPriority {
                case .low:
-                   return .gray
+                    return .gray
                case .medium:
-                   return .orange
+                   return .yellow
                case .high:
                    return .red
            }
@@ -54,7 +54,7 @@ struct TaskRow: View {
                         .font(.caption)
                         .foregroundStyle(.primary)
                         .padding(4)
-                        .frame(width: 60)
+                        .frame(width: 70)
                         .background(priorityBackground(task.taskPriority))
                         .clipShape(RoundedRectangle(cornerRadius: 10.0, style: .continuous))
                 }

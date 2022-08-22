@@ -70,7 +70,7 @@ struct ConsumptionRepView: View {
             ScrollView {
             VStack {
                
-            DatePicker(selection: $reportDate, label: { Text("Report Date") })
+            DatePicker(selection: $reportDate, label: { Text("Date") })
                 Divider()
                     .foregroundColor(.secondary)
               
@@ -261,6 +261,7 @@ struct ConsumptionRepView: View {
                 } label: {
                     AngularButton(title: "Submit")
                 }
+                .buttonStyle(.plain)
         }
         .accentColor(.primary)
         .padding(20)

@@ -51,7 +51,7 @@ struct RevenueRepView: View {
         .overlay(
             VStack {
              
-                DatePicker(selection: $revenueDate, label: { Text("Report Date") })
+                DatePicker(selection: $revenueDate, label: { Text("Date") })
     
                 TextField("Revenue IPD", text: $revenueIPD)
                         .keyboardType(.numberPad)
@@ -80,8 +80,9 @@ struct RevenueRepView: View {
                     } label: {
                         AngularButton(title: "Submit")
                     }
-                
+                    .buttonStyle(.plain)
             }
+                
                 .padding(20)
                 .padding(.vertical, 10)
                 .background(
@@ -104,6 +105,7 @@ struct RevenueRepView: View {
             }, label: {
                 CloseButton()
             })
+            .buttonStyle(.plain)
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
             .padding(20)
             .ignoresSafeArea()

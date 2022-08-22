@@ -109,13 +109,6 @@ struct AddTaskView: View {
                 .offset(x: 70, y: -100)
                 .accessibility(hidden: true)
         )
-//        .task {
-//            do {
-//            try await setSubscription()
-//            } catch {
-//
-//            }
-//        }
         }
     }
     
@@ -125,8 +118,6 @@ struct AddTaskView: View {
         task.taskTitle = title
         task.taskDescription = desc
         task.taskText = text
-//        task.taskOwner = taskOwner
-//        task.taskOwnerId = taskOwnerId
         task.dueDate = dueDate
         task.taskLogoF = taskLogoF
         task.taskPriority = taskPriority
@@ -140,28 +131,10 @@ struct AddTaskView: View {
             do {
                 var config = accApp.currentUser?.flexibleSyncConfiguration()
                 let realm = try Realm(configuration: config!)
-//                print("so far so good")
-//                let objectToUpdate = taskToEdit._id
-//                print("Contact \(objectToUpdate) found")
-//                guard let objectToUpdate = realm.object(ofType: Tasks.self, forPrimaryKey: taskToEdit._id) else {
-//                    print("Contact \(taskToEdit._id) not found")
-//               return }
-//                guard let objectToUpdate = realm.object(ofType: Tasks.self, forPrimaryKey: taskToEdit._id) else {
-//                    return }
-//               guard let objectToUpdate = realm.object(Tasks.self, forPrimaryKey: taskToEdit._id) else {return}
                 try realm.write {
-//                let taskToModify = Tasks(value: ["_id": taskToEdit._id, "taskTitle": title, "taskDescription": desc, "taskText": text, "dueDate": dueDate, "taskLogoF": taskLogoF, "taskPriority": taskPriority, "progressF": Double(progressF) ?? 0.0])
-//                    realm.add(taskToModify, update: .all)
                     realm.create(Tasks.self,
-                                 value: ["_id": taskToEdit._id, "taskText": text, "progressF": Double(progressF) ?? 0.0],
+                                 value: ["_id": taskToEdit._id, "taskTitle": title, "taskDescription": desc, "taskText": text, "dueDate": dueDate, "taskLogoF": taskLogoF, "taskPriority": taskPriority, "progressF": Double(progressF) ?? 0.0],
                                     update: .modified)
-//                    objectToUpdate.taskTitle = title
-//                    objectToUpdate.taskDescription = desc
-//                    objectToUpdate.taskText = text
-//                    objectToUpdate.dueDate = dueDate
-//                    objectToUpdate.taskLogoF = taskLogoF
-//                    objectToUpdate.taskPriority = taskPriority
-//                    objectToUpdate.progressF = Double(progressF) ?? 0.0
                     print("updated tasks")
                 }
             }

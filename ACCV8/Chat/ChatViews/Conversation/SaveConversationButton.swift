@@ -23,6 +23,7 @@ struct SaveConversationButton: View {
             Text("Save")
                 .foregroundColor(.primary)
         }
+        .buttonStyle(.plain)
     }
     
     private func saveConversation() {

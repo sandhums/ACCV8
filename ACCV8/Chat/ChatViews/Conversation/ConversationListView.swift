@@ -61,6 +61,7 @@ struct ConversationListView: View {
                             .foregroundColor(Color.primary)
                             .font(.body).bold()
                     }
+                    .buttonStyle(.plain)
                     .disabled(showingAddChat)
                 }
                  
@@ -73,6 +74,7 @@ struct ConversationListView: View {
                         destination: ChatRoomView(user: user, conversation: conversation),
                         isActive: $showConversation) { EmptyView() }
                 }
+                   
             }
                 .padding(20)
                 .padding(.vertical, 10)

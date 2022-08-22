@@ -81,13 +81,13 @@ struct CentreDetailView: View {
         .onChange(of: showToggle) { show in
            fadeOut()
         }
-        .task {
-            do {
-            try await setSubscription()
-            } catch {
-
-            }
-        }
+//        .task {
+//            do {
+//            try await setSubscription()
+//            } catch {
+//
+//            }
+//        }
         .statusBar(hidden: true)
 }
     var centreDetail: some View {
@@ -150,7 +150,8 @@ struct CentreDetailView: View {
             .accessibilityElement(children: .combine)
         }
             VStack {
-                Button(action: { showingFullMap.toggle() }) {     Map(coordinateRegion: $region, annotationItems: centres, annotationContent: { centre in
+                Button(action: { showingFullMap.toggle() }) {
+                    Map(coordinateRegion: $region, annotationItems: centres, annotationContent: { centre in
                     MapMarker(coordinate: centre.centreLocation) 
                     
                  })

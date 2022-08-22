@@ -10,8 +10,8 @@ import RealmSwift
 import AuthenticationServices
 
 struct SignInView: View {
-    @State var email = "888@888.com"
-    @State var password = "888888"
+    @State var email = ""
+    @State var password = ""
     @State var circleInitialY = CGFloat.zero
     @State var circleY = CGFloat.zero
     @FocusState var isEmailFocused: Bool
@@ -36,7 +36,7 @@ struct SignInView: View {
                             .blendMode(.overlay)
                         .slideFadeIn(show: appear[0], offset: 30)
                         Spacer()
-                        Image("TLogo")
+                        Image("TLogo-2g")
                             .resizable()
                             .scaledToFit()
                             .frame(width: 120, height: 120)

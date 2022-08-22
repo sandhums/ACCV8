@@ -15,7 +15,7 @@ struct ContentView: View {
     var body: some View {
         if let user = app.currentUser {
                 let config = user.flexibleSyncConfiguration(initialSubscriptions: { subs in
-                    if let foundSubscriptions = subs.first(named: "userId"), let _ = subs.first(named: "allCentres") {
+                    if let foundSubscriptions = subs.first(named: "userId"), let _ = subs.first(named: "allCentres"), let _ = subs.first(named: "allChatsters") {
                             return
                         } else {
                     subs.append(
@@ -24,8 +24,10 @@ struct ContentView: View {
                                 })
                     subs.append(
                             QuerySubscription<Centre>(name: "allCentres"))
+                    subs.append(
+                            QuerySubscription<Chatster>(name: "allChatsters"))
                         }
-                    print("appended bootstrap query userId and allCentres")
+                    print("appended bootstrap query userId, allCentres and allChatsters")
                 }, rerunOnOpen: true)
             
                 OpenRealmView()

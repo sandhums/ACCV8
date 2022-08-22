@@ -94,7 +94,7 @@ struct NewConversationView: View {
                     presentationMode.wrappedValue.dismiss()
                 }, label: {
                     CloseButton()
-                }),
+                }).buttonStyle(.plain),
                 trailing:VStack {
                     if isPreview {
                         SaveConversationButton(user: user, name: name, members: members, done: { presentationMode.wrappedValue.dismiss() })

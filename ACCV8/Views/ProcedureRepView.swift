@@ -27,11 +27,11 @@ struct ProcedureRepView: View {
     @State private var procName1 = "Angiography"
     @State private var procName2 = "Angioplasty"
     @State private var procName3 = "PPI/ICD"
-    @State private var procName4 = ""
+    @State private var procName4 = "BMV/EP/RFA"
     @State private var procName5 = "ECHO"
     @State private var procName6 = "TMT"
     @State private var procName7 = "Holter"
-    @State private var procName8 = ""
+    @State private var procName8 = "DSE/SE"
     @State private var procQty = 0
     @State private var procQty2 = 0
     @State private var procQty3 = 0
@@ -60,7 +60,7 @@ struct ProcedureRepView: View {
         
         .overlay(
             VStack {
-                DatePicker(selection: $reportDate, label: { Text("Report Date") })
+                DatePicker(selection: $reportDate, label: { Text("Date") })
                 Divider()
                     .foregroundColor(.secondary)
                 Group {
@@ -84,7 +84,7 @@ struct ProcedureRepView: View {
                         }
                     }
                     HStack {
-                        TextField(" Enter Other", text: $procName4)
+                        Text("\(procName4) - ")
                         Stepper(value: $procQty4, in: 0...10) {
                             Text("\(procQty4)")
                         }
@@ -112,7 +112,7 @@ struct ProcedureRepView: View {
                         }
                     }
                     HStack {
-                        TextField(" Enter Other", text: $procName8)
+                        Text("\(procName8) - ")
                         Stepper(value: $procQty8, in: 0...10) {
                             Text("\(procQty8)")
                         }
@@ -126,8 +126,9 @@ struct ProcedureRepView: View {
                 } label: {
                     AngularButton(title: "Submit")
                 }
-                
+                .buttonStyle(.plain)
             }
+              
                 .padding(20)
                 .padding(.vertical, 10)
                 .background(

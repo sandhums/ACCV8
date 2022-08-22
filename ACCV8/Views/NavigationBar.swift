@@ -43,7 +43,7 @@ struct NavigationBar: View {
                         if isLogged {
                             showAccount = true
                         } else {
-                            showAccount = false
+                            showAccount = true
                         }
                     }
                 } label: {

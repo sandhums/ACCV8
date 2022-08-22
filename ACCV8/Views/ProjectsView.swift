@@ -21,9 +21,6 @@ struct ProjectsView: View {
    
     var body: some View {
         NavigationView {
-            ZStack {
-                Color("Background").ignoresSafeArea()
-                .background(Image("Blob 1").offset(x: -100, y: -400))
                   VStack {
                       
                       if projects.isEmpty {
@@ -40,7 +37,7 @@ struct ProjectsView: View {
                                           .resizable()
                                           .frame(width: 26, height: 26)
                                           .cornerRadius(10)
-                                          .padding(8)
+                                          .padding(4)
                                           .background(.ultraThinMaterial)
                                           .backgroundStyle(cornerRadius: 18, opacity: 0.4)
                                           .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
@@ -107,11 +104,12 @@ struct ProjectsView: View {
                               } label: {
                                   Image(systemName: "plus")
                               }
+                              .buttonStyle(.plain)
                           }
                           ToolbarItem(placement: .navigationBarLeading) {
                               LogoutButton(user: user)
                                   .buttonStyle(.plain)
-                                  .frame(width: 60, height: 30)
+                                  .frame(width: 90, height: 26)
                           }
                           
                       }
@@ -128,11 +126,7 @@ struct ProjectsView: View {
                 }
         }
         }
-            
         }
-    
-    }
-   
     private func setSubscription() async throws {
         let subscriptions = realm.subscriptions
         let foundSubscription = subscriptions.first(named: "allProjects")
