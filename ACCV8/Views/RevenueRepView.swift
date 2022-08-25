@@ -26,6 +26,9 @@ struct RevenueRepView: View {
     @State private var revenueTot = 0.0
     @State private var collectAmt = ""
     @FocusState private var focussedField: Field?
+    @State private var alertTitle = "Artemis Cardiac Care Alert!"
+    @State private var alertMessage = ""
+    @State private var showAlertToggle = false
     
     enum Field: Hashable {
         case revenueIPD
@@ -71,7 +74,7 @@ struct RevenueRepView: View {
                         .keyboardType(.numberPad)
                         .focused($focussedField, equals: .collectAmt)
                         .submitLabel(.next)
-                        .onSubmit { insertReport() }
+                        .onSubmit { saveRevRep() }
                         .customField(icon: "indianrupeesign.circle.fill")
                        
                     Button {
@@ -114,6 +117,9 @@ struct RevenueRepView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
                 .padding(40)
         }
+        .alert(isPresented: $showAlertToggle, content: {
+            Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+            })
         .task {
             do {
             try await setSubscription()
@@ -139,39 +145,21 @@ struct RevenueRepView: View {
         rep.revenueTot = revenueTot
         rep.collectAmt = collectAmtDouble
         $revReps.append(rep)
-        print("report saved")
+        
+        accApp.syncManager.errorHandler = { error, session in
+                alertTitle = "Artemis Cardiac Care Alert!"
+                alertMessage = "You are not authorised to submit reports \n Please Log In, again"
+                showAlertToggle.toggle()
+            accApp.currentUser?.logOut { _ in
+
+            }
+            }
+   
+                            alertTitle = "Artemis Cardiac Care Alert!"
+                            alertMessage = "Report submitted"
+                            showAlertToggle.toggle()
     }
-    func insertReport() {
-        let rep = users.first
-        revenueOfCentre = rep!.centreName
-        let revIPDouble = Double(revenueIPD) ?? 0.0
-        let revOPDouble = Double(revenueOPD) ?? 0.0
-        let revenueTot = revIPDouble + revOPDouble
-        let collectAmtDouble = Double(collectAmt) ?? 0.0
-        let user = accApp.currentUser!
-        let client = user.mongoClient("mongodb-atlas")
-         let database = client.database(named: "ACC8DB")
-         let collection = database.collection(withName: "RevenueReport")
-         // Insert the custom user data object
-        collection.insertOne([
-            "_id": AnyBSON(ObjectId.generate()),
-            "revenueReportedBy": AnyBSON(revenueReportedBy ?? "sdfgh"),
-            "revenueReportedById": AnyBSON(revenueReportedById!),
-            "revenueOfCentre": AnyBSON(revenueOfCentre),
-            "revenueDate": AnyBSON(revenueDate),
-            "revenueIPD": AnyBSON(revIPDouble),
-            "revenueOPD": AnyBSON(revOPDouble),
-            "revenueTot": AnyBSON(revenueTot),
-            "collectAmt": AnyBSON(collectAmtDouble)
-             ]) { (result) in
-             switch result {
-             case .failure(let error):
-                 print("Failed to insert document: \(error.localizedDescription)")
-             case .success(let newObjectId):
-                 print("Inserted custom user data document with object ID: \(newObjectId)")
-             }
-             }
-    }
+
     private func setSubscription() async throws {
         let subscriptions = realm.subscriptions
         let foundSubscription = subscriptions.first(named: "allRevRep")

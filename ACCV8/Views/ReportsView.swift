@@ -14,6 +14,9 @@ struct ReportsView: View {
     @State var showRev = false
     @State var showCons = false
     @State var showProcByCentre = false
+    @State private var alertTitle = "Artemis Cardiac Care Alert!"
+    @State private var alertMessage = "You can submit reports on this page, \n ONLY with proper permissions. \n Wrong submits will freeze your App \n and Log you Out, Login again!"
+    @State private var showAlertToggle = true
     
     var body: some View {
         ZStack {
@@ -161,8 +164,11 @@ struct ReportsView: View {
             .padding(.top, 40)
             .padding(.horizontal, 20)
         }
+        .alert(isPresented: $showAlertToggle, content: {
+            Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+            })
         .sheet(isPresented: $showProc) {
-            ProcedureRepView(user: Reps())
+            ProcedureRepView()
         }
         .sheet(isPresented: $showRev) {
             RevenueRepView()

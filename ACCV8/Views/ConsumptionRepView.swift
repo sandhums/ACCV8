@@ -48,6 +48,9 @@ struct ConsumptionRepView: View {
     @State private var consCat2 = "PTCA Wire"
     @State private var consCat3 = "Balloons"
     @State private var consCat4 = "Others"
+    @State private var alertTitle = "Artemis Cardiac Care Alert!"
+    @State private var alertMessage = ""
+    @State private var showAlertToggle = false
     
     
     var body: some View {
@@ -296,6 +299,9 @@ struct ConsumptionRepView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
             .padding(20)
         }
+        .alert(isPresented: $showAlertToggle, content: {
+            Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+            })
             .task {
                 do {
                 try await setSubscription()
@@ -328,8 +334,19 @@ struct ConsumptionRepView: View {
         rep.reportDate = reportDate
         rep.consumptionItems.append(objectsIn: [p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13])
         $consReports.append(rep)
-        print("consumption saved")
-        dismiss()
+       
+        accApp.syncManager.errorHandler = { error, session in
+                alertTitle = "Artemis Cardiac Care Alert!"
+                alertMessage = "You are not authorised to submit reports \n Please Log In, again"
+                showAlertToggle.toggle()
+            accApp.currentUser?.logOut { _ in
+
+            }
+            }
+   
+                            alertTitle = "Artemis Cardiac Care Alert!"
+                            alertMessage = "Report submitted"
+                            showAlertToggle.toggle()
     }
     private func setSubscription() async throws {
         let subscriptions = realm.subscriptions

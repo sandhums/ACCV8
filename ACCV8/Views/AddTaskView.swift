@@ -56,12 +56,16 @@ struct AddTaskView: View {
         VStack(alignment: .leading) {
                 
                 if !isEditing {
-                    Text("Add Task")
+                  Text("Add Task")
                         .font(.largeTitle)
+                        .blendMode(.overlay)
                 }
-                
+            Text("(Authorisation required)")
+                .font(.title3)
+                .blendMode(.overlay)
                 Spacer().frame(height: 60)
             VStack {
+              
                 TextField("Title", text: $title)
                     .customField(icon: "textformat")
                 TextField("Description", text: $desc)
