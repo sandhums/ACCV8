@@ -12,9 +12,12 @@ struct ProcedureRepView: View {
     @Environment(\.realm) var realm
     @EnvironmentObject var model: Model
     @Environment(\.dismiss) var dismiss
-    @ObservedResults(Reps.self) var users
+//    @ObservedResults(Reps.self) var users
     @ObservedResults(ProcedureReport.self) var procReports
-
+    @ObservedRealmObject var user: Reps
+    @State var isLoggingOut = false
+    @State var error: Error?
+    @State var errorMessage: ErrorMessage? = nil
     @State private var alertTitle = "Artemis Cardiac Care Alert!"
     @State private var alertMessage = ""
     @State private var showAlertToggle = false
@@ -169,13 +172,13 @@ struct ProcedureRepView: View {
             }
         }
         .alert(isPresented: $showAlertToggle, content: {
-                Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .cancel())
+            Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .default(Text("OK")))
             })
 }
     func saveProcRep() {
      
-        let reps = users.first
-        reportOfCentre = reps!.centreName
+//        let reps = users.first
+        reportOfCentre = user.centreName
         let p1 = Procedures(value: ["procName": procName1, "procQty": procQty])
         let p2 = Procedures(value: ["procName": procName2, "procQty": procQty2])
         let p3 = Procedures(value: ["procName": procName3, "procQty": procQty3])
@@ -191,20 +194,61 @@ struct ProcedureRepView: View {
         rep.reportDate = reportDate
         rep.procedures.append(objectsIn: [p1, p2, p3, p4, p5, p6, p7, p8])
         $procReports.append(rep)
+        if accApp.syncManager.errorHandler == nil {
+            alertMessage = "report submitted"
+        } else {
+            accApp.syncManager.errorHandler = { error, session in
+                    alertTitle = "Artemis Cardiac Care Alert!"
+                    alertMessage = "You are not authorised to submit reports /n Please Log In, again"
+                    showAlertToggle.toggle()
+                session?.resume()
+                }
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.9) {
+            withAnimation {
+            dismiss()
+            }
+        }
+  
+//            alertTitle = "Artemis Cardiac Care Alert!"
+//            alertMessage = "Report submitted"
+//            showAlertToggle.toggle()
+        
+                               
        
 //        accApp.syncManager.errorHandler = { error, session in
-//            // handle error
-//
-//            Text("my error\(error.localizedDescription)")
-//        }
 //            alertTitle = "Artemis Cardiac Care Alert!"
-//            alertMessage = "\(error)"
+//            alertMessage = "You are not authorised to submit reports /n Please Log In, again"
 //            showAlertToggle.toggle()
+////            let User = accApp.currentUser
+////            task {
+////                await logout(user: User! )
+////            }
 //        }
+
+     
+           
         
-        dismiss()
+//
+//        dismiss()
     }
-  
+    func logout(user: User) async {
+        do {
+            try await user.logOut()
+            clearSubscriptions()
+            $user.presenceState.wrappedValue = .offLine
+            print("Successfully logged user out")
+        } catch {
+            print("Failed to log user out: \(error.localizedDescription)")
+            self.errorMessage = ErrorMessage(errorText: error.localizedDescription)
+        }
+    }
+    private func clearSubscriptions() {
+        let subscriptions = realm.subscriptions
+        subscriptions.update {
+            subscriptions.removeAll()
+        }
+    }
     private func setSubscription() async throws {
         let subscriptions = realm.subscriptions
         let foundSubscription = subscriptions.first(named: "allProcRep")
@@ -224,6 +268,6 @@ struct ProcedureRepView: View {
 
 struct ProcedureRepView_Previews: PreviewProvider {
     static var previews: some View {
-        ProcedureRepView()
+        ProcedureRepView(user: Reps())
     }
 }

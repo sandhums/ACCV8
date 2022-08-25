@@ -16,9 +16,9 @@ struct AddProjectsView: View {
     
     @State var projectName = ""
     @State var projectText = ""
-    @State var projectOwner = ""
-    @State var projectOwnerId = ""
-    @State var projectAdmin = ""
+    @State var owner_id = ""
+    @State var owner_id2 = ""
+    @State var owner_id3 = ""
     @State var projectBackgrnd = ""
     @State var projectPic = ""
     @State var projectLogoF = ""
@@ -55,8 +55,9 @@ struct AddProjectsView: View {
             let project = Projects()
             project.projectName = projectName
             project.projectText = projectText
-            project.projectOwner = projectOwner
-            project.projectOwnerId = projectOwnerId
+            project.owner_id = owner_id
+            project.owner_id2 = owner_id2
+            project.owner_id3 = owner_id3
             project.projectBackgrnd = projectBackgrnd
             project.projectPic = projectPic
             project.projectLogoF = projectLogoF

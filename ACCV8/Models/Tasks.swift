@@ -14,8 +14,8 @@ class Tasks: Object, ObjectKeyIdentifiable {
     @Persisted var taskTitle = ""
     @Persisted var taskDescription = ""
     @Persisted var taskText = ""
-    @Persisted var taskOwner = ""
-    @Persisted var taskOwnerId = ""
+    @Persisted var owner_id = ""
+    @Persisted var owner_id2 = ""
     @Persisted var dueDate = Date()//
     @Persisted var taskLogoF = ""
     @Persisted var progressF = 0.0
@@ -29,13 +29,13 @@ class Tasks: Object, ObjectKeyIdentifiable {
           return "_id"
       }
 
-    convenience init(taskTitle: String, taskDescription: String, taskText: String, taskOwner: String, taskOwnerId: String, dueDate: Date, taskLogoF: String, progressF: Double, isCompleted: Bool) {
+    convenience init(taskTitle: String, taskDescription: String, taskText: String, owner_id: String, owner_id2: String, dueDate: Date, taskLogoF: String, progressF: Double, isCompleted: Bool) {
         self.init()
         self.taskTitle = taskTitle
         self.taskDescription = taskDescription
         self.taskText = taskText
-        self.taskOwner = taskOwner
-        self.taskOwnerId = taskOwnerId
+        self.owner_id = owner_id
+        self.owner_id2 = owner_id2
         self.dueDate = dueDate
         self.taskLogoF = taskLogoF
         self.progressF = progressF

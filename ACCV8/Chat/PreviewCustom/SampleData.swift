@@ -20,13 +20,13 @@ extension Date {
     }
 }
 extension Centre {
-    convenience init(centreName: String, centreDesc: String, centreIndex: Int, centreText: String, centreImage: Data?, centreBackgrnd: String, centreLogoF: String) {
+    convenience init(centreName: String, centreDesc: String, centreIndex: Int, centreText: String, centreBackgrnd: String, centreLogoF: String) {
     self.init()
     self.centreName = centreName
     self.centreDesc = centreDesc
     self.centreIndex = centreIndex
     self.centreText = centreText
-    self.centreImage = centreImage
+
     self.centreBackgrnd = centreBackgrnd
     self.centreLogoF = centreLogoF
  }
@@ -36,7 +36,6 @@ extension Centre {
         centreDesc = centre.centreDesc
         centreIndex = centre.centreIndex
         centreText = centre.centreText
-        centreImage = centre.centreImage
         centreBackgrnd = centre.centreBackgrnd
         centreLogoF  = centre.centreLogoF
     }
@@ -44,13 +43,13 @@ extension Centre {
 extension Centre: Samplable {
     static var samples: [Centre] { [sample, sample2, sample3] }
     static var sample: Centre {
-        Centre(centreName: "Ranchi", centreDesc: "Artemis Heart Centre at Raj Hospital", centreIndex: 1, centreText: "placeholder text", centreImage: (UIImage(named: "Illustration 1") ?? UIImage()).jpegData(compressionQuality: 0.8), centreBackgrnd: "Background 1", centreLogoF: "Logo 1")
+        Centre(centreName: "Ranchi", centreDesc: "Artemis Heart Centre at Raj Hospital", centreIndex: 1, centreText: "placeholder text", centreBackgrnd: "Background 1", centreLogoF: "Logo 1")
     }
     static var sample2: Centre {
-        Centre(centreName: "Panipat", centreDesc: "Artemis Heart Centre at Ravindra Hospital", centreIndex: 1, centreText: "placeholder text", centreImage: (UIImage(named: "Illustration 2") ?? UIImage()).jpegData(compressionQuality: 0.8), centreBackgrnd: "Background 2", centreLogoF: "Logo 2")
+        Centre(centreName: "Panipat", centreDesc: "Artemis Heart Centre at Ravindra Hospital", centreIndex: 1, centreText: "placeholder text", centreBackgrnd: "Background 2", centreLogoF: "Logo 2")
     }
     static var sample3: Centre {
-        Centre(centreName: "Head Office", centreDesc: "Artemis Heart Centre at Gurgaon", centreIndex: 1, centreText: "placeholder text", centreImage: (UIImage(named: "Illustration 3") ?? UIImage()).jpegData(compressionQuality: 0.8), centreBackgrnd: "Background 3", centreLogoF: "Logo 3")
+        Centre(centreName: "Head Office", centreDesc: "Artemis Heart Centre at Gurgaon", centreIndex: 1, centreText: "placeholder text", centreBackgrnd: "Background 3", centreLogoF: "Logo 3")
     }
 }
 extension Projects {

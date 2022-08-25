@@ -150,7 +150,6 @@
 		D7BB900528A8FC550012A3DE /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB900428A8FC550012A3DE /* LocationView.swift */; };
 		D7BB900928A8FCA40012A3DE /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB900828A8FCA40012A3DE /* AnnotationView.swift */; };
 		D7BB900B28A91F920012A3DE /* GradientText3.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB900A28A91F920012A3DE /* GradientText3.swift */; };
-		D7BB900D28AA07AE0012A3DE /* ViewReports.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB900C28AA07AE0012A3DE /* ViewReports.swift */; };
 		D7BB901E28AA980F0012A3DE /* SFSafariViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB901D28AA980F0012A3DE /* SFSafariViewWrapper.swift */; };
 		D7BDC4C8287CFFBD003ADEA5 /* CentreListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BDC4C7287CFFBD003ADEA5 /* CentreListView.swift */; };
 		D7BDC4CA287D010F003ADEA5 /* CentreDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BDC4C9287D010F003ADEA5 /* CentreDetailView.swift */; };
@@ -337,7 +336,6 @@
 		D7BB900428A8FC550012A3DE /* LocationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
 		D7BB900828A8FCA40012A3DE /* AnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnotationView.swift; sourceTree = "<group>"; };
 		D7BB900A28A91F920012A3DE /* GradientText3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientText3.swift; sourceTree = "<group>"; };
-		D7BB900C28AA07AE0012A3DE /* ViewReports.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewReports.swift; sourceTree = "<group>"; };
 		D7BB901D28AA980F0012A3DE /* SFSafariViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSafariViewWrapper.swift; sourceTree = "<group>"; };
 		D7BDC4C7287CFFBD003ADEA5 /* CentreListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentreListView.swift; sourceTree = "<group>"; };
 		D7BDC4C9287D010F003ADEA5 /* CentreDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentreDetailView.swift; sourceTree = "<group>"; };
@@ -496,7 +494,6 @@
 				D7A2107F286C321100918807 /* RevenueReport.swift */,
 				D7A21075286C0FEB00918807 /* Member.swift */,
 				D7A21081286C3CD700918807 /* Centre.swift */,
-				D7BB900C28AA07AE0012A3DE /* ViewReports.swift */,
 				D7A21085286C3DCD00918807 /* Projects.swift */,
 				D7A21083286C3D2200918807 /* Coordinates.swift */,
 				D7A21087286C3DEE00918807 /* Tasks.swift */,
@@ -909,7 +906,6 @@
 				D7A210F1286EF14A00918807 /* GradientProfilePicture.swift in Sources */,
 				D7A2114E286F1D3A00918807 /* SaveConversationButton.swift in Sources */,
 				D7A210B1286E1B4800918807 /* Animations.swift in Sources */,
-				D7BB900D28AA07AE0012A3DE /* ViewReports.swift in Sources */,
 				D7A21082286C3CD700918807 /* Centre.swift in Sources */,
 				D7BB900928A8FCA40012A3DE /* AnnotationView.swift in Sources */,
 				D7FFF71E2885980D003FD4D6 /* TasksView.swift in Sources */,

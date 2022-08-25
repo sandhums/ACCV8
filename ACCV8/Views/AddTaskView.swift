@@ -18,8 +18,8 @@ struct AddTaskView: View {
     @State private var title = ""
     @State private var desc = ""
     @State private var text = ""
-    @State private var taskOwner = ""
-    @State private var taskOwnerId = ""
+    @State private var owner_id = ""
+    @State private var owner_id2 = ""
     @State private var startDate = Date()
     @State private var dueDate = Date()
     @State private var taskLogoF = ""

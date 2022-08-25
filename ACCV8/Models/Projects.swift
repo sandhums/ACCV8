@@ -13,11 +13,10 @@ class Projects: Object, ObjectKeyIdentifiable {
     @Persisted(primaryKey: true) var _id: ObjectId
     @Persisted var projectName = ""
     @Persisted var projectText = ""
-    @Persisted var projectOwner = ""
-    @Persisted var projectOwnerId = ""
-    @Persisted var projectAdmin = ""
+    @Persisted var owner_id = ""
+    @Persisted var owner_id2 = ""
+    @Persisted var owner_id3 = ""
     @Persisted var projectPic = ""
-    @Persisted var projectImage: Data?
     @Persisted var projectBackgrnd = ""
     @Persisted var projectLogoF = ""
     @Persisted var projectLocation: CLLocationCoordinate2D
@@ -26,14 +25,14 @@ class Projects: Object, ObjectKeyIdentifiable {
     override static func primaryKey() -> String? {
           return "_id"
       }
-    convenience init(projectName: String, projectText: String, projectOwner: String, projectOwnerId: String, projectAdmin: String, projectImage: Data?,  projectBackgrnd: String, projectLogoF: String, tasks: [Tasks]) {
+    convenience init(projectName: String, projectText: String, owner_id: String, owner_id2: String, owner_id3: String, projectPic: String, projectBackgrnd: String, projectLogoF: String, tasks: [Tasks]) {
         self.init()
         self.projectName = projectName
         self.projectText = projectText
-        self.projectOwner = projectOwner
-        self.projectOwnerId = projectOwnerId
-        self.projectAdmin = projectAdmin
-        self.projectImage = projectImage
+        self.owner_id = owner_id
+        self.owner_id2 = owner_id2
+        self.owner_id3 = owner_id3
+        self.projectPic = projectPic
         self.projectBackgrnd = projectBackgrnd
         self.projectLogoF = projectLogoF
         self.tasks.append(objectsIn: tasks)

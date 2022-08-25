@@ -16,7 +16,6 @@ class Centre: Object, ObjectKeyIdentifiable {
     @Persisted var centreLocation: CLLocationCoordinate2D
     @Persisted var centreIndex = 0
     @Persisted var centreText = ""
-    @Persisted var centreImage: Data?
     @Persisted var centreBackgrnd = ""
     @Persisted var centreLogoF = ""
     @Persisted var centrePic = ""
@@ -24,14 +23,13 @@ class Centre: Object, ObjectKeyIdentifiable {
           return "_id"
       }
   
-    convenience init(centreName: String, centreDesc: String, centreLocation: CLLocationCoordinate2D, centreIndex: Int, centreText: String, centreImage: Data?, centreBackgrnd: String, centreLogoF: String, centrePic: String) {
+    convenience init(centreName: String, centreDesc: String, centreLocation: CLLocationCoordinate2D, centreIndex: Int, centreText: String, centreBackgrnd: String, centreLogoF: String, centrePic: String) {
         self.init()
         self.centreName = centreName
         self.centreDesc = centreDesc
         self.centreLocation = centreLocation
         self.centreIndex = centreIndex
         self.centreText = centreText
-        self.centreImage = centreImage
         self.centreBackgrnd = centreBackgrnd
         self.centreLogoF = centreLogoF
         self.centrePic = centrePic

@@ -162,7 +162,7 @@ struct ReportsView: View {
             .padding(.horizontal, 20)
         }
         .sheet(isPresented: $showProc) {
-            ProcedureRepView()
+            ProcedureRepView(user: Reps())
         }
         .sheet(isPresented: $showRev) {
             RevenueRepView()
