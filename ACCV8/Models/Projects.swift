@@ -15,7 +15,6 @@ class Projects: Object, ObjectKeyIdentifiable {
     @Persisted var projectText = ""
     @Persisted var owner_id = ""
     @Persisted var owner_id2 = ""
-    @Persisted var owner_id3 = ""
     @Persisted var projectPic = ""
     @Persisted var projectBackgrnd = ""
     @Persisted var projectLogoF = ""
@@ -25,13 +24,12 @@ class Projects: Object, ObjectKeyIdentifiable {
     override static func primaryKey() -> String? {
           return "_id"
       }
-    convenience init(projectName: String, projectText: String, owner_id: String, owner_id2: String, owner_id3: String, projectPic: String, projectBackgrnd: String, projectLogoF: String, tasks: [Tasks]) {
+    convenience init(projectName: String, projectText: String, owner_id: String, owner_id2: String, projectPic: String, projectBackgrnd: String, projectLogoF: String, tasks: [Tasks]) {
         self.init()
         self.projectName = projectName
         self.projectText = projectText
         self.owner_id = owner_id
         self.owner_id2 = owner_id2
-        self.owner_id3 = owner_id3
         self.projectPic = projectPic
         self.projectBackgrnd = projectBackgrnd
         self.projectLogoF = projectLogoF

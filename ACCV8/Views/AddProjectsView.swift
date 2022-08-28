@@ -18,7 +18,6 @@ struct AddProjectsView: View {
     @State var projectText = ""
     @State var owner_id = ""
     @State var owner_id2 = ""
-    @State var owner_id3 = ""
     @State var projectBackgrnd = ""
     @State var projectPic = ""
     @State var projectLogoF = ""
@@ -41,6 +40,8 @@ struct AddProjectsView: View {
                 .customField(icon: "text.bubble")
             TextField("Project Background", text: $projectBackgrnd)
                 .customField(icon: "folder.circle.fill")
+            TextField("Project Owner", text: $owner_id)
+                .customField(icon: "person.circle.fill")
             TextField("Project Logo", text: $projectLogoF)
                 .customField(icon: "photo.fill")
             TextField("Latitude", text: $latitude)
@@ -57,7 +58,6 @@ struct AddProjectsView: View {
             project.projectText = projectText
             project.owner_id = owner_id
             project.owner_id2 = owner_id2
-            project.owner_id3 = owner_id3
             project.projectBackgrnd = projectBackgrnd
             project.projectPic = projectPic
             project.projectLogoF = projectLogoF

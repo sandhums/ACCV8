@@ -154,7 +154,7 @@ struct RevenueRepView: View {
 
             }
             }
-   
+       
                             alertTitle = "Artemis Cardiac Care Alert!"
                             alertMessage = "Report submitted"
                             showAlertToggle.toggle()
