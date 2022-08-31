@@ -13,6 +13,8 @@
 		D70DE6A128928F7A00DF8CD4 /* ConsumptionItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70DE6A028928F7A00DF8CD4 /* ConsumptionItems.swift */; };
 		D70DE6A52892D57C00DF8CD4 /* Consumables.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70DE6A42892D57C00DF8CD4 /* Consumables.swift */; };
 		D70E8F962874511700D57D25 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70E8F952874511700D57D25 /* NavigationBar.swift */; };
+		D731A56828BF258500B41E42 /* ekgProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = D731A56728BF258500B41E42 /* ekgProgress.swift */; };
+		D731A56A28BF258C00B41E42 /* ekg.swift in Sources */ = {isa = PBXBuildFile; fileRef = D731A56928BF258C00B41E42 /* ekg.swift */; };
 		D743C55F286B76D000A42B18 /* AppEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D743C55E286B76D000A42B18 /* AppEntry.swift */; };
 		D743C561286B76D000A42B18 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D743C560286B76D000A42B18 /* ContentView.swift */; };
 		D743C563286B76D100A42B18 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D743C562286B76D100A42B18 /* Assets.xcassets */; };
@@ -207,6 +209,8 @@
 		D70DE6A028928F7A00DF8CD4 /* ConsumptionItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionItems.swift; sourceTree = "<group>"; };
 		D70DE6A42892D57C00DF8CD4 /* Consumables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Consumables.swift; sourceTree = "<group>"; };
 		D70E8F952874511700D57D25 /* NavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
+		D731A56728BF258500B41E42 /* ekgProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ekgProgress.swift; path = ../../../../../../../Downloads/Onboarding/Onboarding/ekgProgress.swift; sourceTree = "<group>"; };
+		D731A56928BF258C00B41E42 /* ekg.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ekg.swift; path = ../../../../../../../Downloads/Onboarding/Onboarding/ekg.swift; sourceTree = "<group>"; };
 		D743C55B286B76D000A42B18 /* ACCV8.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ACCV8.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D743C55E286B76D000A42B18 /* AppEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEntry.swift; sourceTree = "<group>"; };
 		D743C560286B76D000A42B18 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -556,6 +560,8 @@
 			isa = PBXGroup;
 			children = (
 				D7BB8FF628A147F40012A3DE /* SignInView.swift */,
+				D731A56728BF258500B41E42 /* ekgProgress.swift */,
+				D731A56928BF258C00B41E42 /* ekg.swift */,
 				D7A210F2286F020000918807 /* AccountView.swift */,
 				D743C560286B76D000A42B18 /* ContentView.swift */,
 				D7A2108A286C553900918807 /* OpenRealmView.swift */,
@@ -929,6 +935,7 @@
 				D743C561286B76D000A42B18 /* ContentView.swift in Sources */,
 				D7A2114D286F1D3A00918807 /* MugShotGridView.swift in Sources */,
 				D7A21137286F1C8D00918807 /* SendButton.swift in Sources */,
+				D731A56A28BF258C00B41E42 /* ekg.swift in Sources */,
 				D7A210AD286E19F700918807 /* PreferenceKey.swift in Sources */,
 				D743C55F286B76D000A42B18 /* AppEntry.swift in Sources */,
 				D7A2113D286F1CAD00918807 /* MapView.swift in Sources */,
@@ -982,6 +989,7 @@
 				D7A21160286F1E2100918807 /* LocationHelper.swift in Sources */,
 				D7BDC4CC287F0C87003ADEA5 /* ProcedureRepView.swift in Sources */,
 				D7A210AF286E1AED00918807 /* Modifiers.swift in Sources */,
+				D731A56828BF258500B41E42 /* ekgProgress.swift in Sources */,
 				D7A21127286F1C8D00918807 /* CaptionLabel.swift in Sources */,
 				D7A2114F286F1D3A00918807 /* ConversationListView.swift in Sources */,
 				D7A210A1286DACFE00918807 /* TextFieldIcon.swift in Sources */,

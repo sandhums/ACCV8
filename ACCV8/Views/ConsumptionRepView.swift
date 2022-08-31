@@ -63,7 +63,7 @@ struct ConsumptionRepView: View {
         .frame(maxWidth: .infinity)
 //        .frame(height: 500)
         .background(
-        Image("background-1")
+        Image("Background 13")
             .resizable()
             .aspectRatio(contentMode: .fill)
 //                .opacity(0.8)

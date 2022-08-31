@@ -165,7 +165,7 @@ struct SignInView: View {
                     .accessibility(hidden: true)
             )
             .alert(isPresented: $showAlertToggle, content: {
-                Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .cancel())
+                Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .default(Text("OK")))
             })
             .padding(EdgeInsets(top: 40, leading: 20, bottom: 40, trailing: 20))
             
@@ -219,7 +219,17 @@ struct SignInView: View {
         }
     }
     func sendPasswordResetEmail() {
-        accApp.emailPasswordAuth.sendResetPasswordEmail(email: email)
+        if email != "" {
+            accApp.emailPasswordAuth.sendResetPasswordEmail(email: email)
+            alertTitle = "Artemis Cardiac Care"
+            alertMessage = "Email Sent"
+            showAlertToggle.toggle()
+        } else {
+            alertTitle = "Artemis Cardiac Care"
+            alertMessage = "Enter email above"
+            showAlertToggle.toggle()
+        }
+        
     }
 }
 

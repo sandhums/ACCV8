@@ -15,14 +15,14 @@ struct OpenRealmView: View {
     var body: some View {
        switch asyncOpen {
        case .connecting:
-           ProgressView()
+           ekgProgress()
        case .waitingForUser:
-           ProgressView("Waiting for user to log in...")
+           ekgProgress(message: "Waiting for user to log in...")
        case .open(let realm):
           LoggedInView()
                 .environment(\.realm, realm)
        case .progress:
-           ProgressView("Opening Realm Database...")
+           ekgProgress(message: "Opening Realm Database...")
        case .error(let error):
            ErrorView(error: error)
        }

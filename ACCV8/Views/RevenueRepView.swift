@@ -45,7 +45,7 @@ struct RevenueRepView: View {
         .frame(maxWidth: .infinity)
 //        .frame(height: 500)
         .background(
-            Image("background-1")
+            Image("Background 12")
                 .resizable()
                 .aspectRatio(contentMode: .fill)
 //                .opacity(0.8)
