@@ -157,6 +157,12 @@
 		D7BDC4CA287D010F003ADEA5 /* CentreDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BDC4C9287D010F003ADEA5 /* CentreDetailView.swift */; };
 		D7BDC4CC287F0C87003ADEA5 /* ProcedureRepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BDC4CB287F0C87003ADEA5 /* ProcedureRepView.swift */; };
 		D7BDC4CE287F0CA1003ADEA5 /* RevenueRepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BDC4CD287F0CA1003ADEA5 /* RevenueRepView.swift */; };
+		D7CB2A8F28C0A53500ED114B /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CB2A8E28C0A53500ED114B /* Onboarding.swift */; };
+		D7CB2A9128C0A5F600ED114B /* Card1.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CB2A9028C0A5F600ED114B /* Card1.swift */; };
+		D7CB2A9328C0A5FF00ED114B /* Card2.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CB2A9228C0A5FF00ED114B /* Card2.swift */; };
+		D7CB2A9528C0BA5400ED114B /* Card3.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CB2A9428C0BA5400ED114B /* Card3.swift */; };
+		D7CB2A9728C0BA6200ED114B /* Card4.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CB2A9628C0BA6200ED114B /* Card4.swift */; };
+		D7CB2A9928C0BA6F00ED114B /* Card5.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CB2A9828C0BA6F00ED114B /* Card5.swift */; };
 		D7CFE6EE288D58D9000BDE0B /* GradientText2.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CFE6ED288D58D9000BDE0B /* GradientText2.swift */; };
 		D7FFF71A2885906E003FD4D6 /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FFF7192885906E003FD4D6 /* AddTaskView.swift */; };
 		D7FFF71C28859408003FD4D6 /* AddProjectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FFF71B28859407003FD4D6 /* AddProjectsView.swift */; };
@@ -345,6 +351,12 @@
 		D7BDC4C9287D010F003ADEA5 /* CentreDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentreDetailView.swift; sourceTree = "<group>"; };
 		D7BDC4CB287F0C87003ADEA5 /* ProcedureRepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcedureRepView.swift; sourceTree = "<group>"; };
 		D7BDC4CD287F0CA1003ADEA5 /* RevenueRepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevenueRepView.swift; sourceTree = "<group>"; };
+		D7CB2A8E28C0A53500ED114B /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
+		D7CB2A9028C0A5F600ED114B /* Card1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card1.swift; sourceTree = "<group>"; };
+		D7CB2A9228C0A5FF00ED114B /* Card2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card2.swift; sourceTree = "<group>"; };
+		D7CB2A9428C0BA5400ED114B /* Card3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card3.swift; sourceTree = "<group>"; };
+		D7CB2A9628C0BA6200ED114B /* Card4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card4.swift; sourceTree = "<group>"; };
+		D7CB2A9828C0BA6F00ED114B /* Card5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card5.swift; sourceTree = "<group>"; };
 		D7CFE6ED288D58D9000BDE0B /* GradientText2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientText2.swift; sourceTree = "<group>"; };
 		D7FFF7192885906E003FD4D6 /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
 		D7FFF71B28859407003FD4D6 /* AddProjectsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProjectsView.swift; sourceTree = "<group>"; };
@@ -587,6 +599,12 @@
 				D7A2116B286FF35000918807 /* ModalView.swift */,
 				D7A21090286C578000918807 /* ErrorView.swift */,
 				D7A21092286C57AE00918807 /* LogoutButton.swift */,
+				D7CB2A8E28C0A53500ED114B /* Onboarding.swift */,
+				D7CB2A9028C0A5F600ED114B /* Card1.swift */,
+				D7CB2A9228C0A5FF00ED114B /* Card2.swift */,
+				D7CB2A9428C0BA5400ED114B /* Card3.swift */,
+				D7CB2A9628C0BA6200ED114B /* Card4.swift */,
+				D7CB2A9828C0BA6F00ED114B /* Card5.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -947,6 +965,7 @@
 				D7A21098286D399800918807 /* ImagePicker.swift in Sources */,
 				D7A2115A286F1D4400918807 /* ChatInputBox.swift in Sources */,
 				D7A210E7286EBAB800918807 /* TextFieldModifier.swift in Sources */,
+				D7CB2A9528C0BA5400ED114B /* Card3.swift in Sources */,
 				D7A210A7286E12A800918807 /* Model.swift in Sources */,
 				D7A210FE286F19D600918807 /* BlankPersonIconView.swift in Sources */,
 				D7A2112A286F1C8D00918807 /* LocationButton.swift in Sources */,
@@ -959,6 +978,7 @@
 				D7A210D9286EB93E00918807 /* CloseButton.swift in Sources */,
 				D7A2112C286F1C8D00918807 /* AttachButton.swift in Sources */,
 				D7A210F3286F020000918807 /* AccountView.swift in Sources */,
+				D7CB2A9328C0A5FF00ED114B /* Card2.swift in Sources */,
 				D7A21100286F1A0700918807 /* AvatarButton.swift in Sources */,
 				D70DE6A52892D57C00DF8CD4 /* Consumables.swift in Sources */,
 				D7A2112D286F1C8D00918807 /* CallToActionButton.swift in Sources */,
@@ -991,11 +1011,13 @@
 				D7A210AF286E1AED00918807 /* Modifiers.swift in Sources */,
 				D731A56828BF258500B41E42 /* ekgProgress.swift in Sources */,
 				D7A21127286F1C8D00918807 /* CaptionLabel.swift in Sources */,
+				D7CB2A9928C0BA6F00ED114B /* Card5.swift in Sources */,
 				D7A2114F286F1D3A00918807 /* ConversationListView.swift in Sources */,
 				D7A210A1286DACFE00918807 /* TextFieldIcon.swift in Sources */,
 				D7BDC4CE287F0CA1003ADEA5 /* RevenueRepView.swift in Sources */,
 				D7A21104286F1AA000918807 /* AvatarThumbNailView.swift in Sources */,
 				D7A210BE286EABB800918807 /* AnimatableFontModifier.swift in Sources */,
+				D7CB2A8F28C0A53500ED114B /* Onboarding.swift in Sources */,
 				D7A2110E286F1B8100918807 /* UIImageThumb.swift in Sources */,
 				D7A210DF286EB9C300918807 /* CircularView.swift in Sources */,
 				D7FFF71A2885906E003FD4D6 /* AddTaskView.swift in Sources */,
@@ -1016,12 +1038,14 @@
 				D7A210C9286EAE1700918807 /* FeaturedItem.swift in Sources */,
 				D7A21078286C100F00918807 /* Chatster.swift in Sources */,
 				D7A2116C286FF35000918807 /* ModalView.swift in Sources */,
+				D7CB2A9128C0A5F600ED114B /* Card1.swift in Sources */,
 				D7A2112B286F1C8D00918807 /* UserProfileButton.swift in Sources */,
 				D70DE69F2891663800DF8CD4 /* ConsumptionRepView.swift in Sources */,
 				D7A2112F286F1C8D00918807 /* BackButton.swift in Sources */,
 				D7BB900528A8FC550012A3DE /* LocationView.swift in Sources */,
 				D7A2110A286F1B3B00918807 /* Thumbnail.swift in Sources */,
 				D7CFE6EE288D58D9000BDE0B /* GradientText2.swift in Sources */,
+				D7CB2A9728C0BA6200ED114B /* Card4.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

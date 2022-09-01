@@ -12,6 +12,7 @@ struct ContentView: View {
     @ObservedObject var app: RealmSwift.App
     @EnvironmentObject var model: Model
     
+    
     var body: some View {
         if let user = app.currentUser {
                 let config = user.flexibleSyncConfiguration(initialSubscriptions: { subs in
@@ -35,7 +36,6 @@ struct ContentView: View {
         } else {
             SignInView()
         }
-           
 }
 
 }

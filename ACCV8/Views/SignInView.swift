@@ -25,6 +25,7 @@ struct SignInView: View {
     @State private var alertMessage = ""
     @State var error: Error?
     @State var signInHandler: SignInWithAppleButtonCoordinator?
+    @AppStorage("showOnBoarding") var showOnBoarding: Bool = true
     var body: some View {
         ZStack {
             Color("Background").ignoresSafeArea()
@@ -164,6 +165,9 @@ struct SignInView: View {
                     .offset(x: 170, y: -130)
                     .accessibility(hidden: true)
             )
+            .fullScreenCover(isPresented: $showOnBoarding, content: {
+            Onboarding(showOnBoarding: $showOnBoarding)
+            })
             .alert(isPresented: $showAlertToggle, content: {
                 Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .default(Text("OK")))
             })
